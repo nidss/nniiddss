@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications & Automation - TSI Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .custom-toggle {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 24px;
+        }
+        .custom-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--border-light);
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: var(--brand-main);
+        }
+        input:checked + .slider:before {
+            transform: translateX(16px);
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="brand-logo.png" alt="TSI Care Logo" class="brand-logo" style="background: transparent; box-shadow: none; object-fit: contain; border-radius: 0;">
+            <div class="brand-text">
+                <h1>TSI Care</h1>
+                <p>ระบบจัดการประกันภัย</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <p class="nav-group-title">General</p>
+            <a href="index.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                Dashboard
+            </a>
+            <a href="crm_customer_list.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                ลูกค้าทั้งหมด
+            </a>
+            <a href="crm_policy_list.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                กรมธรรม์
+            </a>
+            <a href="crm_payment.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+                การชำระเงิน
+            </a>
+
+            <p class="nav-group-title">Sales & Pipeline</p>
+            <a href="crm_sales_leads.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                Leads ใหม่
+                <span class="badge danger">12</span>
+            </a>
+            <a href="crm_quote_builder.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                ใบเสนอราคา
+            </a>
+            <a href="crm_agent_management.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                Agent Performance
+            </a>
+
+            <p class="nav-group-title">Operations</p>
+            <a href="crm_renewal_pipeline.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+                ติดตามต่ออายุ
+                <span class="badge warning">8</span>
+            </a>
+            <a href="crm_claims_management.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10c.6 0 1.1-.2 1.4-.6.4.3.8.6 1.3.6z"></path><circle cx="7.5" cy="17.5" r="2.5"></circle><circle cx="15.5" cy="17.5" r="2.5"></circle></svg>
+                รายการเคลม
+                <span class="badge info">5</span>
+            </a>
+            <a href="crm_workshop_map.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                เครือข่ายอู่ซ่อม
+            </a>
+
+            <p class="nav-group-title">System</p>
+            <a href="crm_notifications_reminders.html" class="nav-item active">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                แจ้งเตือน & Log
+                <span class="badge danger" style="margin-left: auto;">8</span>
+            </a>
+            <a href="crm_settings_permissions.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                ตั้งค่าสิทธิ์ผู้ใช้
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">สก</div>
+                <div class="user-info">
+                    <p class="name">สมชาย กิตติ</p>
+                    <p class="role">Sales Manager</p>
+                </div>
+                <button class="btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <button class="btn-icon mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+                <h2 class="header-title">การแจ้งเตือน & Automation</h2>
+            </div>
+            
+            <div class="header-actions">
+                <div class="search-bar">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    <input type="text" placeholder="ค้นหาข้อมูลลูกค้า, ทะเบียนรถ...">
+                </div>
+                
+                <button class="btn-icon notification-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                    <span class="notification-dot"></span>
+                </button>
+            </div>
+        </header>
+
+        <div class="dashboard-scroll">
+            <div class="welcome-section">
+                <div class="welcome-text">
+                    <h2>กล่องข้อความ</h2>
+                    <p>การแจ้งเตือนและ Automation Rules</p>
+                </div>
+                <div class="time-filters">
+                    <button class="time-filter-btn">อ่านทั้งหมด</button>
+                    <button class="time-filter-btn active" style="background-color: var(--brand-main); color: white;">สร้าง Rule ใหม่</button>
+                </div>
+            </div>
+
+            <div class="bottom-grid">
+                <!-- Left: Notifications (Span 7) -->
+                <div class="bento-item" style="grid-column: span 7; padding: var(--space-6);">
+                    <div class="card-header">
+                        <h3 class="card-title">กล่องแจ้งเตือนล่าสุด</h3>
+                        <div class="time-filters">
+                            <button class="time-filter-btn active">ทั้งหมด (8)</button>
+                            <button class="time-filter-btn">ต่ออายุ</button>
+                            <button class="time-filter-btn">เคลม</button>
+                            <button class="time-filter-btn">Lead</button>
+                        </div>
+                    </div>
+                    <div class="timeline" style="margin-top: var(--space-4);">
+                        <!-- Item 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-icon icon-red" style="font-size: 1rem;">
+                                🚗
+                            </div>
+                            <div class="timeline-content">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                    <p class="title">กรมธรรม์หมดอายุใน 5 วัน — วิชัย สุขสม</p>
+                                    <span class="timeline-time">2 นาทีที่แล้ว</span>
+                                </div>
+                                <p class="desc" style="margin-bottom: 8px;">Toyota Camry · ชั้น 1 · เบี้ย 28,500 ฿ · <span style="color: var(--accent-danger); font-weight: 600;">ยังไม่ได้ส่งใบเสนอราคา</span></p>
+                                <div style="display: flex; gap: 8px;">
+                                    <span class="status-pill status-danger">ด่วนมาก</span>
+                                    <span class="status-pill" style="background: var(--bg-body); color: var(--text-muted);">ต่ออายุ</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-icon icon-blue" style="font-size: 1rem;">
+                                🎯
+                            </div>
+                            <div class="timeline-content">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                    <p class="title">Lead ใหม่จาก LINE OA</p>
+                                    <span class="timeline-time">18 นาทีที่แล้ว</span>
+                                </div>
+                                <p class="desc" style="margin-bottom: 8px;">ปัญญา สว่างใจ — Honda Civic · <span style="color: var(--brand-main); font-weight: 600;">Lead score 92 (Hot Lead)</span></p>
+                                <div style="display: flex; gap: 8px;">
+                                    <span class="status-pill status-info">High Intent</span>
+                                    <span class="status-pill" style="background: var(--bg-body); color: var(--text-muted);">งานขาย</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="timeline-item">
+                            <div class="timeline-icon" style="background-color: var(--accent-success-surface); color: var(--accent-success); font-size: 1rem;">
+                                ✓
+                            </div>
+                            <div class="timeline-content">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                    <p class="title">อนุมัติเคลมสำเร็จ — CLM-2798</p>
+                                    <span class="timeline-time">1 ชม.ที่แล้ว</span>
+                                </div>
+                                <p class="desc" style="margin-bottom: 8px;">อรนุช พิทักษ์ — Honda Jazz · ยอดจ่ายสินไหม <span style="font-weight: 600; color: var(--text-main);">28,500 ฿</span></p>
+                                <div style="display: flex; gap: 8px;">
+                                    <span class="status-pill status-success">สำเร็จ</span>
+                                    <span class="status-pill" style="background: var(--bg-body); color: var(--text-muted);">งานเคลม</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 (Read) -->
+                        <div class="timeline-item" style="opacity: 0.6;">
+                            <div class="timeline-icon" style="background-color: var(--bg-body); color: var(--text-muted); font-size: 1rem;">
+                                📋
+                            </div>
+                            <div class="timeline-content">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                    <p class="title">ต่ออายุสำเร็จ — วิภา ศิริ</p>
+                                    <span class="timeline-time">เมื่อวาน</span>
+                                </div>
+                                <p class="desc">ชำระเงินเรียบร้อย 19,400 ฿ ผ่าน PromptPay · กรมธรรม์ใหม่มีผลทันที</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-full" style="margin-top: var(--space-4);">ดูการแจ้งเตือนย้อนหลังทั้งหมด</button>
+                </div>
+
+                <!-- Right: Stats & Rules (Span 5) -->
+                <div style="grid-column: span 5; display: flex; flex-direction: column; gap: var(--space-6);">
+                    <!-- Delivery Stats -->
+                    <div class="bento-item">
+                        <div class="card-header">
+                            <h3 class="card-title">ประสิทธิภาพการแจ้งเตือน</h3>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-4);">
+                            <div style="padding: var(--space-4); background-color: var(--accent-success-surface); border-radius: var(--radius-lg); border: 1px solid var(--accent-success-border);">
+                                <div style="font-size: 1.5rem; font-weight: 600; color: var(--accent-success);">84%</div>
+                                <div style="font-size: 0.75rem; font-weight: 600; color: var(--accent-success); margin-top: 4px; text-transform: uppercase;">Open Rate (SMS)</div>
+                            </div>
+                            <div style="padding: var(--space-4); background-color: var(--brand-surface); border-radius: var(--radius-lg); border: 1px solid var(--brand-surface);">
+                                <div style="font-size: 1.5rem; font-weight: 600; color: var(--brand-main);">62%</div>
+                                <div style="font-size: 0.75rem; font-weight: 600; color: var(--brand-main); margin-top: 4px; text-transform: uppercase;">Reply Rate</div>
+                            </div>
+                            <div style="padding: var(--space-4); background-color: var(--bg-body); border-radius: var(--radius-lg); border: 1px solid var(--border-light);">
+                                <div style="font-size: 1.5rem; font-weight: 600; color: var(--text-main);">312</div>
+                                <div style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-top: 4px; text-transform: uppercase;">ส่งวันนี้</div>
+                            </div>
+                            <div style="padding: var(--space-4); background-color: var(--accent-warning-surface); border-radius: var(--radius-lg); border: 1px solid var(--accent-warning-border);">
+                                <div style="font-size: 1.5rem; font-weight: 600; color: var(--accent-warning);">28</div>
+                                <div style="font-size: 0.75rem; font-weight: 600; color: var(--accent-warning); margin-top: 4px; text-transform: uppercase;">ยังไม่ตอบกลับ</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Automation Rules -->
+                    <div class="bento-item">
+                        <div class="card-header">
+                            <h3 class="card-title">Automation Rules</h3>
+                            <button class="btn-link">จัดการทั้งหมด</button>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-4);">
+                            <!-- Rule 1 -->
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: var(--space-4); border-bottom: 1px solid var(--border-light);">
+                                <div>
+                                    <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: 4px;">
+                                        <p style="font-weight: 600; font-size: 0.875rem;">แจ้งเตือนต่ออายุ 90 วัน</p>
+                                        <span class="status-pill status-success" style="font-size: 0.625rem; padding: 2px 6px;">Active</span>
+                                    </div>
+                                    <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px;">ส่งข้อความทักทายล่วงหน้า 3 เดือน</p>
+                                    <div style="display: flex; gap: 4px;">
+                                        <span style="font-size: 0.625rem; font-weight: 600; background: var(--bg-body); padding: 2px 6px; border-radius: 4px;">LINE</span>
+                                        <span style="font-size: 0.625rem; font-weight: 600; background: var(--bg-body); padding: 2px 6px; border-radius: 4px;">SMS</span>
+                                    </div>
+                                </div>
+                                <label class="custom-toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <!-- Rule 2 -->
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: var(--space-4); border-bottom: 1px solid var(--border-light);">
+                                <div>
+                                    <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: 4px;">
+                                        <p style="font-weight: 600; font-size: 0.875rem;">Reminder 7 วัน — ด่วน</p>
+                                        <span class="status-pill status-success" style="font-size: 0.625rem; padding: 2px 6px;">Active</span>
+                                    </div>
+                                    <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px;">ส่งทุกวันจนกว่าจะต่ออายุ หรือปฏิเสธ</p>
+                                    <div style="display: flex; gap: 4px;">
+                                        <span style="font-size: 0.625rem; font-weight: 600; background: var(--bg-body); padding: 2px 6px; border-radius: 4px;">LINE</span>
+                                        <span style="font-size: 0.625rem; font-weight: 600; background: var(--brand-surface); color: var(--brand-main); padding: 2px 6px; border-radius: 4px;">SMS</span>
+                                    </div>
+                                </div>
+                                <label class="custom-toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <!-- Rule 3 -->
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; opacity: 0.6;">
+                                <div>
+                                    <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: 4px;">
+                                        <p style="font-weight: 600; font-size: 0.875rem;">วันเกิดลูกค้า</p>
+                                        <span class="status-pill" style="font-size: 0.625rem; background: var(--bg-body); padding: 2px 6px;">Paused</span>
+                                    </div>
+                                    <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px;">ส่งอวยพรพร้อม Offer พิเศษ</p>
+                                    <div style="display: flex; gap: 4px;">
+                                        <span style="font-size: 0.625rem; font-weight: 600; background: var(--bg-body); padding: 2px 6px; border-radius: 4px;">LINE</span>
+                                    </div>
+                                </div>
+                                <label class="custom-toggle">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

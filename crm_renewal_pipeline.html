@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renewal Pipeline - TSI Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .pipeline-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+        .pipeline-scroll::-webkit-scrollbar-track {
+            background: var(--bg-main);
+            border-radius: var(--radius-md);
+        }
+        .pipeline-scroll::-webkit-scrollbar-thumb {
+            background: var(--border-light);
+            border-radius: var(--radius-md);
+        }
+        .pipeline-scroll::-webkit-scrollbar-thumb:hover {
+            background: #cbd5e1;
+        }
+        .pipeline-scroll {
+            scrollbar-width: thin;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="brand-logo.png" alt="TSI Care Logo" class="brand-logo" style="background: transparent; box-shadow: none; object-fit: contain; border-radius: 0;">
+            <div class="brand-text">
+                <h1>TSI Care</h1>
+                <p>ระบบจัดการประกันภัย</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <p class="nav-group-title">General</p>
+            <a href="index.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                Dashboard
+            </a>
+            <a href="crm_customer_list.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                ลูกค้าทั้งหมด
+            </a>
+            <a href="crm_policy_list.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                กรมธรรม์
+            </a>
+
+            <p class="nav-group-title">Sales & Pipeline</p>
+            <a href="crm_sales_leads.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                Leads ใหม่
+                <span class="badge danger">12</span>
+            </a>
+            <a href="crm_quote_builder.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                ใบเสนอราคา
+            </a>
+            <a href="crm_agent_management.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                Agent Performance
+            </a>
+
+            <p class="nav-group-title">Operations</p>
+            <a href="crm_renewal_pipeline.html" class="nav-item active">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+                ติดตามต่ออายุ
+                <span class="badge warning">8</span>
+            </a>
+            <a href="crm_claims_management.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10c.6 0 1.1-.2 1.4-.6.4.3.8.6 1.3.6z"></path><circle cx="7.5" cy="17.5" r="2.5"></circle><circle cx="15.5" cy="17.5" r="2.5"></circle></svg>
+                รายการเคลม
+                <span class="badge info">5</span>
+            </a>
+            <a href="crm_workshop_map.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                เครือข่ายอู่ซ่อม
+            </a>
+
+            <p class="nav-group-title">System</p>
+            <a href="crm_notifications_reminders.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                แจ้งเตือน & Log
+            </a>
+            <a href="crm_settings_permissions.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                ตั้งค่าสิทธิ์ผู้ใช้
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">สก</div>
+                <div class="user-info">
+                    <p class="name">สมชาย กิตติ</p>
+                    <p class="role">Sales Manager</p>
+                </div>
+                <button class="btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <button class="btn-icon mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+                <h2 class="header-title">ติดตามต่ออายุ (Renewal Pipeline)</h2>
+            </div>
+            
+            <div class="header-actions">
+                <div class="search-bar">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    <input type="text" placeholder="ค้นหาข้อมูลลูกค้า, ทะเบียนรถ...">
+                </div>
+                
+                <button class="btn-icon notification-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                    <span class="notification-dot"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-scroll">
+            
+            <!-- Page Header / Toolbar -->
+            <div class="welcome-section" style="margin-bottom: var(--space-4);">
+                <div class="welcome-text">
+                    <h2>Renewal Pipeline</h2>
+                    <p>312 กรมธรรม์ที่จะหมดอายุภายใน 30 วัน</p>
+                </div>
+                <div style="display: flex; gap: var(--space-3);">
+                    <button class="btn-link" style="background-color: var(--bg-surface); padding: var(--space-2) var(--space-4); border-radius: var(--radius-md); border: 1px solid var(--border-light); color: var(--text-main); display: flex; align-items: center; gap: var(--space-2);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                        Export
+                    </button>
+                    <button style="background-color: var(--brand-main); color: #fff; border: none; border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); font-weight: 500; font-family: 'Kanit', sans-serif; cursor: pointer; display: flex; align-items: center; gap: var(--space-2); box-shadow: var(--shadow-sm);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
+                        ส่งแจ้งเตือนทั้งหมด
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters Section -->
+            <div class="bento-item" style="margin-bottom: var(--space-6); display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4); padding: var(--space-4) var(--space-6);">
+                <div style="display: flex; flex-wrap: wrap; gap: var(--space-4);">
+                    <div style="display: flex; flex-direction: column; gap: var(--space-1); flex: 1; min-width: 220px;">
+                        <label style="font-size: 0.6875rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">ค้นหา</label>
+                        <div class="search-bar" style="width: 100%; background: var(--bg-body); border-radius: var(--radius-md);">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                            <input type="text" placeholder="ชื่อหรือทะเบียน..." style="background: transparent; border: none;">
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                        <label style="font-size: 0.6875rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">พนักงานดูแล</label>
+                        <select style="background: var(--bg-subtle); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: var(--space-2) var(--space-3); font-family: 'Sarabun'; outline: none; font-size: 0.875rem;">
+                            <option>ทุก Agent</option>
+                            <option>วิภา ศรีสุข</option>
+                            <option>ประสิทธิ์ สุข</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                        <label style="font-size: 0.6875rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">ประเภทประกัน</label>
+                        <select style="background: var(--bg-subtle); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: var(--space-2) var(--space-3); font-family: 'Sarabun'; outline: none; font-size: 0.875rem;">
+                            <option>ทุกประเภท</option>
+                            <option>ชั้น 1</option>
+                            <option>ชั้น 2+</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: var(--space-1); align-items: flex-end;">
+                    <label style="font-size: 0.6875rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">ระยะเวลา</label>
+                    <div style="display: flex; background: var(--bg-subtle); padding: var(--space-1); border-radius: var(--radius-md);">
+                        <button class="time-filter-btn active" style="padding: var(--space-2) var(--space-4); border: none; border-radius: var(--radius-md); font-size: 0.875rem; font-weight: 600; background: white; color: var(--brand-main); box-shadow: var(--shadow-subtle); cursor: pointer;">30 วัน</button>
+                        <button class="time-filter-btn" style="padding: var(--space-2) var(--space-4); border: none; border-radius: var(--radius-md); font-size: 0.875rem; font-weight: 500; background: transparent; color: var(--text-muted); cursor: pointer;">60 วัน</button>
+                        <button class="time-filter-btn" style="padding: var(--space-2) var(--space-4); border: none; border-radius: var(--radius-md); font-size: 0.875rem; font-weight: 500; background: transparent; color: var(--text-muted); cursor: pointer;">90 วัน</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kanban Pipeline -->
+            <div class="pipeline-scroll" style="display: flex; gap: var(--space-5); overflow-x: auto; padding-bottom: var(--space-4); min-height: 600px;">
+                
+                <!-- Column 1: Very Urgent -->
+                <div style="min-width: 320px; max-width: 320px; display: flex; flex-direction: column; gap: var(--space-4);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 var(--space-2);">
+                        <div style="display: flex; align-items: center; gap: var(--space-2);">
+                            <div style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--accent-danger);"></div>
+                            <h4 style="font-family: 'Kanit', sans-serif; font-weight: 500; font-size: 0.875rem;">ด่วนมาก (≤7 วัน)</h4>
+                            <span class="status-pill status-danger" style="padding: 2px 8px; font-size: 0.7rem;">24</span>
+                        </div>
+                        <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">842K ฿</span>
+                    </div>
+
+                    <!-- Cards Container -->
+                    <div style="display: flex; flex-direction: column; gap: var(--space-3); overflow-y: auto;">
+                        
+                        <!-- Card 1 -->
+                        <div class="bento-item" style="padding: var(--space-4); border-left: 4px solid var(--accent-danger); cursor: grab;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-2);">
+                                <h5 style="font-weight: 600; font-size: 0.95rem; color: var(--text-main); margin: 0;">วิชัย สุขสม</h5>
+                                <span style="background-color: var(--accent-danger-surface); color: var(--accent-danger); font-size: 0.7rem; font-weight: 600; padding: 2px 6px; border-radius: 4px; font-style: italic;">5 วัน</span>
+                            </div>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: var(--space-3);">Toyota Camry · ชั้น 1</p>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3);">
+                                <span style="font-weight: 600; font-size: 0.85rem; color: var(--text-main);">28,500 ฿</span>
+                                <span style="color: var(--accent-danger); font-size: 0.8rem; font-weight: 600;">เคลม 3 ครั้ง</span>
+                            </div>
+
+                            <div class="client-cell" style="margin-bottom: var(--space-4);">
+                                <div class="client-avatar avatar-blue" style="width: 24px; height: 24px; font-size: 0.6rem;">วภ</div>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">วิภา ศรีสุข</span>
+                            </div>
+
+                            <div style="width: 100%; height: 4px; background-color: var(--border-light); border-radius: 2px; margin-bottom: var(--space-4); overflow: hidden;">
+                                <div style="width: 30%; height: 100%; background-color: var(--accent-danger);"></div>
+                            </div>
+
+                            <div style="display: flex; gap: var(--space-2);">
+                                <button style="flex: 1; padding: var(--space-2); background-color: var(--bg-main); border: 1px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600; color: var(--text-muted); cursor: pointer;">โทร</button>
+                                <button style="flex: 1; padding: var(--space-2); background-color: var(--brand-main); border: none; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600; color: #fff; cursor: pointer; box-shadow: var(--shadow-sm);">ส่งใบเสนอ</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="bento-item" style="padding: var(--space-4); border-left: 4px solid var(--accent-danger); cursor: grab;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-2);">
+                                <h5 style="font-weight: 600; font-size: 0.95rem; color: var(--text-main); margin: 0;">ธนา ใจดี</h5>
+                                <span style="background-color: var(--accent-danger-surface); color: var(--accent-danger); font-size: 0.7rem; font-weight: 600; padding: 2px 6px; border-radius: 4px; font-style: italic;">3 วัน</span>
+                            </div>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: var(--space-3);">Honda Accord · ชั้น 1</p>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3);">
+                                <span style="font-weight: 600; font-size: 0.85rem; color: var(--text-main);">32,000 ฿</span>
+                                <span style="color: var(--text-muted); font-size: 0.8rem;">เคลม 1 ครั้ง</span>
+                            </div>
+
+                            <div class="client-cell" style="margin-bottom: var(--space-4);">
+                                <div class="client-avatar" style="width: 24px; height: 24px; font-size: 0.6rem; background-color: var(--bg-main); color: var(--text-muted);">ปส</div>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">ประสิทธิ์ สุข</span>
+                            </div>
+
+                            <div style="display: flex; gap: var(--space-2);">
+                                <button style="flex: 1; padding: var(--space-2); background-color: var(--bg-main); border: 1px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600; color: var(--text-muted); cursor: pointer;">โทร</button>
+                                <button style="flex: 1; padding: var(--space-2); background-color: var(--brand-main); border: none; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600; color: #fff; cursor: pointer; box-shadow: var(--shadow-sm);">ส่งใบเสนอ</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Column 2: Near Expiry -->
+                <div style="min-width: 320px; max-width: 320px; display: flex; flex-direction: column; gap: var(--space-4);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 var(--space-2);">
+                        <div style="display: flex; align-items: center; gap: var(--space-2);">
+                            <div style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--accent-warning);"></div>
+                            <h4 style="font-family: 'Kanit', sans-serif; font-weight: 500; font-size: 0.875rem;">ใกล้หมด (8–14 วัน)</h4>
+                            <span class="status-pill status-warn" style="padding: 2px 8px; font-size: 0.7rem;">58</span>
+                        </div>
+                        <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">1.9M ฿</span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: var(--space-3); overflow-y: auto;">
+                        <div class="bento-item" style="padding: var(--space-4); border-left: 4px solid var(--accent-warning); cursor: grab;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-2);">
+                                <h5 style="font-weight: 600; font-size: 0.95rem; color: var(--text-main); margin: 0;">มาลี รุ่งเรือง</h5>
+                                <span style="background-color: var(--accent-warning-surface); color: var(--accent-warning); font-size: 0.7rem; font-weight: 600; padding: 2px 6px; border-radius: 4px;">12 วัน</span>
+                            </div>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: var(--space-3);">Honda CR-V · ชั้น 1</p>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3);">
+                                <span style="font-weight: 600; font-size: 0.85rem; color: var(--text-main);">31,200 ฿</span>
+                                <span style="color: var(--accent-success); font-size: 0.8rem; font-weight: 600;">ไม่มีเคลม</span>
+                            </div>
+
+                            <div class="client-cell" style="margin-bottom: var(--space-4);">
+                                <div class="client-avatar avatar-blue" style="width: 24px; height: 24px; font-size: 0.6rem;">วภ</div>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">วิภา ศรีสุข</span>
+                            </div>
+
+                            <div style="width: 100%; height: 4px; background-color: var(--border-light); border-radius: 2px; margin-bottom: var(--space-4); overflow: hidden;">
+                                <div style="width: 60%; height: 100%; background-color: var(--accent-warning);"></div>
+                            </div>
+
+                            <div style="display: flex; gap: var(--space-2);">
+                                <button style="flex: 1; padding: var(--space-2); background-color: var(--bg-main); border: 1px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600; color: var(--text-muted); cursor: pointer;">SMS</button>
+                                <button style="flex: 1; padding: var(--space-2); background-color: var(--brand-main); border: none; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600; color: #fff; cursor: pointer; box-shadow: var(--shadow-sm);">ส่งใบเสนอ</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 3: Quote Sent -->
+                <div style="min-width: 320px; max-width: 320px; display: flex; flex-direction: column; gap: var(--space-4);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 var(--space-2);">
+                        <div style="display: flex; align-items: center; gap: var(--space-2);">
+                            <div style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--brand-main);"></div>
+                            <h4 style="font-family: 'Kanit', sans-serif; font-weight: 500; font-size: 0.875rem;">ส่งใบเสนอแล้ว</h4>
+                            <span class="status-pill" style="background-color: var(--brand-surface); color: var(--brand-main); padding: 2px 8px; font-size: 0.7rem;">87</span>
+                        </div>
+                        <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">3.2M ฿</span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: var(--space-3); overflow-y: auto;">
+                        <div class="bento-item" style="padding: var(--space-4); border-left: 4px solid var(--brand-main); cursor: grab;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-2);">
+                                <h5 style="font-weight: 600; font-size: 0.95rem; color: var(--text-main); margin: 0;">สุนีย์ วงค์ดี</h5>
+                                <span style="background-color: var(--brand-surface); color: var(--brand-main); font-size: 0.7rem; font-weight: 600; padding: 2px 6px; border-radius: 4px;">28 วัน</span>
+                            </div>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: var(--space-3);">Mazda CX-5 · ชั้น 1</p>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3);">
+                                <span style="font-weight: 600; font-size: 0.85rem; color: var(--text-main);">35,800 ฿</span>
+                                <span style="color: var(--accent-success); font-size: 0.8rem; font-weight: 600;">ไม่มีเคลม</span>
+                            </div>
+
+                            <div style="width: 100%; height: 4px; background-color: var(--border-light); border-radius: 2px; margin-bottom: var(--space-4); overflow: hidden;">
+                                <div style="width: 75%; height: 100%; background-color: var(--brand-main);"></div>
+                            </div>
+
+                            <div style="display: flex; gap: var(--space-2);">
+                                <button style="flex: 1; padding: var(--space-2); background-color: var(--bg-main); border: 1px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600; color: var(--text-muted); cursor: pointer;">ติดตามผล</button>
+                                <button style="flex: 1; padding: var(--space-2); background-color: var(--brand-main); border: none; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600; color: #fff; cursor: pointer; box-shadow: var(--shadow-sm);">ยืนยันการต่อ</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 4: Pending Decision -->
+                <div style="min-width: 320px; max-width: 320px; display: flex; flex-direction: column; gap: var(--space-4);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 var(--space-2);">
+                        <div style="display: flex; align-items: center; gap: var(--space-2);">
+                            <div style="width: 8px; height: 8px; border-radius: 50%; background-color: #d97706;"></div>
+                            <h4 style="font-family: 'Kanit', sans-serif; font-weight: 500; font-size: 0.875rem;">รอลูกค้าตัดสินใจ</h4>
+                            <span style="background-color: #fef3c7; color: #b45309; border-radius: var(--radius-full); padding: 2px 8px; font-size: 0.7rem; font-weight: 600;">43</span>
+                        </div>
+                        <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">1.6M ฿</span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: var(--space-3); overflow-y: auto;">
+                        <div class="bento-item" style="padding: var(--space-4); border-left: 4px solid #f59e0b; cursor: grab;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-2);">
+                                <h5 style="font-weight: 600; font-size: 0.95rem; color: var(--text-main); margin: 0;">อรนุช พิทักษ์</h5>
+                                <span style="background-color: var(--accent-success-surface); color: var(--accent-success); font-size: 0.7rem; font-weight: 600; padding: 2px 6px; border-radius: 4px;">18 วัน</span>
+                            </div>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: var(--space-3);">Toyota Fortuner · ชั้น 1</p>
+                            
+                            <div style="margin-bottom: var(--space-3); padding: var(--space-2); background-color: #fffbeb; border-radius: var(--radius-sm); font-size: 0.7rem; color: #b45309; font-weight: 600; border: 1px solid #fef3c7;">
+                                ลูกค้ากำลังเปรียบเทียบราคากับเจ้าอื่น
+                            </div>
+
+                            <div style="display: flex; gap: var(--space-2);">
+                                <button style="flex: 1; padding: var(--space-2); background-color: var(--bg-main); border: 1px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600; color: var(--text-muted); cursor: pointer; font-style: italic;">📞 Follow up</button>
+                                <button style="flex: 1; padding: var(--space-2); background-color: var(--brand-main); border: none; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600; color: #fff; cursor: pointer; box-shadow: var(--shadow-sm);">ปรับราคา</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 5: Renewed Success -->
+                <div style="min-width: 320px; max-width: 320px; display: flex; flex-direction: column; gap: var(--space-4);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 var(--space-2);">
+                        <div style="display: flex; align-items: center; gap: var(--space-2);">
+                            <div style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--accent-success);"></div>
+                            <h4 style="font-family: 'Kanit', sans-serif; font-weight: 500; font-size: 0.875rem;">ต่ออายุสำเร็จ</h4>
+                            <span style="background-color: var(--accent-success-surface); color: var(--accent-success); border-radius: var(--radius-full); padding: 2px 8px; font-size: 0.7rem; font-weight: 600;">100+</span>
+                        </div>
+                        <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">3.8M ฿</span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: var(--space-3); overflow-y: auto;">
+                        <div class="bento-item" style="padding: var(--space-4); border-left: 4px solid var(--accent-success); opacity: 0.8;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-2);">
+                                <h5 style="font-weight: 600; font-size: 0.95rem; color: var(--text-main); margin: 0;">วิภา ศิริ</h5>
+                                <span style="background-color: var(--accent-success); color: #fff; font-size: 0.65rem; font-weight: 600; padding: 2px 6px; border-radius: 4px; text-transform: uppercase;">ชำระแล้ว</span>
+                            </div>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: var(--space-2);">Honda Jazz · ชั้น 2+</p>
+                            <p style="font-size: 0.7rem; color: var(--accent-success); font-weight: 600; font-style: italic; margin: 0;">ต่ออายุเมื่อ: 25 มี.ค. 68</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

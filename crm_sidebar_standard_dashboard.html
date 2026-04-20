@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSI Care - Master Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Sarabun', sans-serif;
+            background-color: #f8fafc;
+        }
+        .sidebar-item-active {
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            border-right: 4px solid #1d4ed8;
+        }
+        .nav-link:hover:not(.sidebar-item-active) {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-slate-800">
+
+<div class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white border-r border-slate-200 flex-shrink-0 hidden lg:flex flex-col">
+        <!-- Logo -->
+        <div class="p-6 flex items-center gap-3">
+            <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-200">
+                AI
+            </div>
+            <div>
+                <h1 class="font-bold text-slate-900 leading-none text-lg">TSI Care</h1>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">v2.5 Enterprise</p>
+            </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="flex-1 px-4 py-2 space-y-1 overflow-y-auto no-scrollbar">
+            <!-- Group: Dashboard & Core -->
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-3 mb-2 mt-4">General</p>
+            <a href="#" class="sidebar-item-active flex items-center gap-3 px-3 py-2 rounded-lg font-bold transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                Dashboard
+            </a>
+            <a href="#" class="nav-link flex items-center gap-3 px-3 py-2 text-slate-500 rounded-lg text-sm transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                ลูกค้าทั้งหมด
+            </a>
+            <a href="#" class="nav-link flex items-center gap-3 px-3 py-2 text-slate-500 rounded-lg text-sm transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                กรมธรรม์
+            </a>
+
+            <!-- Group: Sales -->
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-3 mb-2 mt-8">Sales & Pipeline</p>
+            <a href="#" class="nav-link flex items-center justify-between px-3 py-2 text-slate-500 rounded-lg text-sm transition-all">
+                <div class="flex items-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                    Leads ใหม่
+                </div>
+                <span class="bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold">12</span>
+            </a>
+            <a href="#" class="nav-link flex items-center gap-3 px-3 py-2 text-slate-500 rounded-lg text-sm transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                ใบเสนอราคา
+            </a>
+            <a href="#" class="nav-link flex items-center gap-3 px-3 py-2 text-slate-500 rounded-lg text-sm transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                Agent Performance
+            </a>
+
+            <!-- Group: Operations -->
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-3 mb-2 mt-8">Operations</p>
+            <a href="#" class="nav-link flex items-center justify-between px-3 py-2 text-slate-500 rounded-lg text-sm transition-all">
+                <div class="flex items-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+                    ติดตามต่ออายุ
+                </div>
+                <span class="bg-amber-500 text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold">8</span>
+            </a>
+            <a href="#" class="nav-link flex items-center justify-between px-3 py-2 text-slate-500 rounded-lg text-sm transition-all">
+                <div class="flex items-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10c.6 0 1.1-.2 1.4-.6.4.3.8.6 1.3.6z"></path><circle cx="7.5" cy="17.5" r="2.5"></circle><circle cx="15.5" cy="17.5" r="2.5"></circle></svg>
+                    รายการเคลม
+                </div>
+                <span class="bg-blue-500 text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold">5</span>
+            </a>
+            <a href="#" class="nav-link flex items-center gap-3 px-3 py-2 text-slate-500 rounded-lg text-sm transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                เครือข่ายอู่ซ่อม
+            </a>
+
+            <!-- Group: System -->
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-3 mb-2 mt-8">System</p>
+            <a href="#" class="nav-link flex items-center gap-3 px-3 py-2 text-slate-500 rounded-lg text-sm transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                แจ้งเตือน & Log
+            </a>
+            <a href="#" class="nav-link flex items-center gap-3 px-3 py-2 text-slate-500 rounded-lg text-sm transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                ตั้งค่าสิทธิ์ผู้ใช้
+            </a>
+        </nav>
+
+        <!-- Sidebar Footer (User Profile) -->
+        <div class="p-4 border-t border-slate-100 bg-slate-50/50">
+            <div class="flex items-center gap-3 p-2 bg-white rounded-xl shadow-sm border border-slate-200 cursor-pointer hover:bg-slate-50 transition-all group">
+                <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold">สก</div>
+                <div class="flex-1 overflow-hidden">
+                    <p class="text-sm font-bold text-slate-900 truncate">สมชาย กิตติ</p>
+                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter truncate">Sales Manager</p>
+                </div>
+                <button class="text-slate-300 group-hover:text-red-500 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+        <!-- Topbar -->
+        <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 z-20 flex-shrink-0">
+            <div class="flex items-center gap-4">
+                <h2 class="text-lg font-bold text-slate-800">Dashboard</h2>
+                <span class="text-xs text-slate-400 font-medium italic">ข้อมูล ณ วันที่ 20 เม.ย. 2568</span>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="relative hidden md:block">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    </span>
+                    <input type="text" placeholder="ค้นหาข้อมูล..." class="pl-10 pr-4 py-2 bg-slate-100 border-none rounded-lg text-sm focus:ring-2 focus:ring-blue-500 w-64 transition-all">
+                </div>
+                
+                <button class="p-2 text-slate-400 hover:text-blue-600 relative transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                    <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white animate-pulse"></span>
+                </button>
+                <div class="w-8 h-8 rounded-full bg-slate-200 border border-slate-300"></div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content Container -->
+        <div class="flex-1 overflow-y-auto no-scrollbar p-8 bg-slate-50/50 space-y-8">
+            
+            <!-- Welcome Row -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-900">ยินดีต้อนรับกลับ, สมชาย 👋</h3>
+                    <p class="text-sm text-slate-500">นี่คือสรุปภาพรวมธุรกิจประกันภัยของคุณในเดือนนี้</p>
+                </div>
+                <div class="flex bg-white p-1 rounded-xl shadow-sm border border-slate-200">
+                    <button class="px-4 py-1.5 text-xs font-bold bg-blue-600 text-white rounded-lg shadow-md transition-all">เดือนนี้</button>
+                    <button class="px-4 py-1.5 text-xs font-bold text-slate-400 hover:text-slate-600 transition-all">ไตรมาส</button>
+                    <button class="px-4 py-1.5 text-xs font-bold text-slate-400 hover:text-slate-600 transition-all">ปีนี้</button>
+                </div>
+            </div>
+
+            <!-- KPI Summary Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-card p-6 rounded-2xl shadow-sm border border-slate-200 transition-transform hover:scale-[1.02]">
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                    </div>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">กรมธรรม์ทั้งหมด</p>
+                    <div class="flex items-end gap-2">
+                        <h4 class="text-2xl font-bold text-slate-900">4,821</h4>
+                        <span class="text-[10px] font-bold text-emerald-600 mb-1">▲ 8.3%</span>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl shadow-sm border border-slate-200 transition-transform hover:scale-[1.02]">
+                    <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">เบี้ยรับรวม (GWP)</p>
+                    <div class="flex items-end gap-2">
+                        <h4 class="text-2xl font-bold text-slate-900">12.4M</h4>
+                        <span class="text-[10px] font-bold text-emerald-600 mb-1">▲ 5.1%</span>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl shadow-sm border border-slate-200 transition-transform hover:scale-[1.02]">
+                    <div class="w-10 h-10 bg-red-50 text-red-600 rounded-xl flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                    </div>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">เคลมที่รออยู่</p>
+                    <div class="flex items-end gap-2">
+                        <h4 class="text-2xl font-bold text-slate-900">47</h4>
+                        <span class="text-[10px] font-bold text-red-600 mb-1">▼ ลด 3</span>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl shadow-sm border-amber-200 transition-transform hover:scale-[1.02]">
+                    <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">หมดอายุใน 30 วัน</p>
+                    <div class="flex items-end gap-2">
+                        <h4 class="text-2xl font-bold text-amber-600 italic">312</h4>
+                        <span class="text-[10px] font-bold text-amber-500 mb-1 tracking-tighter italic">เร่งด่วน ⚠</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Charts Section -->
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+                <!-- Grouped Bar Chart -->
+                <div class="xl:col-span-2 bg-white rounded-3xl shadow-sm border border-slate-200 p-8">
+                    <div class="flex items-center justify-between mb-10">
+                        <div>
+                            <h5 class="text-lg font-bold text-slate-900">เบี้ยประกันรายเดือน (฿)</h5>
+                            <p class="text-xs text-slate-400 mt-1">สรุปยอดรับเบี้ยสุทธิย้อนหลัง 6 เดือน</p>
+                        </div>
+                        <button class="text-blue-600 text-xs font-bold hover:underline italic">ดูรายงานเต็ม →</button>
+                    </div>
+                    <div class="flex items-end justify-between h-56 gap-2 mb-6">
+                        <div class="flex-1 flex flex-col items-center gap-3">
+                            <div class="w-full bg-blue-100 rounded-t-xl" style="height: 62%"></div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase">ต.ค.</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center gap-3">
+                            <div class="w-full bg-blue-100 rounded-t-xl" style="height: 70%"></div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase">พ.ย.</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center gap-3">
+                            <div class="w-full bg-blue-100 rounded-t-xl" style="height: 78%"></div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase">ธ.ค.</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center gap-3">
+                            <div class="w-full bg-blue-100 rounded-t-xl" style="height: 74%"></div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase">ม.ค.</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center gap-3">
+                            <div class="w-full bg-blue-100 rounded-t-xl" style="height: 82%"></div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase">ก.พ.</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center gap-3">
+                            <div class="w-full bg-blue-600 rounded-t-xl shadow-lg shadow-blue-100" style="height: 100%"></div>
+                            <span class="text-[10px] font-bold text-blue-600 uppercase">มี.ค.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Donut Distribution -->
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-8">
+                    <h5 class="text-lg font-bold text-slate-900 mb-8">สัดส่วนประเภทประกัน</h5>
+                    <div class="flex flex-col items-center gap-8">
+                        <div class="relative w-40 h-40">
+                            <svg viewBox="0 0 36 36" class="w-full h-full transform -rotate-90">
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="#f1f5f9" stroke-width="4"></circle>
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="#2563eb" stroke-width="4" stroke-dasharray="40, 100"></circle>
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="#10b981" stroke-width="4" stroke-dasharray="30, 100" stroke-dashoffset="-40"></circle>
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="#f59e0b" stroke-width="4" stroke-dasharray="20, 100" stroke-dashoffset="-70"></circle>
+                            </svg>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                                <span class="text-2xl font-bold text-slate-900 leading-none">4,821</span>
+                                <span class="text-[8px] text-slate-400 font-bold uppercase tracking-widest mt-1">กรมธรรม์</span>
+                            </div>
+                        </div>
+                        <div class="w-full space-y-3">
+                            <div class="flex items-center justify-between text-xs">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-blue-600"></div>
+                                    <span class="text-slate-500 font-medium">ชั้น 1</span>
+                                </div>
+                                <span class="font-bold text-slate-900">40%</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+                                    <span class="text-slate-500 font-medium">ชั้น 2+</span>
+                                </div>
+                                <span class="font-bold text-slate-900">30%</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
+                                    <span class="text-slate-500 font-medium">ชั้น 3+</span>
+                                </div>
+                                <span class="font-bold text-slate-900">20%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom: Critical Tasks & Timeline -->
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                <!-- Task Table -->
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+                    <div class="p-6 border-b border-slate-100 bg-slate-50/30 flex items-center justify-between">
+                        <h5 class="text-sm font-bold text-slate-900 uppercase tracking-wider italic">กรมธรรม์ที่ต้องรีบดูแล</h5>
+                        <button class="text-blue-600 text-[10px] font-bold uppercase hover:underline">ดูทั้งหมด</button>
+                    </div>
+                    <div class="divide-y divide-slate-100">
+                        <div class="p-4 flex items-center justify-between hover:bg-slate-50 transition-all cursor-pointer group">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center font-bold text-xs uppercase shadow-sm">วช</div>
+                                <div>
+                                    <p class="text-sm font-bold text-slate-800">วิชัย สุขสม</p>
+                                    <p class="text-[10px] text-slate-400 uppercase font-medium mt-0.5">Toyota Camry · กข 1234</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[11px] font-bold text-red-600 italic">5 วัน</span>
+                                <p class="text-[10px] text-slate-400 font-medium uppercase mt-0.5">หมดอายุ</p>
+                            </div>
+                            <div class="px-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <button class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-100">›</button>
+                            </div>
+                        </div>
+                        <div class="p-4 flex items-center justify-between hover:bg-slate-50 transition-all cursor-pointer group">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xs uppercase shadow-sm">มร</div>
+                                <div>
+                                    <p class="text-sm font-bold text-slate-800">มาลี รุ่งเรือง</p>
+                                    <p class="text-[10px] text-slate-400 uppercase font-medium mt-0.5">Honda CR-V · ขค 5678</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[11px] font-bold text-slate-600">12 วัน</span>
+                            </div>
+                            <div class="px-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <button class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center">›</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity Timeline -->
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-8">
+                    <h5 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-8">กิจกรรมล่าสุดในระบบ</h5>
+                    <div class="space-y-8 relative">
+                        <div class="absolute left-5 top-2 bottom-2 w-0.5 bg-slate-100"></div>
+                        
+                        <div class="relative z-10 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 border-4 border-white shadow-sm">📋</div>
+                            <div>
+                                <p class="text-sm font-bold text-slate-800 leading-none">ต่อกรมธรรม์สำเร็จ</p>
+                                <p class="text-xs text-slate-500 mt-1.5 font-medium italic">วิภา ศรีสุข — ชั้น 1 · 2 นาทีที่แล้ว</p>
+                            </div>
+                        </div>
+                        <div class="relative z-10 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-red-50 text-red-600 flex items-center justify-center flex-shrink-0 border-4 border-white shadow-sm">🚗</div>
+                            <div>
+                                <p class="text-sm font-bold text-slate-800 leading-none">แจ้งเคลมใหม่ (อุบัติเหตุ)</p>
+                                <p class="text-xs text-slate-500 mt-1.5 font-medium italic">ประเสริฐ มั่นคง — 18 นาทีที่แล้ว</p>
+                            </div>
+                        </div>
+                        <div class="relative z-10 flex items-start gap-4 opacity-70">
+                            <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0 border-4 border-white shadow-sm">✓</div>
+                            <div>
+                                <p class="text-sm font-bold text-slate-800 leading-none">อนุมัติเคลมแล้ว</p>
+                                <p class="text-xs text-slate-500 mt-1.5 font-medium italic">อรนุช พิทักษ์ — 45,000 ฿ · 1 ชม.ที่แล้ว</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

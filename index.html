@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSI Care Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="brand-logo.png" alt="TSI Care Logo" class="brand-logo" style="background: transparent; box-shadow: none; object-fit: contain; border-radius: 0;">
+            <div class="brand-text">
+                <h1>TSI Care</h1>
+                <p>ระบบจัดการประกันภัย</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <p class="nav-group-title">General</p>
+            <a href="index.html" class="nav-item active">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                Dashboard
+            </a>
+            <a href="crm_customer_list.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                ลูกค้าทั้งหมด
+            </a>
+            <a href="crm_policy_list.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                กรมธรรม์
+            </a>
+
+            <p class="nav-group-title">Sales & Pipeline</p>
+            <a href="crm_sales_leads.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                Leads ใหม่
+                <span class="badge danger">12</span>
+            </a>
+            <a href="crm_quote_builder.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                ใบเสนอราคา
+            </a>
+            <a href="crm_agent_management.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                Agent Performance
+            </a>
+
+            <p class="nav-group-title">Operations</p>
+            <a href="crm_renewal_pipeline.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+                ติดตามต่ออายุ
+                <span class="badge warning">8</span>
+            </a>
+            <a href="crm_claims_management.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10c.6 0 1.1-.2 1.4-.6.4.3.8.6 1.3.6z"></path><circle cx="7.5" cy="17.5" r="2.5"></circle><circle cx="15.5" cy="17.5" r="2.5"></circle></svg>
+                รายการเคลม
+                <span class="badge info">5</span>
+            </a>
+            <a href="crm_workshop_map.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                เครือข่ายอู่ซ่อม
+            </a>
+
+            <p class="nav-group-title">System</p>
+            <a href="crm_notifications_reminders.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                แจ้งเตือน & Log
+            </a>
+            <a href="crm_settings_permissions.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                ตั้งค่าสิทธิ์ผู้ใช้
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">สก</div>
+                <div class="user-info">
+                    <p class="name">สมชาย กิตติ</p>
+                    <p class="role">Sales Manager</p>
+                </div>
+                <button class="btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <button class="btn-icon mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+                <h2 class="header-title">Dashboard ภาพรวม</h2>
+            </div>
+            
+            <div class="header-actions">
+                <div class="search-bar">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    <input type="text" placeholder="ค้นหาข้อมูลลูกค้า, ทะเบียนรถ...">
+                </div>
+                
+                <button class="btn-icon notification-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                    <span class="notification-dot"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-scroll">
+            
+            <!-- Welcome Row -->
+            <div class="welcome-section">
+                <div class="welcome-text">
+                    <h2>ยินดีต้อนรับกลับ, สมชาย 👋</h2>
+                    <p>สรุปข้อมูลประกันภัยประจำวันศุกร์ที่ 27 มีนาคม 2568</p>
+                </div>
+                <div class="time-filters">
+                    <button class="time-filter-btn active">เดือนนี้</button>
+                    <button class="time-filter-btn">ไตรมาส</button>
+                    <button class="time-filter-btn">ปีนี้</button>
+                </div>
+            </div>
+
+            <!-- Bento Grid - KPIs -->
+            <div class="bento-grid">
+                <!-- Card 1 -->
+                <div class="bento-item kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-icon icon-blue">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                        </div>
+                        <span class="kpi-trend trend-up">↑ 8.3%</span>
+                    </div>
+                    <p class="kpi-title">กรมธรรม์ทั้งหมด</p>
+                    <div class="kpi-value">4,821</div>
+                    <p class="kpi-desc">เทียบกับเดือนที่แล้ว</p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bento-item kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-icon icon-purple">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <span class="kpi-trend trend-up">↑ 5.1%</span>
+                    </div>
+                    <p class="kpi-title">เบี้ยรับรวม (บาท)</p>
+                    <div class="kpi-value">12.4M</div>
+                    <p class="kpi-desc">ยอดรวมสุทธิ</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bento-item kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-icon icon-red">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                        </div>
+                        <span class="kpi-trend trend-down">↓ 3 เคส</span>
+                    </div>
+                    <p class="kpi-title">เคลมค้างจ่าย</p>
+                    <div class="kpi-value">47</div>
+                    <p class="kpi-desc">อยู่ระหว่างดำเนินการ</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bento-item kpi-card" style="border-color: var(--accent-warning-surface);">
+                    <div class="kpi-header">
+                        <div class="kpi-icon icon-amber">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <span class="kpi-trend trend-warn">⚠ เร่งด่วน</span>
+                    </div>
+                    <p class="kpi-title">หมดอายุใน 30 วัน</p>
+                    <div class="kpi-value" style="color: var(--accent-warning);">312</div>
+                    <p class="kpi-desc">ต้องติดตามการต่ออายุ</p>
+                </div>
+            </div>
+
+            <!-- Bento Grid - Charts -->
+            <div class="bento-grid">
+                <!-- Revenue Chart -->
+                <div class="bento-item chart-card-large">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">เบี้ยประกันรายเดือน</h3>
+                            <p class="card-subtitle">เปรียบเทียบย้อนหลัง 6 เดือน</p>
+                        </div>
+                        <button class="btn-link">ดูรายงานแบบละเอียด</button>
+                    </div>
+                    
+                    <div class="bar-chart">
+                        <div class="bar-group">
+                            <div class="bar" style="height: 60%"></div>
+                            <span class="bar-label">ต.ค.</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 72%"></div>
+                            <span class="bar-label">พ.ย.</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 85%"></div>
+                            <span class="bar-label">ธ.ค.</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 78%"></div>
+                            <span class="bar-label">ม.ค.</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar" style="height: 88%"></div>
+                            <span class="bar-label">ก.พ.</span>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar active" style="height: 100%"></div>
+                            <span class="bar-label active">มี.ค.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background-color: var(--brand-main);"></div>
+                            <span>เดือนปัจจุบัน: <strong>12.4M</strong></span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background-color: var(--brand-surface);"></div>
+                            <span>ค่าเฉลี่ย: <strong>11.0M</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Donut Chart -->
+                <div class="bento-item chart-card-small">
+                    <div class="card-header">
+                        <h3 class="card-title">ประเภทกรมธรรม์</h3>
+                    </div>
+                    
+                    <div class="donut-container">
+                        <div class="donut-wrapper">
+                            <svg viewBox="0 0 36 36" class="donut-svg">
+                                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--border-light)" stroke-width="4" stroke-dasharray="100, 100" />
+                                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--brand-main)" stroke-width="4" stroke-dasharray="40, 100" />
+                                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--accent-success)" stroke-width="4" stroke-dasharray="30, 100" stroke-dashoffset="-40" />
+                                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--accent-warning)" stroke-width="4" stroke-dasharray="20, 100" stroke-dashoffset="-70" />
+                            </svg>
+                            <div class="donut-center">
+                                <span class="donut-val">4,821</span>
+                                <span class="donut-lbl">รายการ</span>
+                            </div>
+                        </div>
+                        
+                        <div class="donut-grid">
+                            <div class="legend-item">
+                                <div class="legend-dot" style="background-color: var(--brand-main);"></div>
+                                <span>ชั้น 1 (40%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-dot" style="background-color: var(--accent-success);"></div>
+                                <span>ชั้น 2+ (30%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-dot" style="background-color: var(--accent-warning);"></div>
+                                <span>ชั้น 3+ (20%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-dot" style="background-color: var(--text-muted);"></div>
+                                <span>พ.ร.บ. (10%)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bento Grid - Bottom -->
+            <div class="bottom-grid">
+                <!-- Expiring Policies Table -->
+                <div class="bento-item table-card" style="padding: 0;">
+                    <div class="card-header" style="padding: var(--space-6) var(--space-6) 0;">
+                        <h3 class="card-title">เคสที่ต้องเร่งดำเนินการ</h3>
+                        <button class="btn-link">ดูทั้งหมด</button>
+                    </div>
+                    
+                    <div style="overflow-x: auto; padding-top: var(--space-4);">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>ชื่อลูกค้า / รถยนต์</th>
+                                    <th>ระยะเวลา</th>
+                                    <th>สถานะ</th>
+                                    <th style="text-align: center;">จัดการ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="client-cell">
+                                            <div class="client-avatar avatar-orange">วส</div>
+                                            <div class="client-info">
+                                                <p class="name">วิชัย สุขสม</p>
+                                                <p class="detail">Toyota Camry 2022</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span style="color: var(--accent-warning); font-weight: 600; font-style: italic; font-size: 0.875rem;">เหลือ 5 วัน</span>
+                                    </td>
+                                    <td>
+                                        <span class="status-pill status-warn">ใกล้หมดอายุ</span>
+                                    </td>
+                                    <td>
+                                        <button class="action-btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="client-cell">
+                                            <div class="client-avatar avatar-blue">มร</div>
+                                            <div class="client-info">
+                                                <p class="name">มาลี รุ่งเรือง</p>
+                                                <p class="detail">Honda CR-V 2021</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span style="font-weight: 500; font-size: 0.875rem;">เหลือ 12 วัน</span>
+                                    </td>
+                                    <td>
+                                        <span class="status-pill status-warn">ใกล้หมดอายุ</span>
+                                    </td>
+                                    <td>
+                                        <button class="action-btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="client-cell">
+                                            <div class="client-avatar avatar-red">ปด</div>
+                                            <div class="client-info">
+                                                <p class="name">ประสิทธิ์ ดีมาก</p>
+                                                <p class="detail">Isuzu D-Max 2020</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span style="color: var(--text-muted); font-weight: 500;">—</span>
+                                    </td>
+                                    <td>
+                                        <span class="status-pill status-danger">มีรายการเคลม</span>
+                                    </td>
+                                    <td>
+                                        <button class="action-btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Recent Activities -->
+                <div class="bento-item activity-card">
+                    <div class="card-header">
+                        <h3 class="card-title">กิจกรรมล่าสุด</h3>
+                        <button class="btn-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" /></svg>
+                        </button>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-icon icon-blue">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            </div>
+                            <div class="timeline-content">
+                                <p class="title">ต่อกรมธรรม์สำเร็จ</p>
+                                <p class="desc">วิภา ศรีสุข — ชั้น 1 (Toyota Fortuner)</p>
+                                <span class="timeline-time">2 นาทีที่แล้ว</span>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-icon icon-red">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                            </div>
+                            <div class="timeline-content">
+                                <p class="title">แจ้งเคลมใหม่ (อุบัติเหตุ)</p>
+                                <p class="desc">ประเสริฐ มั่นคง — แยกพญาไท</p>
+                                <span class="timeline-time">18 นาทีที่แล้ว</span>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-icon" style="background-color: var(--accent-success-surface); color: var(--accent-success);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                            </div>
+                            <div class="timeline-content">
+                                <p class="title">อนุมัติเคลมแล้ว</p>
+                                <p class="desc">อรนุช พิทักษ์ — ยอดอนุมัติ 45,000 บาท</p>
+                                <span class="timeline-time">1 ชม.ที่แล้ว</span>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-icon icon-purple">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                            </div>
+                            <div class="timeline-content">
+                                <p class="title">Lead ใหม่จาก LINE OA</p>
+                                <p class="desc">สนใจประกันชั้น 1 — Honda Civic</p>
+                                <span class="timeline-time">2 ชม.ที่แล้ว</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-full">ดูประวัติย้อนหลังทั้งหมด</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+</html>

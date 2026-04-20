@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer List - TSI Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="brand-logo.png" alt="TSI Care Logo" class="brand-logo" style="background: transparent; box-shadow: none; object-fit: contain; border-radius: 0;">
+            <div class="brand-text">
+                <h1>TSI Care</h1>
+                <p>ระบบจัดการประกันภัย</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <p class="nav-group-title">General</p>
+            <a href="index.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                Dashboard
+            </a>
+            <a href="crm_customer_list.html" class="nav-item active">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                ลูกค้าทั้งหมด
+            </a>
+            <a href="crm_policy_list.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                กรมธรรม์
+            </a>
+
+            <p class="nav-group-title">Sales & Pipeline</p>
+            <a href="crm_sales_leads.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                Leads ใหม่
+                <span class="badge danger">12</span>
+            </a>
+            <a href="crm_quote_builder.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                ใบเสนอราคา
+            </a>
+            <a href="crm_agent_management.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                Agent Performance
+            </a>
+
+            <p class="nav-group-title">Operations</p>
+            <a href="crm_renewal_pipeline.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+                ติดตามต่ออายุ
+                <span class="badge warning">8</span>
+            </a>
+            <a href="crm_claims_management.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10c.6 0 1.1-.2 1.4-.6.4.3.8.6 1.3.6z"></path><circle cx="7.5" cy="17.5" r="2.5"></circle><circle cx="15.5" cy="17.5" r="2.5"></circle></svg>
+                รายการเคลม
+                <span class="badge info">5</span>
+            </a>
+            <a href="crm_workshop_map.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                เครือข่ายอู่ซ่อม
+            </a>
+
+            <p class="nav-group-title">System</p>
+            <a href="crm_notifications_reminders.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                แจ้งเตือน & Log
+            </a>
+            <a href="crm_settings_permissions.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                ตั้งค่าสิทธิ์ผู้ใช้
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">สก</div>
+                <div class="user-info">
+                    <p class="name">สมชาย กิตติ</p>
+                    <p class="role">Sales Manager</p>
+                </div>
+                <button class="btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <button class="btn-icon mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+                <h2 class="header-title">จัดการรายชื่อลูกค้า</h2>
+                <span class="badge info">4,821 รายการ</span>
+            </div>
+            
+            <div class="header-actions">
+                <div class="search-bar">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    <input type="text" placeholder="ค้นหาชื่อ, เบอร์โทร, ทะเบียน...">
+                </div>
+                <button class="btn-link" style="padding: var(--space-2) var(--space-4); background-color: var(--brand-main); color: white; border-radius: var(--radius-md); font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: var(--space-2);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+                    เพิ่มลูกค้าใหม่
+                </button>
+                <button class="btn-icon notification-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                    <span class="notification-dot"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-scroll">
+            
+            <!-- Bento Grid - KPIs -->
+            <div class="bento-grid">
+                <!-- Card 1 -->
+                <div class="bento-item kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-icon icon-blue">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                        </div>
+                    </div>
+                    <p class="kpi-title">ลูกค้าทั้งหมด</p>
+                    <div class="kpi-value">4,821</div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bento-item kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-icon" style="background-color: var(--accent-success-surface); color: var(--accent-success);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                    </div>
+                    <p class="kpi-title">กรมธรรม์มีผล</p>
+                    <div class="kpi-value">4,284</div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bento-item kpi-card" style="border-color: var(--accent-warning-surface);">
+                    <div class="kpi-header">
+                        <div class="kpi-icon icon-amber">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                    </div>
+                    <p class="kpi-title">ใกล้หมดอายุ</p>
+                    <div class="kpi-value" style="color: var(--accent-warning);">312</div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bento-item kpi-card">
+                    <div class="kpi-header">
+                        <div class="kpi-icon icon-red">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                        </div>
+                    </div>
+                    <p class="kpi-title">มีเคลมค้างอยู่</p>
+                    <div class="kpi-value">47</div>
+                </div>
+            </div>
+
+            <!-- Filters Section -->
+            <div class="bento-item" style="margin-bottom: var(--space-6); display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4); padding: var(--space-4) var(--space-6);">
+                <div style="display: flex; flex-wrap: wrap; gap: var(--space-4);">
+                    <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                        <label style="font-size: 0.6875rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">สถานะ</label>
+                        <select style="background: var(--bg-subtle); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: var(--space-2) var(--space-3); font-family: 'Sarabun'; outline: none; font-size: 0.875rem;">
+                            <option>ทุกสถานะ</option>
+                            <option>กรมธรรม์ยังมีผล</option>
+                            <option>ใกล้หมดอายุ</option>
+                            <option>มีเคลม</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                        <label style="font-size: 0.6875rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">ประเภทประกัน</label>
+                        <select style="background: var(--bg-subtle); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: var(--space-2) var(--space-3); font-family: 'Sarabun'; outline: none; font-size: 0.875rem;">
+                            <option>ทุกประเภท</option>
+                            <option>ชั้น 1</option>
+                            <option>ชั้น 2+</option>
+                            <option>ชั้น 3+</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-1);">
+                        <label style="font-size: 0.6875rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">พนักงานดูแล</label>
+                        <select style="background: var(--bg-subtle); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: var(--space-2) var(--space-3); font-family: 'Sarabun'; outline: none; font-size: 0.875rem;">
+                            <option>ทุกคน</option>
+                            <option>วิภา ศรีสุข</option>
+                            <option>ประสิทธิ์ ดี</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display: flex; background: var(--bg-subtle); padding: var(--space-1); border-radius: var(--radius-md);">
+                    <button style="padding: var(--space-2) var(--space-4); border: none; border-radius: var(--radius-md); font-size: 0.875rem; font-weight: 600; background: white; color: var(--brand-main); box-shadow: var(--shadow-subtle); cursor: pointer;">ทั้งหมด</button>
+                    <button style="padding: var(--space-2) var(--space-4); border: none; border-radius: var(--radius-md); font-size: 0.875rem; font-weight: 500; background: transparent; color: var(--text-muted); cursor: pointer;">ใกล้ต่ออายุ</button>
+                    <button style="padding: var(--space-2) var(--space-4); border: none; border-radius: var(--radius-md); font-size: 0.875rem; font-weight: 500; background: transparent; color: var(--text-muted); cursor: pointer;">มีเคลม</button>
+                </div>
+            </div>
+
+            <!-- Main Table Card -->
+            <div class="bento-item table-card" style="grid-column: 1 / -1; padding: 0;">
+                <div style="overflow-x: auto;">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 48px; text-align: center;"><input type="checkbox" style="cursor: pointer;"></th>
+                                <th>ลูกค้า</th>
+                                <th>รถยนต์</th>
+                                <th style="text-align: center;">ประเภท</th>
+                                <th>วันหมดอายุ</th>
+                                <th>เบี้ย/ปี (฿)</th>
+                                <th>ความเสี่ยงเคลม</th>
+                                <th>สถานะ</th>
+                                <th style="text-align: right;">จัดการ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Row 1 -->
+                            <tr>
+                                <td style="text-align: center;"><input type="checkbox" style="cursor: pointer;"></td>
+                                <td>
+                                    <div class="client-cell">
+                                        <div class="client-avatar avatar-blue">วส</div>
+                                        <div class="client-info">
+                                            <p class="name">วิชัย สุขสม</p>
+                                            <p class="detail">081-234-5678</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p style="font-size: 0.875rem; font-weight: 500; color: var(--text-strong);">Toyota Camry</p>
+                                    <p style="font-size: 0.6875rem; color: var(--text-muted); text-transform: uppercase;">กข 1234 · ปี 2022</p>
+                                </td>
+                                <td style="text-align: center;">
+                                    <span style="padding: 0.125rem 0.5rem; background: var(--brand-surface); color: var(--brand-main); font-size: 0.6875rem; font-weight: 600; border-radius: var(--radius-sm); border: 1px solid oklch(0.9 0.05 var(--brand-hue));">ชั้น 1</span>
+                                </td>
+                                <td>
+                                    <p style="font-size: 0.875rem; font-weight: 600; color: var(--accent-danger);">1 เม.ย. 68</p>
+                                    <p style="font-size: 0.6875rem; color: oklch(0.7 0.15 20);">อีก 5 วัน</p>
+                                </td>
+                                <td style="font-size: 0.875rem; font-weight: 600; color: var(--text-strong);">28,500</td>
+                                <td>
+                                    <div style="display: flex; flex-direction: column; gap: var(--space-1); width: 100px;">
+                                        <div style="display: flex; justify-content: space-between; font-size: 0.6875rem;">
+                                            <span style="font-weight: 600; color: var(--accent-danger);">สูง</span>
+                                            <span style="color: var(--text-muted);">75%</span>
+                                        </div>
+                                        <div style="width: 100%; height: 6px; background: var(--bg-subtle); border-radius: var(--radius-full); overflow: hidden;">
+                                            <div style="height: 100%; background: var(--accent-danger); width: 75%;"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="status-pill status-warn">ใกล้หมดอายุ</span>
+                                </td>
+                                <td>
+                                    <div style="display: flex; justify-content: flex-end; gap: var(--space-2);">
+                                        <button class="action-btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                                        </button>
+                                        <button class="action-btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 2 -->
+                            <tr>
+                                <td style="text-align: center;"><input type="checkbox" style="cursor: pointer;"></td>
+                                <td>
+                                    <div class="client-cell">
+                                        <div class="client-avatar" style="background: var(--accent-success-surface); color: var(--accent-success);">มร</div>
+                                        <div class="client-info">
+                                            <p class="name">มาลี รุ่งเรือง</p>
+                                            <p class="detail">089-876-5432</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p style="font-size: 0.875rem; font-weight: 500; color: var(--text-strong);">Honda CR-V</p>
+                                    <p style="font-size: 0.6875rem; color: var(--text-muted); text-transform: uppercase;">ขค 5678 · ปี 2021</p>
+                                </td>
+                                <td style="text-align: center;">
+                                    <span style="padding: 0.125rem 0.5rem; background: var(--brand-surface); color: var(--brand-main); font-size: 0.6875rem; font-weight: 600; border-radius: var(--radius-sm); border: 1px solid oklch(0.9 0.05 var(--brand-hue));">ชั้น 1</span>
+                                </td>
+                                <td>
+                                    <p style="font-size: 0.875rem; font-weight: 600; color: var(--text-strong);">8 เม.ย. 68</p>
+                                </td>
+                                <td style="font-size: 0.875rem; font-weight: 600; color: var(--text-strong);">31,200</td>
+                                <td>
+                                    <div style="display: flex; flex-direction: column; gap: var(--space-1); width: 100px;">
+                                        <div style="display: flex; justify-content: space-between; font-size: 0.6875rem;">
+                                            <span style="font-weight: 600; color: var(--accent-success);">ต่ำ</span>
+                                            <span style="color: var(--text-muted);">35%</span>
+                                        </div>
+                                        <div style="width: 100%; height: 6px; background: var(--bg-subtle); border-radius: var(--radius-full); overflow: hidden;">
+                                            <div style="height: 100%; background: var(--accent-success); width: 35%;"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="status-pill status-warn">ใกล้หมดอายุ</span>
+                                </td>
+                                <td>
+                                    <div style="display: flex; justify-content: flex-end; gap: var(--space-2);">
+                                        <button class="action-btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                                        </button>
+                                        <button class="action-btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 3 -->
+                            <tr>
+                                <td style="text-align: center;"><input type="checkbox" style="cursor: pointer;"></td>
+                                <td>
+                                    <div class="client-cell">
+                                        <div class="client-avatar avatar-red">ปด</div>
+                                        <div class="client-info">
+                                            <p class="name">ประสิทธิ์ ดีมาก</p>
+                                            <p class="detail">062-111-2233</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p style="font-size: 0.875rem; font-weight: 500; color: var(--text-strong);">Isuzu D-Max</p>
+                                    <p style="font-size: 0.6875rem; color: var(--text-muted); text-transform: uppercase;">คง 9012 · ปี 2020</p>
+                                </td>
+                                <td style="text-align: center;">
+                                    <span style="padding: 0.125rem 0.5rem; background: var(--accent-warning-surface); color: oklch(0.5 0.15 50); font-size: 0.6875rem; font-weight: 600; border-radius: var(--radius-sm); border: 1px solid oklch(0.9 0.05 50);">ชั้น 2+</span>
+                                </td>
+                                <td>
+                                    <p style="font-size: 0.875rem; font-weight: 600; color: var(--text-strong);">15 ก.ค. 68</p>
+                                </td>
+                                <td style="font-size: 0.875rem; font-weight: 600; color: var(--text-strong);">18,900</td>
+                                <td>
+                                    <div style="display: flex; flex-direction: column; gap: var(--space-1); width: 100px;">
+                                        <div style="display: flex; justify-content: space-between; font-size: 0.6875rem;">
+                                            <span style="font-weight: 600; color: var(--accent-danger);">สูงมาก</span>
+                                            <span style="color: var(--text-muted);">88%</span>
+                                        </div>
+                                        <div style="width: 100%; height: 6px; background: var(--bg-subtle); border-radius: var(--radius-full); overflow: hidden;">
+                                            <div style="height: 100%; background: var(--accent-danger); width: 88%;"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="status-pill status-danger">มีรายการเคลม</span>
+                                </td>
+                                <td>
+                                    <div style="display: flex; justify-content: flex-end; gap: var(--space-2);">
+                                        <button class="action-btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                                        </button>
+                                        <button class="action-btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div style="padding: var(--space-4) var(--space-6); background: var(--bg-subtle); border-top: 1px solid var(--border-light); display: flex; align-items: center; justify-content: space-between; border-radius: 0 0 var(--radius-lg) var(--radius-lg);">
+                    <p style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">แสดง <span style="color: var(--text-strong); font-weight: 600;">1–3</span> จาก <span style="color: var(--text-strong); font-weight: 600;">4,821</span> รายการ</p>
+                    <div style="display: flex; align-items: center; gap: var(--space-1);">
+                        <button class="btn-icon" style="border: 1px solid var(--border-light); background: white;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                        </button>
+                        <button class="btn-icon" style="background: var(--brand-main); color: white; font-weight: 600; box-shadow: var(--shadow-subtle);">1</button>
+                        <button class="btn-icon" style="border: 1px solid var(--border-light); background: white; font-weight: 600;">2</button>
+                        <button class="btn-icon" style="border: 1px solid var(--border-light); background: white; font-weight: 600;">3</button>
+                        <span style="padding: 0 var(--space-1); color: var(--border-light);">...</span>
+                        <button class="btn-icon" style="border: 1px solid var(--border-light); background: white; font-weight: 600;">965</button>
+                        <button class="btn-icon" style="border: 1px solid var(--border-light); background: white;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

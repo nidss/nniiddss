@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop Network - TSI Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .map-layout {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: var(--space-6);
+            height: calc(100vh - 180px);
+            min-height: 600px;
+        }
+        @media (max-width: 1024px) {
+            .map-layout {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            .map-container { min-height: 500px; }
+        }
+        
+        .map-grid-pattern {
+            background-color: var(--bg-body);
+            background-image: radial-gradient(var(--border-light) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        
+        .filter-chip {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: var(--bg-body);
+            border: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-chip:hover {
+            background: var(--bg-surface);
+        }
+        .filter-chip.active {
+            background: var(--brand-main);
+            color: white;
+            border-color: var(--brand-main);
+        }
+
+        .workshop-list-item {
+            padding: var(--space-5) var(--space-6);
+            border-bottom: 1px solid var(--border-light);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .workshop-list-item:hover { background: var(--bg-body); }
+        .workshop-list-item.active {
+            background: var(--brand-surface);
+            border-left: 4px solid var(--brand-main);
+        }
+        .workshop-list-item.active .btn-link,
+        .workshop-list-item.active .btn-full {
+            background-color: white !important;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .map-pin {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: var(--shadow-lg);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.25rem;
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .map-pin:hover { transform: scale(1.1); }
+        
+        .pin-bounce {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes ping {
+            75%, 100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        .map-popup {
+            position: absolute;
+            top: var(--space-6); right: var(--space-6);
+            width: 320px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            z-index: 30;
+            padding: var(--space-6);
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="brand-logo.png" alt="TSI Care Logo" class="brand-logo" style="background: transparent; box-shadow: none; object-fit: contain; border-radius: 0;">
+            <div class="brand-text">
+                <h1>TSI Care</h1>
+                <p>ระบบจัดการประกันภัย</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <p class="nav-group-title">General</p>
+            <a href="index.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                Dashboard
+            </a>
+            <a href="crm_customer_list.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                ลูกค้าทั้งหมด
+            </a>
+            <a href="crm_policy_list.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                กรมธรรม์
+            </a>
+
+            <p class="nav-group-title">Sales & Pipeline</p>
+            <a href="crm_sales_leads.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                Leads ใหม่
+                <span class="badge danger">12</span>
+            </a>
+            <a href="crm_quote_builder.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                ใบเสนอราคา
+            </a>
+            <a href="crm_agent_management.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                Agent Performance
+            </a>
+
+            <p class="nav-group-title">Operations</p>
+            <a href="crm_renewal_pipeline.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+                ติดตามต่ออายุ
+                <span class="badge warning">8</span>
+            </a>
+            <a href="crm_claims_management.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10c.6 0 1.1-.2 1.4-.6.4.3.8.6 1.3.6z"></path><circle cx="7.5" cy="17.5" r="2.5"></circle><circle cx="15.5" cy="17.5" r="2.5"></circle></svg>
+                รายการเคลม
+                <span class="badge info">5</span>
+            </a>
+            <a href="crm_workshop_map.html" class="nav-item active">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                เครือข่ายอู่ซ่อม
+            </a>
+
+            <p class="nav-group-title">System</p>
+            <a href="crm_notifications_reminders.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                แจ้งเตือน & Log
+            </a>
+            <a href="crm_settings_permissions.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                ตั้งค่าสิทธิ์ผู้ใช้
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">สก</div>
+                <div class="user-info">
+                    <p class="name">สมชาย กิตติ</p>
+                    <p class="role">Sales Manager</p>
+                </div>
+                <button class="btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <button class="btn-icon mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+                <h2 class="header-title">Workshop Network</h2>
+            </div>
+            
+            <div class="header-actions">
+                <div class="search-bar">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    <input type="text" placeholder="ค้นหาข้อมูลลูกค้า, ทะเบียนรถ...">
+                </div>
+                
+                <button class="btn-icon notification-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                    <span class="notification-dot"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-scroll">
+            <div class="welcome-section">
+                <div class="welcome-text">
+                    <h2>เครือข่ายอู่ซ่อมรถยนต์</h2>
+                    <p>ค้นหาอู่ซ่อมในเครือ ดีลเลอร์ และอู่ทั่วไป พร้อมสถานะคิว</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: var(--space-5);">
+                    <div style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-muted); font-size: 0.875rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="opacity: 0.6;"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                        <span style="font-weight: 500;"><strong style="color: var(--brand-main); font-weight: 600;">320</strong> อู่ทั่วประเทศ</span>
+                    </div>
+                    <button class="btn-link" style="color: var(--text-secondary); font-weight: 600;">จัดการอู่</button>
+                    <button style="background-color: var(--brand-main); color: white; border: none; border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); font-size: 0.875rem; font-weight: 600; display: flex; align-items: center; gap: var(--space-2); cursor: pointer; box-shadow: 0 4px 12px oklch(var(--brand-hue) 0.1 0.5 / 0.2);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="14" y2="12"></line></svg>
+                        เพิ่มอู่ใหม่
+                    </button>
+                </div>
+            </div>
+
+            <div class="map-layout">
+                <!-- Left: List -->
+                <div class="bento-item" style="padding: 0; display: flex; flex-direction: column; overflow: hidden;">
+                    <div style="padding: var(--space-6); border-bottom: 1px solid var(--border-light);">
+                        <div class="search-bar" style="width: 100%; margin-bottom: var(--space-4); background: var(--bg-body); border-radius: var(--radius-md);">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                            <input type="text" placeholder="ค้นหาชื่อ, เขต, หรือที่อยู่...">
+                        </div>
+                        <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
+                            <button class="filter-chip active">ทั้งหมด</button>
+                            <button class="filter-chip">ในเครือ</button>
+                            <button class="filter-chip">Dealer</button>
+                            <button class="filter-chip">เปิด 24 ชม.</button>
+                        </div>
+                    </div>
+                    <div style="padding: var(--space-3) var(--space-6); background: var(--bg-body); border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">
+                        <span>พบ 12 อู่ใกล้เคียง</span>
+                        <select style="background: transparent; border: none; outline: none; cursor: pointer; color: inherit; font-weight: inherit;">
+                            <option>เรียงตามระยะทาง</option>
+                            <option>เรียงตามรีวิว</option>
+                        </select>
+                    </div>
+                    <div style="overflow-y: auto; flex: 1;">
+                        <!-- Item 1 -->
+                        <div class="workshop-list-item active">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-2);">
+                                <h4 style="font-weight: 600; color: var(--text-main); font-size: 0.95rem;">อู่ในเครือ พระราม 4</h4>
+                                <span class="badge info" style="font-size: 0.65rem;">0.8 กม.</span>
+                            </div>
+                            <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-3);">
+                                <span class="badge success" style="font-size: 0.6rem; text-transform: uppercase;">เครือข่าย</span>
+                                <span class="badge info" style="font-size: 0.6rem; text-transform: uppercase;">24 ชม.</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: var(--space-2); font-size: 0.75rem; margin-bottom: var(--space-4);">
+                                <span style="color: #fbbf24;">★★★★★</span>
+                                <span style="font-weight: 600; color: var(--text-main);">4.8</span>
+                                <span style="color: var(--text-muted);">(241 รีวิว)</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-3); background: var(--bg-surface); border: 1px solid var(--brand-surface); border-radius: var(--radius-sm); margin-bottom: var(--space-4);">
+                                <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-success);"></div>
+                                <p style="font-size: 0.65rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">คิวว่าง 3 คัน (รอประมาณ 2 ชม.)</p>
+                            </div>
+                            <div style="display: flex; gap: var(--space-2);">
+                                <button class="btn-link" style="flex: 1; border: 1px solid var(--border-light); padding: var(--space-2); font-size: 0.75rem;">โทร</button>
+                                <button class="btn-link" style="flex: 1; border: 1px solid var(--border-light); padding: var(--space-2); font-size: 0.75rem;">จองคิว</button>
+                                <button class="btn-full" style="flex: 1; padding: var(--space-2); font-size: 0.75rem;">นำทาง</button>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="workshop-list-item">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-2);">
+                                <h4 style="font-weight: 600; color: var(--text-main); font-size: 0.95rem;">Toyota Dealer สาทร</h4>
+                                <span style="font-size: 0.7rem; color: var(--text-muted); font-weight: 500;">1.2 กม.</span>
+                            </div>
+                            <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-3);">
+                                <span class="badge info" style="font-size: 0.6rem; text-transform: uppercase;">Dealer</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: var(--space-2); font-size: 0.75rem; margin-bottom: var(--space-4);">
+                                <span style="color: #fbbf24;">★★★★☆</span>
+                                <span style="font-weight: 600; color: var(--text-main);">4.5</span>
+                                <span style="color: var(--text-muted);">(189 รีวิว)</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-3); background: var(--bg-body); border: 1px solid var(--border-light); border-radius: var(--radius-sm);">
+                                <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-warning);"></div>
+                                <p style="font-size: 0.65rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">คิวว่าง 1 คัน (รอประมาณ 5 ชม.)</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="workshop-list-item" style="opacity: 0.7;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-2);">
+                                <h4 style="font-weight: 600; color: var(--text-main); font-size: 0.95rem;">อู่ในเครือ สุขุมวิท 50</h4>
+                                <span style="font-size: 0.7rem; color: var(--text-muted); font-weight: 500;">2.1 กม.</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: var(--space-2); font-size: 0.75rem; margin-bottom: var(--space-4);">
+                                <span style="color: #fbbf24;">★★★★☆</span>
+                                <span style="font-weight: 600; color: var(--text-main);">4.3</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-3); background: var(--accent-danger-surface); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: var(--radius-sm);">
+                                <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-danger);"></div>
+                                <p style="font-size: 0.65rem; font-weight: 600; color: var(--accent-danger); text-transform: uppercase; font-style: italic;">ขณะนี้คิวเต็ม</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Map -->
+                <div class="bento-item map-container map-grid-pattern" style="padding: 0; position: relative; overflow: hidden; display: flex;">
+                    
+                    <!-- Simulated Road Labels -->
+                    <div style="position: absolute; top: 35%; left: 20%; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; transform: rotate(-6deg); opacity: 0.5;">Rama IV Road</div>
+                    <div style="position: absolute; top: 55%; left: 10%; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; transform: rotate(90deg); opacity: 0.5;">Sathon Road</div>
+                    <div style="position: absolute; top: 25%; left: 55%; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.5;">Sukhumvit Road</div>
+
+                    <!-- Simulated Streets -->
+                    <div style="position: absolute; inset: 0; pointer-events: none;">
+                        <div style="position: absolute; width: 100%; height: 60px; background: rgba(255,255,255,0.4); top: 35%; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); transform: rotate(-6deg);"></div>
+                        <div style="position: absolute; height: 100%; width: 60px; background: rgba(255,255,255,0.4); left: 15%; border-left: 1px solid var(--border-light); border-right: 1px solid var(--border-light);"></div>
+                        <div style="position: absolute; width: 100%; height: 50px; background: rgba(255,255,255,0.4); top: 20%; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);"></div>
+                    </div>
+
+                    <!-- User Location Pin -->
+                    <div style="position: absolute; top: 48%; left: 42%; z-index: 10; display: flex; flex-direction: column; align-items: center;">
+                        <div style="position: relative; display: flex; align-items: center; justify-content: center;">
+                            <div style="width: 48px; height: 48px; background: rgba(59, 130, 246, 0.15); border-radius: 50%; position: absolute; animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
+                            <div style="width: 16px; height: 16px; background: var(--brand-main); border: 2px solid white; border-radius: 50%; box-shadow: var(--shadow-md); position: relative; z-index: 10;"></div>
+                        </div>
+                        <div style="margin-top: 8px; background: var(--brand-main); color: white; font-size: 0.6rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; box-shadow: var(--shadow-md); white-space: nowrap;">ตำแหน่งของคุณ</div>
+                    </div>
+
+                    <!-- Selected Pin -->
+                    <div class="pin-bounce" style="position: absolute; top: 58%; left: 52%; z-index: 20; cursor: pointer; display: flex; flex-direction: column; align-items: center;">
+                        <div class="map-pin" style="background: var(--accent-success); color: white;">🔧</div>
+                        <div style="margin-top: 56px; background: var(--text-main); color: white; font-size: 0.65rem; font-weight: 700; padding: 4px 8px; border-radius: 6px; box-shadow: var(--shadow-lg); white-space: nowrap;">อู่ พระราม 4</div>
+                    </div>
+
+                    <!-- Other Pins -->
+                    <div style="position: absolute; top: 32%; left: 38%; z-index: 10; cursor: pointer; display: flex; flex-direction: column; align-items: center; transform: scale(0.8); opacity: 0.8; transition: all 0.2s;">
+                        <div class="map-pin" style="background: var(--brand-main); color: white;">🚗</div>
+                        <div style="margin-top: 56px; background: white; color: var(--text-main); font-size: 0.65rem; font-weight: 700; padding: 4px 8px; border-radius: 6px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-light); white-space: nowrap;">Toyota Dealer</div>
+                    </div>
+
+                    <div style="position: absolute; top: 42%; left: 70%; z-index: 10; cursor: pointer; display: flex; flex-direction: column; align-items: center; transform: scale(0.8); opacity: 0.8; transition: all 0.2s;">
+                        <div class="map-pin" style="background: var(--accent-success); color: white;">🔧</div>
+                        <div style="margin-top: 56px; background: white; color: var(--text-main); font-size: 0.65rem; font-weight: 700; padding: 4px 8px; border-radius: 6px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-light); white-space: nowrap;">อู่ สุขุมวิท</div>
+                    </div>
+
+                    <!-- Map Detail Popup -->
+                    <div class="map-popup">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-4);">
+                            <div>
+                                <h3 style="font-size: 1.1rem; font-weight: 600; color: var(--text-main);">อู่ในเครือ พระราม 4</h3>
+                                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">123 ถ.พระราม 4 คลองเตย กรุงเทพฯ</p>
+                            </div>
+                            <button style="background: var(--bg-body); border: none; border-radius: var(--radius-sm); padding: var(--space-2); cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-bottom: var(--space-6);">
+                            <div style="padding: var(--space-3); background: rgba(255,255,255,0.7); border-radius: var(--radius-md); border: 1px solid white;">
+                                <p style="font-size: 0.6rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 2px;">เวลาทำการ</p>
+                                <p style="font-size: 0.8rem; font-weight: 600; color: var(--accent-success);">เปิด 24 ชม.</p>
+                            </div>
+                            <div style="padding: var(--space-3); background: rgba(255,255,255,0.7); border-radius: var(--radius-md); border: 1px solid white;">
+                                <p style="font-size: 0.6rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 2px;">สถานะคิว</p>
+                                <p style="font-size: 0.8rem; font-weight: 600; color: var(--text-main);">ว่าง 3 คัน</p>
+                            </div>
+                            <div style="padding: var(--space-3); background: rgba(255,255,255,0.7); border-radius: var(--radius-md); border: 1px solid white;">
+                                <p style="font-size: 0.6rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 2px;">เบอร์โทรศัพท์</p>
+                                <p style="font-size: 0.8rem; font-weight: 600; color: var(--brand-main);">02-234-5678</p>
+                            </div>
+                            <div style="padding: var(--space-3); background: rgba(255,255,255,0.7); border-radius: var(--radius-md); border: 1px solid white;">
+                                <p style="font-size: 0.6rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 2px;">คะแนนรีวิว</p>
+                                <p style="font-size: 0.8rem; font-weight: 600; color: var(--text-main);">★ 4.8 <span style="color: var(--text-muted); font-weight: 500; font-size: 0.7rem;">(241)</span></p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: var(--space-3);">
+                            <button class="btn-link" style="flex: 1; border: 1px solid var(--border-light); font-size: 0.8rem; padding: var(--space-3);">โทร</button>
+                            <button class="btn-full" style="flex: 1.5; font-size: 0.8rem; padding: var(--space-3); display: flex; align-items: center; justify-content: center; gap: var(--space-2);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                                จองคิวเข้าซ่อม
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Legend -->
+                    <div style="position: absolute; bottom: var(--space-6); left: var(--space-6); padding: var(--space-4); background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border-radius: var(--radius-md); border: 1px solid white; z-index: 20; display: flex; flex-direction: column; gap: var(--space-3); box-shadow: var(--shadow-md);">
+                        <div style="display: flex; align-items: center; gap: var(--space-3);">
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--accent-success);"></div>
+                            <span style="font-size: 0.65rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">อู่ในเครือบริษัท</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: var(--space-3);">
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--brand-main);"></div>
+                            <span style="font-size: 0.65rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">อู่ Dealer (ศูนย์)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: var(--space-3);">
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--accent-warning);"></div>
+                            <span style="font-size: 0.65rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">อู่ทั่วไป</span>
+                        </div>
+                        <div style="padding-top: var(--space-2); border-top: 1px solid var(--border-light); display: flex; align-items: center; gap: var(--space-3);">
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--brand-main); box-shadow: 0 0 0 3px var(--brand-surface);"></div>
+                            <span style="font-size: 0.65rem; font-weight: 700; color: var(--brand-main); text-transform: uppercase; font-style: italic;">ตำแหน่งของคุณ</span>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div style="position: absolute; bottom: var(--space-6); right: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); z-index: 20;">
+                        <button style="width: 40px; height: 40px; background: white; border: 1px solid var(--border-light); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); font-size: 1.2rem; font-weight: 600; color: var(--text-secondary); cursor: pointer; transition: background 0.2s;">+</button>
+                        <button style="width: 40px; height: 40px; background: white; border: 1px solid var(--border-light); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); font-size: 1.2rem; font-weight: 600; color: var(--text-secondary); cursor: pointer; transition: background 0.2s;">-</button>
+                        <button style="width: 40px; height: 40px; background: var(--brand-main); border: none; border-radius: var(--radius-md); box-shadow: var(--shadow-md); color: white; cursor: pointer; margin-top: var(--space-2); font-size: 1rem; transition: background 0.2s;">📍</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

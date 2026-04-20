@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment & Billing - TSI Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="brand-logo.png" alt="TSI Care Logo" class="brand-logo" style="background: transparent; box-shadow: none; object-fit: contain; border-radius: 0;">
+            <div class="brand-text">
+                <h1>TSI Care</h1>
+                <p>ระบบจัดการประกันภัย</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <p class="nav-group-title">General</p>
+            <a href="index.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                Dashboard
+            </a>
+            <a href="crm_customer_list.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                ลูกค้าทั้งหมด
+            </a>
+            <a href="crm_policy_list.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                กรมธรรม์
+            </a>
+            <a href="crm_payment.html" class="nav-item active">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+                การชำระเงิน
+            </a>
+
+            <p class="nav-group-title">Sales & Pipeline</p>
+            <a href="crm_sales_leads.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                Leads ใหม่
+                <span class="badge danger">12</span>
+            </a>
+            <a href="crm_quote_builder.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                ใบเสนอราคา
+            </a>
+            <a href="crm_agent_management.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                Agent Performance
+            </a>
+
+            <p class="nav-group-title">Operations</p>
+            <a href="crm_renewal_pipeline.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+                ติดตามต่ออายุ
+                <span class="badge warning">8</span>
+            </a>
+            <a href="crm_claims_management.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10c.6 0 1.1-.2 1.4-.6.4.3.8.6 1.3.6z"></path><circle cx="7.5" cy="17.5" r="2.5"></circle><circle cx="15.5" cy="17.5" r="2.5"></circle></svg>
+                รายการเคลม
+                <span class="badge info">5</span>
+            </a>
+            <a href="crm_workshop_map.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                เครือข่ายอู่ซ่อม
+            </a>
+
+            <p class="nav-group-title">System</p>
+            <a href="crm_notifications_reminders.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                แจ้งเตือน & Log
+            </a>
+            <a href="crm_settings_permissions.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                ตั้งค่าสิทธิ์ผู้ใช้
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">สก</div>
+                <div class="user-info">
+                    <p class="name">สมชาย กิตติ</p>
+                    <p class="role">Sales Manager</p>
+                </div>
+                <button class="btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <button class="btn-icon mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+                <h2 class="header-title" style="font-size: 1rem; color: var(--text-muted); font-weight: 500;"><a href="#" style="color: inherit; text-decoration: none;">วิชัย สุขสม</a> <span style="margin: 0 8px;">/</span> <span style="color: var(--text-main); font-weight: 600;">ชำระเบี้ยประกัน</span></h2>
+            </div>
+            
+            <div class="header-actions">
+                <div class="search-bar">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    <input type="text" placeholder="ค้นหาข้อมูลลูกค้า, ทะเบียนรถ...">
+                </div>
+                
+                <button class="btn-icon notification-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                    <span class="notification-dot"></span>
+                </button>
+            </div>
+        </header>
+
+        <div class="dashboard-scroll">
+            <div class="welcome-section">
+                <div class="welcome-text">
+                    <h2>ชำระเบี้ยประกัน</h2>
+                    <p>วิชัย สุขสม · Toyota Camry (กข 1234)</p>
+                </div>
+                <div class="time-filters">
+                    <button class="time-filter-btn active" style="background-color: var(--brand-main); color: white;">ส่งลิงก์ให้ลูกค้า</button>
+                </div>
+            </div>
+
+            <div class="bottom-grid" style="grid-template-columns: 2fr 1fr;">
+                <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+                    <!-- Pending Items -->
+                    <div class="bento-item table-card" style="padding: 0;">
+                        <div class="card-header" style="padding: var(--space-6) var(--space-6) 0;">
+                            <h3 class="card-title">รายการที่รอชำระ</h3>
+                        </div>
+                        <div style="overflow-x: auto; padding-top: var(--space-4);">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 40px;"></th>
+                                        <th>รายละเอียดกรมธรรม์</th>
+                                        <th style="text-align: center;">วันครบกำหนด</th>
+                                        <th style="text-align: right;">ยอดเงิน (฿)</th>
+                                        <th style="text-align: center;">สถานะ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="background-color: var(--brand-surface);">
+                                        <td>
+                                            <div style="width: 24px; height: 24px; background: var(--brand-main); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white;">✓</div>
+                                        </td>
+                                        <td>
+                                            <p style="font-weight: 600; font-size: 0.875rem;">ประกันภัย ชั้น 1 (ต่ออายุปี 2568)</p>
+                                            <p style="font-size: 0.75rem; color: var(--text-muted); font-family: monospace;">POL-2567-084231</p>
+                                        </td>
+                                        <td style="text-align: center;"><span style="font-size: 0.75rem; font-weight: 600; color: var(--accent-danger); font-style: italic;">1 เม.ย. 68</span></td>
+                                        <td style="text-align: right; font-weight: 600;">28,500.00</td>
+                                        <td style="text-align: center;"><span class="status-pill status-danger" style="text-transform: uppercase; font-size: 0.625rem;">Overdue</span></td>
+                                    </tr>
+                                    <tr style="opacity: 0.7;">
+                                        <td>
+                                            <div style="width: 24px; height: 24px; border: 2px solid var(--border-light); border-radius: 6px;"></div>
+                                        </td>
+                                        <td>
+                                            <p style="font-weight: 500; font-size: 0.875rem;">พ.ร.บ. รถยนต์ (ต่ออายุปี 2568)</p>
+                                            <p style="font-size: 0.75rem; color: var(--text-muted); font-family: monospace;">POL-2567-084232</p>
+                                        </td>
+                                        <td style="text-align: center;"><span style="font-size: 0.75rem; font-weight: 500;">1 เม.ย. 68</span></td>
+                                        <td style="text-align: right; color: var(--text-muted);">645.00</td>
+                                        <td style="text-align: center;"><span class="status-pill" style="background: var(--bg-body); color: var(--text-muted); text-transform: uppercase; font-size: 0.625rem;">Pending</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="bento-item">
+                        <div class="card-header">
+                            <h3 class="card-title">เลือกวิธีชำระเงิน</h3>
+                        </div>
+                        <div style="margin-top: var(--space-4);">
+                            <div style="display: flex; gap: 4px; background: var(--bg-body); padding: 4px; border-radius: var(--radius-lg); margin-bottom: var(--space-6);">
+                                <button style="flex: 1; padding: 12px; font-size: 0.875rem; font-weight: 600; background: white; color: var(--brand-main); border: none; border-radius: var(--radius-md); box-shadow: 0 2px 4px rgba(0,0,0,0.05); cursor: pointer;">บัตรเครดิต / เดบิต</button>
+                                <button style="flex: 1; padding: 12px; font-size: 0.875rem; font-weight: 600; background: transparent; color: var(--text-muted); border: none; cursor: pointer;">PromptPay / QR</button>
+                                <button style="flex: 1; padding: 12px; font-size: 0.875rem; font-weight: 600; background: transparent; color: var(--text-muted); border: none; cursor: pointer;">โอนธนาคาร</button>
+                            </div>
+
+                            <!-- Credit card mock form -->
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                                <div style="grid-column: span 2;">
+                                    <label style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; display: block;">หมายเลขบัตร</label>
+                                    <input type="text" value="4532 •••• •••• 8721" style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: monospace; font-size: 0.875rem; box-sizing: border-box; outline: none; background: var(--bg-body); letter-spacing: 2px;">
+                                </div>
+                                <div style="grid-column: span 2;">
+                                    <label style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; display: block;">ชื่อบนบัตร</label>
+                                    <input type="text" value="VICHAI SUKSOM" style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-light); border-radius: var(--radius-md); font-size: 0.875rem; box-sizing: border-box; outline: none; background: var(--bg-body);">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; display: block;">วันหมดอายุ (MM/YY)</label>
+                                    <input type="text" value="05 / 28" style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-light); border-radius: var(--radius-md); font-size: 0.875rem; text-align: center; box-sizing: border-box; outline: none; background: var(--bg-body);">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; display: block;">CVV</label>
+                                    <input type="text" value="•••" style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-light); border-radius: var(--radius-md); font-size: 0.875rem; text-align: center; box-sizing: border-box; outline: none; background: var(--bg-body); letter-spacing: 4px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- History -->
+                    <div class="bento-item">
+                        <div class="card-header">
+                            <h3 class="card-title">ประวัติการชำระเงิน</h3>
+                        </div>
+                        <div style="margin-top: var(--space-4); display: flex; flex-direction: column; gap: var(--space-4);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: var(--space-4); border-bottom: 1px solid var(--border-light);">
+                                <div style="display: flex; gap: var(--space-4); align-items: center;">
+                                    <div style="width: 40px; height: 40px; background: var(--bg-body); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">💳</div>
+                                    <div>
+                                        <p style="font-weight: 600; font-size: 0.875rem;">ประกันภัย ชั้น 1 — ปี 2567</p>
+                                        <p style="font-size: 0.75rem; color: var(--text-muted); font-style: italic; text-transform: uppercase;">2 เม.ย. 2567 · VISA •8721</p>
+                                    </div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <p style="font-weight: 600; font-size: 0.875rem;">28,500.00</p>
+                                    <span class="status-pill status-success" style="font-size: 0.625rem; padding: 2px 6px;">SUCCESS</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: var(--space-4);">
+                                <div style="display: flex; gap: var(--space-4); align-items: center;">
+                                    <div style="width: 40px; height: 40px; background: var(--bg-body); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">🏦</div>
+                                    <div>
+                                        <p style="font-weight: 600; font-size: 0.875rem;">พ.ร.บ. รถยนต์ — ปี 2567</p>
+                                        <p style="font-size: 0.75rem; color: var(--text-muted); font-style: italic; text-transform: uppercase;">2 เม.ย. 2567 · PromptPay</p>
+                                    </div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <p style="font-weight: 600; font-size: 0.875rem;">645.00</p>
+                                    <span class="status-pill status-success" style="font-size: 0.625rem; padding: 2px 6px;">SUCCESS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Sidebar -->
+                <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+                    <div class="bento-item" style="background: var(--text-main); color: white; padding: 0; overflow: hidden; position: relative;">
+                        <div style="padding: var(--space-6); position: relative; z-index: 10;">
+                            <h3 style="font-size: 1.125rem; font-weight: 600;">สรุปยอดชำระเงิน</h3>
+                            <p style="font-size: 0.75rem; color: rgba(255,255,255,0.7); margin-top: 4px;">ตรวจสอบรายละเอียดก่อนยืนยันรายการ</p>
+                        </div>
+                        <div style="padding: var(--space-6); background: white; color: var(--text-main); border-radius: var(--radius-lg) var(--radius-lg) 0 0; margin-top: -12px; position: relative; z-index: 11; display: flex; flex-direction: column; gap: var(--space-4);">
+                            <!-- Customer Info -->
+                            <div style="display: flex; align-items: center; gap: var(--space-4); padding: var(--space-4); background: var(--bg-body); border: 1px solid var(--border-light); border-radius: var(--radius-lg);">
+                                <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--brand-surface); color: var(--brand-main); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.75rem;">วช</div>
+                                <div style="flex: 1; min-width: 0;">
+                                    <p style="font-size: 0.875rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">วิชัย สุขสม</p>
+                                    <p style="font-size: 0.625rem; color: var(--text-muted); text-transform: uppercase; font-weight: 500;">Toyota Camry · กข 1234</p>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; gap: var(--space-3); padding-bottom: var(--space-4); border-bottom: 1px solid var(--border-light); margin-top: var(--space-2);">
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">ประกันภัย ชั้น 1 (ต่ออายุ)</span><span style="font-weight: 600;">28,500.00 ฿</span></div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">คุ้มครองเสริม (PA พิเศษ)</span><span style="font-weight: 600;">+1,200.00 ฿</span></div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">รถเช่าระหว่างซ่อม</span><span style="font-weight: 600;">+800.00 ฿</span></div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">อากรแสตมป์</span><span style="font-weight: 600;">122.00 ฿</span></div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">ภาษีมูลค่าเพิ่ม (VAT 7%)</span><span style="font-weight: 600;">2,142.00 ฿</span></div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-weight: 600; font-size: 0.875rem; text-transform: uppercase;">ยอดชำระรวม</span>
+                                <span style="font-weight: 700; font-size: 1.5rem; color: var(--brand-main); font-style: italic;">32,764.00 ฿</span>
+                            </div>
+
+                            <div style="margin-top: var(--space-2);">
+                                <p style="font-size: 0.625rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; margin-left: 4px;">แผนการผ่อนชำระที่แนะนำ</p>
+                                <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                                    <div style="border: 1px solid var(--border-light); padding: 12px; border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+                                        <div style="display: flex; gap: var(--space-3); align-items: center;">
+                                            <div style="width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--border-light);"></div>
+                                            <div>
+                                                <p style="font-size: 0.75rem; font-weight: 600;">ชำระเต็มจำนวน</p>
+                                                <p style="font-size: 0.625rem; color: var(--text-muted);">ไม่มีดอกเบี้ย</p>
+                                            </div>
+                                        </div>
+                                        <span style="font-size: 0.75rem; font-weight: 600;">32,764.00</span>
+                                    </div>
+                                    <div style="border: 2px solid var(--brand-main); background: var(--brand-surface); padding: 12px; border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                                        <div style="display: flex; gap: var(--space-3); align-items: center;">
+                                            <div style="width: 16px; height: 16px; border-radius: 50%; border: 4px solid var(--brand-main); background: white; box-sizing: border-box;"></div>
+                                            <div>
+                                                <p style="font-size: 0.75rem; font-weight: 600; color: var(--brand-main);">ผ่อนชำระ 3 งวด</p>
+                                                <p style="font-size: 0.625rem; color: var(--brand-main); font-weight: 500;">ดอกเบี้ย 0% · บัตรเครดิต</p>
+                                            </div>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <p style="font-size: 0.75rem; font-weight: 600; color: var(--brand-main);">10,921.33</p>
+                                            <p style="font-size: 0.5rem; color: var(--brand-main); text-transform: uppercase; font-weight: 600;">ต่อเดือน</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button style="width: 100%; padding: 16px; background: var(--brand-main); color: white; border: none; border-radius: var(--radius-md); font-weight: 600; font-size: 0.875rem; cursor: pointer; margin-top: var(--space-2); display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                ยืนยันการชำระเงิน 10,921.33 ฿
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

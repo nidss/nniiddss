@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings & Permissions - TSI Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .settings-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: var(--space-6);
+            align-items: start;
+        }
+        .settings-nav {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+        .settings-nav-item {
+            padding: var(--space-3) var(--space-4);
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            font-size: 0.875rem;
+        }
+        .settings-nav-item:hover {
+            background-color: var(--brand-surface);
+            color: var(--brand-main);
+        }
+        .settings-nav-item.active {
+            background-color: var(--brand-surface);
+            color: var(--brand-main);
+            border-left: 4px solid var(--brand-main);
+            font-weight: 600;
+        }
+        .settings-nav-group {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin: var(--space-4) 0 var(--space-2) var(--space-4);
+        }
+        .settings-content-stack {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+        }
+        
+        .role-card {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            min-height: 140px;
+        }
+        .role-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        
+        .perm-yes { color: var(--accent-success); background: var(--accent-success-surface); padding: 4px 8px; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600; }
+        .perm-no { color: var(--text-muted); background: var(--bg-body); padding: 4px 8px; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600; }
+        .perm-partial { color: var(--accent-warning); background: var(--accent-warning-surface); padding: 4px 8px; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600; }
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-4) var(--space-6);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .setting-row:last-child {
+            border-bottom: none;
+        }
+        
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--border-light);
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .toggle-slider {
+            background-color: var(--brand-main);
+        }
+        input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
+
+        @media (max-width: 1024px) {
+            .settings-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="brand-logo.png" alt="TSI Care Logo" class="brand-logo" style="background: transparent; box-shadow: none; object-fit: contain; border-radius: 0;">
+            <div class="brand-text">
+                <h1>TSI Care</h1>
+                <p>ระบบจัดการประกันภัย</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <p class="nav-group-title">General</p>
+            <a href="index.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                Dashboard
+            </a>
+            <a href="crm_customer_list.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                ลูกค้าทั้งหมด
+            </a>
+            <a href="crm_policy_list.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                กรมธรรม์
+            </a>
+
+            <p class="nav-group-title">Sales & Pipeline</p>
+            <a href="crm_sales_leads.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                Leads ใหม่
+                <span class="badge danger">12</span>
+            </a>
+            <a href="crm_quote_builder.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                ใบเสนอราคา
+            </a>
+            <a href="crm_agent_management.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                Agent Performance
+            </a>
+
+            <p class="nav-group-title">Operations</p>
+            <a href="crm_renewal_pipeline.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+                ติดตามต่ออายุ
+                <span class="badge warning">8</span>
+            </a>
+            <a href="crm_claims_management.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10c.6 0 1.1-.2 1.4-.6.4.3.8.6 1.3.6z"></path><circle cx="7.5" cy="17.5" r="2.5"></circle><circle cx="15.5" cy="17.5" r="2.5"></circle></svg>
+                รายการเคลม
+                <span class="badge info">5</span>
+            </a>
+            <a href="crm_workshop_map.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                เครือข่ายอู่ซ่อม
+            </a>
+
+            <p class="nav-group-title">System</p>
+            <a href="crm_notifications_reminders.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                แจ้งเตือน & Log
+            </a>
+            <a href="crm_settings_permissions.html" class="nav-item active">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                ตั้งค่าสิทธิ์ผู้ใช้
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">สก</div>
+                <div class="user-info">
+                    <p class="name">สมชาย กิตติ</p>
+                    <p class="role">Sales Manager</p>
+                </div>
+                <button class="btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <button class="btn-icon mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+                <h2 class="header-title">Settings & Permissions</h2>
+            </div>
+            
+            <div class="header-actions">
+                <div class="search-bar">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    <input type="text" placeholder="ค้นหาข้อมูลลูกค้า, ทะเบียนรถ...">
+                </div>
+                
+                <button class="btn-icon notification-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                    <span class="notification-dot"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-scroll">
+            <div class="welcome-section">
+                <div class="welcome-text">
+                    <h2>ตั้งค่าระบบและสิทธิ์ผู้ใช้งาน</h2>
+                    <p>จัดการข้อมูลบริษัท, สิทธิ์เข้าถึงของ Role ต่างๆ และความปลอดภัย</p>
+                </div>
+                <div class="time-filters">
+                    <button class="btn-link" style="color: var(--text-muted);">ยกเลิก</button>
+                    <button class="btn-full" style="padding: var(--space-2) var(--space-4);">บันทึกการเปลี่ยนแปลง</button>
+                </div>
+            </div>
+
+            <div class="settings-layout">
+                <!-- Left Nav -->
+                <div class="bento-item" style="padding: var(--space-4) 0;">
+                    <div class="settings-nav">
+                        <div class="settings-nav-group">ทั่วไป</div>
+                        <a href="#" class="settings-nav-item">โปรไฟล์บริษัท</a>
+                        <a href="#" class="settings-nav-item">การแจ้งเตือน</a>
+                        <a href="#" class="settings-nav-item">Commission</a>
+
+                        <div class="settings-nav-group">ผู้ใช้งาน</div>
+                        <a href="#" class="settings-nav-item active">ผู้ใช้และสิทธิ์</a>
+                        <a href="#" class="settings-nav-item">Roles</a>
+
+                        <div class="settings-nav-group">การเชื่อมต่อ</div>
+                        <a href="#" class="settings-nav-item">LINE OA & Facebook</a>
+                        <a href="#" class="settings-nav-item">Payment Gateway</a>
+
+                        <div class="settings-nav-group">ระบบ</div>
+                        <a href="#" class="settings-nav-item">ความปลอดภัย</a>
+                        <a href="#" class="settings-nav-item">Audit Log</a>
+                    </div>
+                </div>
+
+                <!-- Right Content -->
+                <div class="settings-content-stack">
+                    <!-- Roles Section -->
+                    <div class="bento-item">
+                        <div class="card-header">
+                            <h3 class="card-title">Role ในระบบ</h3>
+                            <button class="btn-link">+ สร้าง Role ใหม่</button>
+                        </div>
+                        <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top: var(--space-4);">
+                            <div class="bento-item role-card" style="border: 2px solid var(--brand-main); background: var(--brand-surface);">
+                                <div class="role-icon" style="background: rgba(239, 68, 68, 0.1);">👑</div>
+                                <div>
+                                    <h4 style="font-weight: 600; color: var(--text-main);">Admin</h4>
+                                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: var(--space-2); line-height: 1.5;">เข้าถึงได้ทุกส่วนของระบบ รวมถึงการเงินและการตั้งค่า</p>
+                                </div>
+                                <div style="font-size: 0.7rem; font-weight: 600; color: var(--brand-main); text-transform: uppercase; margin-top: auto;">2 ผู้ใช้งาน</div>
+                            </div>
+                            <div class="bento-item role-card">
+                                <div class="role-icon" style="background: var(--brand-surface);">🏢</div>
+                                <div>
+                                    <h4 style="font-weight: 600; color: var(--text-main);">Sales Manager</h4>
+                                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: var(--space-2); line-height: 1.5;">จัดการทีม อนุมัติใบเสนอราคา และดูรายงานสรุป</p>
+                                </div>
+                                <div style="font-size: 0.7rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-top: auto;">3 ผู้ใช้งาน</div>
+                            </div>
+                            <div class="bento-item role-card">
+                                <div class="role-icon" style="background: var(--accent-success-surface);">👤</div>
+                                <div>
+                                    <h4 style="font-weight: 600; color: var(--text-main);">Agent</h4>
+                                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: var(--space-2); line-height: 1.5;">จัดการลูกค้า งานขาย และติดตามการต่ออายุ</p>
+                                </div>
+                                <div style="font-size: 0.7rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-top: auto;">12 ผู้ใช้งาน</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Permission Matrix -->
+                    <div class="bento-item table-card" style="padding: 0;">
+                        <div class="card-header" style="padding: var(--space-6) var(--space-6) 0;">
+                            <h3 class="card-title" style="font-style: italic;">ตาราง Permissions</h3>
+                            <div style="display: flex; gap: var(--space-4); align-items: center; font-size: 0.7rem; font-weight: 600; color: var(--text-muted);">
+                                <span style="display: flex; align-items: center; gap: var(--space-2);"><div style="width: 10px; height: 10px; border-radius: 2px; background: var(--accent-success-surface);"></div> เต็มสิทธิ์</span>
+                                <span style="display: flex; align-items: center; gap: var(--space-2);"><div style="width: 10px; height: 10px; border-radius: 2px; background: var(--accent-warning-surface);"></div> บางส่วน</span>
+                            </div>
+                        </div>
+                        <div style="overflow-x: auto; padding-top: var(--space-4);">
+                            <table class="custom-table">
+                                <thead style="background: var(--bg-body);">
+                                    <tr>
+                                        <th style="width: 40%;">ฟีเจอร์ / การกระทำ</th>
+                                        <th style="text-align: center;">Admin</th>
+                                        <th style="text-align: center;">Manager</th>
+                                        <th style="text-align: center;">Agent</th>
+                                        <th style="text-align: center;">Claims</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="background: var(--bg-body);"><td colspan="5" style="font-size: 0.7rem; font-weight: 600; color: var(--brand-main); text-transform: uppercase; letter-spacing: 0.05em;">ลูกค้า & กรมธรรม์</td></tr>
+                                    <tr>
+                                        <td style="font-weight: 500; color: var(--text-secondary);">ดูข้อมูลลูกค้าเชิงลึก</td>
+                                        <td style="text-align: center;"><span class="perm-yes">✓</span></td>
+                                        <td style="text-align: center;"><span class="perm-yes">✓</span></td>
+                                        <td style="text-align: center;"><span class="perm-yes">✓</span></td>
+                                        <td style="text-align: center;"><span class="perm-partial">~</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 500; color: var(--text-secondary);">ลบข้อมูลลูกค้า</td>
+                                        <td style="text-align: center;"><span class="perm-yes">✓</span></td>
+                                        <td style="text-align: center;"><span class="perm-no">—</span></td>
+                                        <td style="text-align: center;"><span class="perm-no">—</span></td>
+                                        <td style="text-align: center;"><span class="perm-no">—</span></td>
+                                    </tr>
+                                    <tr style="background: var(--bg-body);"><td colspan="5" style="font-size: 0.7rem; font-weight: 600; color: var(--brand-main); text-transform: uppercase; letter-spacing: 0.05em;">การเงิน & อนุมัติ</td></tr>
+                                    <tr>
+                                        <td style="font-weight: 500; color: var(--text-secondary);">อนุมัติค่าสินไหม / เคลม</td>
+                                        <td style="text-align: center;"><span class="perm-yes">✓</span></td>
+                                        <td style="text-align: center;"><span class="perm-yes">✓</span></td>
+                                        <td style="text-align: center;"><span class="perm-no">—</span></td>
+                                        <td style="text-align: center;"><span class="perm-yes">✓</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- User List -->
+                    <div class="bento-item table-card" style="padding: 0;">
+                        <div class="card-header" style="padding: var(--space-6) var(--space-6) 0;">
+                            <div>
+                                <h3 class="card-title">รายชื่อผู้ใช้งาน</h3>
+                                <p class="card-subtitle">23 ผู้ใช้ทั้งหมด · 21 Active</p>
+                            </div>
+                            <button class="btn-full" style="padding: var(--space-2) var(--space-4); font-size: 0.8rem;">+ เชิญเพื่อนร่วมงาน</button>
+                        </div>
+                        <div style="overflow-x: auto; padding-top: var(--space-4);">
+                            <table class="custom-table">
+                                <tbody>
+                                    <tr style="cursor: pointer; transition: background 0.2s;">
+                                        <td>
+                                            <div class="client-cell">
+                                                <div class="client-avatar avatar-red">สก</div>
+                                                <div class="client-info">
+                                                    <p class="name">สมชาย กิตติ <span class="badge danger" style="margin-left: var(--space-2); font-size: 0.6rem; padding: 2px 6px;">ADMIN</span></p>
+                                                    <p class="detail">somchai@tsicare.co.th</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align: right;">
+                                            <span style="font-size: 0.7rem; font-weight: 600; color: var(--accent-success); text-transform: uppercase; font-style: italic;">Online</span>
+                                        </td>
+                                        <td style="text-align: right; width: 100px;">
+                                            <button class="action-btn">✎</button>
+                                            <button class="action-btn">⋯</button>
+                                        </td>
+                                    </tr>
+                                    <tr style="cursor: pointer; transition: background 0.2s;">
+                                        <td>
+                                            <div class="client-cell">
+                                                <div class="client-avatar avatar-blue">วภ</div>
+                                                <div class="client-info">
+                                                    <p class="name">วิภา ศรีสุข <span class="badge info" style="margin-left: var(--space-2); font-size: 0.6rem; padding: 2px 6px;">AGENT</span></p>
+                                                    <p class="detail">vipa@tsicare.co.th</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align: right;">
+                                            <span style="font-size: 0.7rem; color: var(--text-muted); font-weight: 500; font-style: italic;">2 ชม.ที่แล้ว</span>
+                                        </td>
+                                        <td style="text-align: right; width: 100px;">
+                                            <button class="action-btn">✎</button>
+                                            <button class="action-btn">⋯</button>
+                                        </td>
+                                    </tr>
+                                    <tr style="opacity: 0.6; cursor: pointer; transition: background 0.2s;">
+                                        <td>
+                                            <div class="client-cell">
+                                                <div class="client-avatar" style="background: var(--border-light); color: var(--text-muted);">ชน</div>
+                                                <div class="client-info">
+                                                    <p class="name">ชนัญ วงษ์ <span class="badge" style="background: var(--border-light); color: var(--text-muted); margin-left: var(--space-2); font-size: 0.6rem; padding: 2px 6px;">AGENT</span></p>
+                                                    <p class="detail" style="color: var(--accent-danger);">รอยืนยัน Invite...</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="text-align: right;">
+                                            <span class="badge warning" style="font-size: 0.6rem; padding: 2px 6px;">PENDING</span>
+                                        </td>
+                                        <td style="text-align: right; width: 100px;">
+                                            <button class="action-btn">✕</button>
+                                            <button class="action-btn">⋯</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Security Settings -->
+                    <div class="bento-item" style="padding: 0; overflow: hidden;">
+                        <div class="card-header" style="padding: var(--space-6) var(--space-6) var(--space-4);">
+                            <h3 class="card-title">ความปลอดภัย</h3>
+                        </div>
+                        <div style="display: flex; flex-direction: column;">
+                            <div class="setting-row">
+                                <div style="padding-right: var(--space-6);">
+                                    <h4 style="font-weight: 600; color: var(--text-main); font-size: 0.95rem;">Two-Factor Authentication (2FA)</h4>
+                                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px;">บังคับให้ผู้ใช้งานทุกคนยืนยันตัวตนผ่านแอปพลิเคชันเพื่อความปลอดภัยสูงสุด</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-row">
+                                <div style="padding-right: var(--space-6);">
+                                    <h4 style="font-weight: 600; color: var(--text-main); font-size: 0.95rem;">Session Timeout อัตโนมัติ</h4>
+                                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px;">ออกจากระบบอัตโนมัติหากไม่มีการใช้งานต่อเนื่องเกิน 30 นาที</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-row">
+                                <div style="padding-right: var(--space-6);">
+                                    <h4 style="font-weight: 600; color: var(--text-main); font-size: 0.95rem;">IP Whitelist Restrictions</h4>
+                                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px;">อนุญาตให้เข้าใช้งานระบบได้เฉพาะจากเลข IP ที่ระบุไว้เท่านั้น</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
