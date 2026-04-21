@@ -122,337 +122,298 @@
             <!-- Page Header / Tabs & Actions -->
             <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: var(--space-6); border-bottom: 1px solid var(--border-light); padding-bottom: 0;">
                 <div class="tabs-container" style="display: flex; gap: var(--space-2);">
-                    <button class="tab-btn active" style="padding: var(--space-3) var(--space-6); border: none; border-bottom: 2px solid var(--brand-main); color: var(--brand-main); font-weight: 600; font-family: 'Kanit', sans-serif; background: none; cursor: pointer;">Lead ทั้งหมด</button>
-                    <button class="tab-btn" style="padding: var(--space-3) var(--space-6); border: none; border-bottom: 2px solid transparent; color: var(--text-muted); font-weight: 500; font-family: 'Kanit', sans-serif; background: none; cursor: pointer;">ใบเสนอราคา</button>
-                    <button class="tab-btn" style="padding: var(--space-3) var(--space-6); border: none; border-bottom: 2px solid transparent; color: var(--text-muted); font-weight: 500; font-family: 'Kanit', sans-serif; background: none; cursor: pointer;">ทีม Agent</button>
+                    <button class="tab-btn active" data-target="tab-leads" style="padding: var(--space-3) var(--space-6); border: none; border-bottom: 2px solid var(--brand-main); color: var(--brand-main); font-weight: 600; font-family: 'Kanit', sans-serif; background: none; cursor: pointer;">Lead ทั้งหมด</button>
+                    <button class="tab-btn" data-target="tab-quotes" style="padding: var(--space-3) var(--space-6); border: none; border-bottom: 2px solid transparent; color: var(--text-muted); font-weight: 500; font-family: 'Kanit', sans-serif; background: none; cursor: pointer;">ใบเสนอราคา</button>
+                    <button class="tab-btn" data-target="tab-agents" style="padding: var(--space-3) var(--space-6); border: none; border-bottom: 2px solid transparent; color: var(--text-muted); font-weight: 500; font-family: 'Kanit', sans-serif; background: none; cursor: pointer;">ทีม Agent</button>
                 </div>
                 <div style="display: flex; gap: var(--space-3); padding-bottom: var(--space-3);">
                     <button class="btn-link" style="border: 1px solid var(--border-light); padding: var(--space-2) var(--space-4); border-radius: var(--radius-md); font-weight: 600;">Export Data</button>
-                    <button class="btn-primary" style="padding: var(--space-2) var(--space-4); background-color: var(--brand-main); color: white; border: none; border-radius: var(--radius-md); font-weight: 600; cursor: pointer; box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2);">เพิ่ม Lead ใหม่</button>
+                    <a href="crm_add_lead.html" class="btn-primary" style="padding: var(--space-2) var(--space-4); background-color: var(--brand-main); color: white; border: none; border-radius: var(--radius-md); font-weight: 600; cursor: pointer; box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2); text-decoration: none; display: inline-block;">เพิ่ม Lead ใหม่</a>
                 </div>
             </div>
 
-            <!-- Bento Grid - KPIs -->
-            <div class="bento-grid">
-                <!-- Card 1 -->
-                <div class="bento-item kpi-card">
-                    <div class="kpi-header">
-                        <div class="kpi-icon icon-blue">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+            <div id="tab-leads" class="tab-pane">
+                <!-- Bento Grid - KPIs -->
+                <div class="bento-grid">
+                    <!-- Card 1 -->
+                    <div class="bento-item kpi-card">
+                        <div class="kpi-header">
+                            <div class="kpi-icon icon-blue">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+                            </div>
+                            <span class="kpi-trend trend-up">▲ 12</span>
                         </div>
-                        <span class="kpi-trend trend-up">▲ 12</span>
-                    </div>
-                    <p class="kpi-title">Leads เดือนนี้</p>
-                    <div class="kpi-value">84</div>
-                    <p class="kpi-desc">เทียบกับเป้าหมายรายเดือน</p>
-                </div>
-                
-                <!-- Card 2 -->
-                <div class="bento-item kpi-card">
-                    <div class="kpi-header">
-                        <div class="kpi-icon icon-purple">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
-                        </div>
-                        <span class="kpi-trend" style="color: var(--text-muted);">เป้า 40%</span>
-                    </div>
-                    <p class="kpi-title">Conversion Rate</p>
-                    <div class="kpi-value">38%</div>
-                    <div style="width: 100%; height: 6px; background: var(--bg-surface); border-radius: 3px; margin-top: var(--space-2);">
-                        <div style="height: 100%; background: var(--brand-main); border-radius: 3px; width: 38%;"></div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bento-item kpi-card">
-                    <div class="kpi-header">
-                        <div class="kpi-icon icon-amber">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                        </div>
-                    </div>
-                    <p class="kpi-title">ยอดเบี้ยประกันที่ปิดได้</p>
-                    <div class="kpi-value" style="color: var(--brand-main);">1.24M</div>
-                    <p class="kpi-desc">รวม 32 เคสในเดือนนี้</p>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="bento-item kpi-card" style="border-color: var(--accent-warning-surface);">
-                    <div class="kpi-header">
-                        <div class="kpi-icon icon-red">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-                        </div>
-                    </div>
-                    <p class="kpi-title">Leads ยังไม่ติดต่อ</p>
-                    <div class="kpi-value" style="color: var(--accent-warning);">12</div>
-                    <p class="kpi-desc" style="color: var(--accent-warning); font-weight: 600;">🔥 ต้องรีบติดต่อภายในวันนี้</p>
-                </div>
-            </div>
-
-            <!-- Bento Grid - Bottom Content -->
-            <div class="bottom-grid" style="margin-top: var(--space-6);">
-                
-                <!-- Leads Table -->
-                <div class="bento-item table-card" style="padding: 0;">
-                    <div class="card-header" style="padding: var(--space-6) var(--space-6) 0;">
-                        <h3 class="card-title">รายการ Leads ประจำวัน</h3>
-                        <div class="header-actions" style="display: flex; gap: var(--space-2);">
-                            <button class="status-pill status-danger" style="background-color: #fef2f2; color: #dc2626; border: 1px solid #fee2e2;">Hot (18)</button>
-                            <button class="status-pill" style="background-color: var(--bg-surface); color: var(--text-secondary); border: 1px solid var(--border-light);">Warm (34)</button>
-                            <button class="status-pill" style="background-color: var(--bg-surface); color: var(--text-secondary); border: 1px solid var(--border-light);">Cold (32)</button>
-                        </div>
+                        <p class="kpi-title">Leads เดือนนี้</p>
+                        <div class="kpi-value">84</div>
+                        <p class="kpi-desc">เทียบกับเป้าหมายรายเดือน</p>
                     </div>
                     
+                    <!-- Card 2 -->
+                    <div class="bento-item kpi-card">
+                        <div class="kpi-header">
+                            <div class="kpi-icon icon-purple">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                            </div>
+                            <span class="kpi-trend" style="color: var(--text-muted);">เป้า 40%</span>
+                        </div>
+                        <p class="kpi-title">Conversion Rate</p>
+                        <div class="kpi-value">38%</div>
+                        <div style="width: 100%; height: 6px; background: var(--bg-surface); border-radius: 3px; margin-top: var(--space-2);">
+                            <div style="height: 100%; background: var(--brand-main); border-radius: 3px; width: 38%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bento-item kpi-card">
+                        <div class="kpi-header">
+                            <div class="kpi-icon icon-amber">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            </div>
+                        </div>
+                        <p class="kpi-title">ยอดเบี้ยประกันที่ปิดได้</p>
+                        <div class="kpi-value" style="color: var(--brand-main);">1.24M</div>
+                        <p class="kpi-desc">รวม 32 เคสในเดือนนี้</p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bento-item kpi-card" style="border-color: var(--accent-warning-surface);">
+                        <div class="kpi-header">
+                            <div class="kpi-icon icon-red">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                            </div>
+                        </div>
+                        <p class="kpi-title">Leads ยังไม่ติดต่อ</p>
+                        <div class="kpi-value" style="color: var(--accent-warning);">12</div>
+                        <p class="kpi-desc" style="color: var(--accent-warning); font-weight: 600;">🔥 ต้องรีบติดต่อภายในวันนี้</p>
+                    </div>
+                </div>
+
+                <!-- Bento Grid - Bottom Content -->
+                <div class="bottom-grid" style="margin-top: var(--space-6);">
+                    
+                    <!-- Leads Table -->
+                    <div class="bento-item table-card" style="padding: 0;">
+                        <div class="card-header" style="padding: var(--space-6) var(--space-6) 0;">
+                            <h3 class="card-title">รายการ Leads ประจำวัน</h3>
+                            <div class="header-actions" style="display: flex; gap: var(--space-2);">
+                                <button class="status-pill status-danger" style="background-color: #fef2f2; color: #dc2626; border: 1px solid #fee2e2;">Hot (18)</button>
+                                <button class="status-pill" style="background-color: var(--bg-surface); color: var(--text-secondary); border: 1px solid var(--border-light);">Warm (34)</button>
+                                <button class="status-pill" style="background-color: var(--bg-surface); color: var(--text-secondary); border: 1px solid var(--border-light);">Cold (32)</button>
+                            </div>
+                        </div>
+                        
+                        <div style="overflow-x: auto; padding-top: var(--space-4);">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center;">คะแนน</th>
+                                        <th>ชื่อลูกค้า / แหล่งที่มา</th>
+                                        <th>รถที่สนใจ</th>
+                                        <th>พนักงานดูแล</th>
+                                        <th>สถานะ</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Row 1 -->
+                                    <tr>
+                                        <td style="text-align: center;"><div style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background-color: #fef2f2; color: #dc2626; font-weight: 600; font-size: 0.875rem; border: 1px solid #fee2e2;">92</div></td>
+                                        <td>
+                                            <p class="name" style="font-weight: 600; font-size: 0.875rem;">ปัญญา สว่างใจ</p>
+                                            <p class="detail" style="font-size: 0.75rem; color: var(--text-muted);">LINE OA · 2 ชม.ที่แล้ว</p>
+                                        </td>
+                                        <td><p style="font-weight: 600; font-size: 0.875rem;">Honda Civic</p><span style="font-size: 0.75rem; color: var(--brand-main);">ชั้น 1</span></td>
+                                        <td><span style="font-size: 0.875rem;">วิภา ศรีสุข</span></td>
+                                        <td><span class="status-pill status-info">ใหม่</span></td>
+                                        <td><button class="action-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button></td>
+                                    </tr>
+                                    <!-- Row 2 -->
+                                    <tr>
+                                        <td style="text-align: center;"><div style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background-color: #fef2f2; color: #dc2626; font-weight: 600; font-size: 0.875rem; border: 1px solid #fee2e2;">88</div></td>
+                                        <td>
+                                            <p class="name" style="font-weight: 600; font-size: 0.875rem;">รุ่งทิวา เมือง</p>
+                                            <p class="detail" style="font-size: 0.75rem; color: var(--text-muted);">เว็บไซต์ · 5 ชม.ที่แล้ว</p>
+                                        </td>
+                                        <td><p style="font-weight: 600; font-size: 0.875rem;">Toyota Yaris</p><span style="font-size: 0.75rem; color: var(--brand-main);">ชั้น 1</span></td>
+                                        <td><span style="font-size: 0.875rem;">ประสิทธิ์ สุข</span></td>
+                                        <td><span class="status-pill status-warn">ส่งใบเสนอแล้ว</span></td>
+                                        <td><button class="action-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button></td>
+                                    </tr>
+                                    <!-- Row 3 -->
+                                    <tr>
+                                        <td style="text-align: center;"><div style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background-color: #fffbeb; color: #d97706; font-weight: 600; font-size: 0.875rem; border: 1px solid #fef3c7;">71</div></td>
+                                        <td>
+                                            <p class="name" style="font-weight: 600; font-size: 0.875rem;">เกษม ไชย</p>
+                                            <p class="detail" style="font-size: 0.75rem; color: var(--text-muted);">Referral · 1 วันที่แล้ว</p>
+                                        </td>
+                                        <td><p style="font-weight: 600; font-size: 0.875rem;">Isuzu MU-X</p><span style="font-size: 0.75rem; color: var(--brand-main);">ชั้น 2+</span></td>
+                                        <td><span style="font-size: 0.875rem;">รัตนา ดี</span></td>
+                                        <td><span class="status-pill status-success">ติดต่อแล้ว</span></td>
+                                        <td><button class="action-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Funnel & Performance -->
+                    <div class="activity-card" style="display: flex; flex-direction: column; gap: var(--space-6);">
+                        <div class="bento-item">
+                            <div class="card-header">
+                                <h3 class="card-title">Sales Funnel</h3>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: var(--space-4); margin-top: 12px;">
+                                <div>
+                                    <div style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 4px;"><span>Leads ทั้งหมด</span><span style="font-weight: 600;">84</span></div>
+                                    <div style="width: 100%; height: 8px; background: var(--bg-subtle); border-radius: 4px; overflow: hidden;"><div style="width: 100%; height: 100%; background: var(--brand-main);"></div></div>
+                                </div>
+                                <div>
+                                    <div style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 4px;"><span>ปิดการขายได้</span><span style="font-weight: 600;">32</span></div>
+                                    <div style="width: 100%; height: 8px; background: var(--bg-subtle); border-radius: 4px; overflow: hidden;"><div style="width: 38%; height: 100%; background: var(--accent-success);"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bento-item">
+                            <div class="card-header">
+                                <h3 class="card-title">Agent Performance</h3>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 12px;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div class="user-avatar" style="width: 32px; height: 32px;">วภ</div>
+                                    <div style="flex: 1;">
+                                        <div style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 4px;"><span style="font-weight: 600;">วิภา ศรีสุข</span><span style="color: var(--brand-main); font-weight: 600;">580K</span></div>
+                                        <div style="width: 100%; height: 4px; background: #eee; border-radius: 2px;"><div style="width: 80%; height: 100%; background: var(--brand-main);"></div></div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div class="user-avatar" style="width: 32px; height: 32px; background-color: #d1fae5; color: #059669;">ปส</div>
+                                    <div style="flex: 1;">
+                                        <div style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 4px;"><span style="font-weight: 600;">ประสิทธิ์ สุข</span><span style="color: var(--brand-main); font-weight: 600;">410K</span></div>
+                                        <div style="width: 100%; height: 4px; background: #eee; border-radius: 2px;"><div style="width: 65%; height: 100%; background: var(--brand-main);"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-quotes" class="tab-pane" style="display: none;">
+                <div class="bento-grid">
+                    <div class="bento-item kpi-card">
+                        <p class="kpi-title">ใบเสนอราคาทั้งหมด</p>
+                        <div class="kpi-value">156</div>
+                    </div>
+                    <div class="bento-item kpi-card">
+                        <p class="kpi-title">รอการอนุมัติ</p>
+                        <div class="kpi-value" style="color: var(--accent-warning);">24</div>
+                    </div>
+                    <div class="bento-item kpi-card">
+                        <p class="kpi-title">อนุมัติแล้ว</p>
+                        <div class="kpi-value" style="color: var(--accent-success);">98</div>
+                    </div>
+                    <div class="bento-item kpi-card">
+                        <p class="kpi-title">หมดอายุ</p>
+                        <div class="kpi-value" style="color: var(--accent-danger);">34</div>
+                    </div>
+                </div>
+                <div class="bento-item table-card" style="padding: 0;">
+                    <div class="card-header" style="padding: var(--space-6) var(--space-6) 0;">
+                        <h3 class="card-title">รายการใบเสนอราคาล่าสุด</h3>
+                    </div>
                     <div style="overflow-x: auto; padding-top: var(--space-4);">
                         <table class="custom-table">
                             <thead>
                                 <tr>
-                                    <th style="text-align: center;">คะแนน</th>
-                                    <th>ชื่อลูกค้า / แหล่งที่มา</th>
-                                    <th>รถที่สนใจ</th>
-                                    <th>พนักงานดูแล</th>
+                                    <th>เลขที่ใบเสนอราคา</th>
+                                    <th>ลูกค้า</th>
+                                    <th>รถยนต์</th>
+                                    <th>เบี้ยสุทธิ (฿)</th>
                                     <th>สถานะ</th>
-                                    <th></th>
+                                    <th style="text-align: right;">จัดการ</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Row 1 -->
                                 <tr>
-                                    <td style="text-align: center;">
-                                        <div style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background-color: #fef2f2; color: #dc2626; font-weight: 600; font-size: 0.875rem; border: 1px solid #fee2e2;">
-                                            92
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="client-cell">
-                                            <div class="client-info">
-                                                <p class="name">ปัญญา สว่างใจ</p>
-                                                <p class="detail" style="display: flex; align-items: center; gap: 4px;">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #60a5fa;"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
-                                                    LINE OA · 2 ชม.ที่แล้ว
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <p style="font-weight: 600; font-size: 0.875rem;">Honda Civic</p>
-                                            <span style="font-size: 0.75rem; padding: 2px 6px; background-color: #eff6ff; color: #2563eb; border-radius: 4px; display: inline-block; margin-top: 4px;">ชั้น 1</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 8px;">
-                                            <div style="width: 24px; height: 24px; border-radius: 50%; background-color: var(--bg-surface); font-size: 0.65rem; display: flex; align-items: center; justify-content: center; font-weight: 600;">วภ</div>
-                                            <span style="font-size: 0.875rem; font-weight: 500;">วิภา</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="status-pill status-info" style="background-color: #dbeafe; color: #1d4ed8;">ใหม่</span>
-                                    </td>
-                                    <td>
-                                        <button class="action-btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                                        </button>
-                                    </td>
+                                    <td style="font-size: 0.875rem; font-weight: 600; font-family: monospace;">QT-2568-00123</td>
+                                    <td style="font-size: 0.875rem;">วิภาดา รวยทรัพย์</td>
+                                    <td style="font-size: 0.875rem;">BMW X3</td>
+                                    <td style="font-size: 0.875rem; font-weight: 600;">45,200</td>
+                                    <td><span class="status-pill status-info">รออนุมัติ</span></td>
+                                    <td style="text-align: right;"><button class="action-btn">✏️</button></td>
                                 </tr>
-                                <!-- Row 2 -->
                                 <tr>
-                                    <td style="text-align: center;">
-                                        <div style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background-color: #fef2f2; color: #dc2626; font-weight: 600; font-size: 0.875rem; border: 1px solid #fee2e2;">
-                                            88
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="client-cell">
-                                            <div class="client-info">
-                                                <p class="name">รุ่งทิวา เมือง</p>
-                                                <p class="detail" style="display: flex; align-items: center; gap: 4px;">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-muted);"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
-                                                    เว็บไซต์ · เปิดใบเสนอ 3 ครั้ง
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <p style="font-weight: 600; font-size: 0.875rem;">Toyota Yaris</p>
-                                            <span style="font-size: 0.75rem; padding: 2px 6px; background-color: #eff6ff; color: #2563eb; border-radius: 4px; display: inline-block; margin-top: 4px;">ชั้น 1</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 8px;">
-                                            <div style="width: 24px; height: 24px; border-radius: 50%; background-color: var(--bg-surface); font-size: 0.65rem; display: flex; align-items: center; justify-content: center; font-weight: 600;">ปส</div>
-                                            <span style="font-size: 0.875rem; font-weight: 500;">ประสิทธิ์</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="status-pill status-warn">ส่งใบเสนอแล้ว</span>
-                                    </td>
-                                    <td>
-                                        <button class="action-btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <!-- Row 3 -->
-                                <tr>
-                                    <td style="text-align: center;">
-                                        <div style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background-color: #fffbeb; color: #d97706; font-weight: 600; font-size: 0.875rem; border: 1px solid #fef3c7;">
-                                            71
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="client-cell">
-                                            <div class="client-info">
-                                                <p class="name">เกษม ไชย</p>
-                                                <p class="detail" style="display: flex; align-items: center; gap: 4px;">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #34d399;"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                                                    Referral จากลูกค้าประจำ
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <p style="font-weight: 600; font-size: 0.875rem;">Isuzu MU-X</p>
-                                            <span style="font-size: 0.75rem; padding: 2px 6px; background-color: #fffbeb; color: #d97706; border-radius: 4px; display: inline-block; margin-top: 4px;">ชั้น 2+</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div style="display: flex; align-items: center; gap: 8px;">
-                                            <div style="width: 24px; height: 24px; border-radius: 50%; background-color: var(--bg-surface); font-size: 0.65rem; display: flex; align-items: center; justify-content: center; font-weight: 600;">รต</div>
-                                            <span style="font-size: 0.875rem; font-weight: 500;">รัตนา</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="status-pill status-success">ติดต่อแล้ว</span>
-                                    </td>
-                                    <td>
-                                        <button class="action-btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                                        </button>
-                                    </td>
+                                    <td style="font-size: 0.875rem; font-weight: 600; font-family: monospace;">QT-2568-00122</td>
+                                    <td style="font-size: 0.875rem;">สมชาย มั่นคง</td>
+                                    <td style="font-size: 0.875rem;">Toyota Fortuner</td>
+                                    <td style="font-size: 0.875rem; font-weight: 600;">22,500</td>
+                                    <td><span class="status-pill" style="background: var(--accent-success-surface); color: var(--accent-success); border-color: transparent;">อนุมัติแล้ว</span></td>
+                                    <td style="text-align: right;"><button class="action-btn">📄</button></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
+            </div>
 
-                <!-- Right Side: Funnel & Agents -->
-                <div class="activity-card" style="display: flex; flex-direction: column; gap: var(--space-6); min-width: 0;">
-                    
-                    <!-- Sales Funnel -->
-                    <div class="bento-item">
-                        <div class="card-header" style="margin-bottom: var(--space-4);">
-                            <h3 class="card-title">Sales Funnel</h3>
-                            <span style="font-size: 0.65rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Conversion</span>
+            <div id="tab-agents" class="tab-pane" style="display: none;">
+                <div class="bento-grid">
+                    <div class="bento-item" style="grid-column: span 12;">
+                        <div class="card-header">
+                            <h3 class="card-title">รายชื่อพนักงานขายและผลงาน</h3>
                         </div>
-                        <div style="display: flex; flex-direction: column; gap: var(--space-4);">
-                            <!-- Step 1 -->
-                            <div>
-                                <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2); font-size: 0.875rem;">
-                                    <span style="font-weight: 600; color: var(--text-secondary);">Leads ทั้งหมด</span>
-                                    <span style="font-weight: 600;">84</span>
-                                </div>
-                                <div style="width: 100%; height: 8px; background: var(--bg-surface); border-radius: 4px; overflow: hidden;">
-                                    <div style="height: 100%; width: 100%; background: var(--brand-main); border-radius: 4px;"></div>
-                                </div>
-                            </div>
-                            <!-- Step 2 -->
-                            <div>
-                                <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2); font-size: 0.875rem;">
-                                    <span style="font-weight: 600; color: var(--text-secondary);">ติดต่อสำเร็จ</span>
-                                    <span style="font-weight: 600;">72 <span style="font-size: 0.65rem; color: var(--text-muted); font-style: italic;">(86%)</span></span>
-                                </div>
-                                <div style="width: 100%; height: 8px; background: var(--bg-surface); border-radius: 4px; overflow: hidden;">
-                                    <div style="height: 100%; width: 86%; background: #60a5fa; border-radius: 4px;"></div>
-                                </div>
-                            </div>
-                            <!-- Step 3 -->
-                            <div>
-                                <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2); font-size: 0.875rem;">
-                                    <span style="font-weight: 600; color: var(--text-secondary);">ส่งใบเสนอราคา</span>
-                                    <span style="font-weight: 600;">54 <span style="font-size: 0.65rem; color: var(--text-muted); font-style: italic;">(64%)</span></span>
-                                </div>
-                                <div style="width: 100%; height: 8px; background: var(--bg-surface); border-radius: 4px; overflow: hidden;">
-                                    <div style="height: 100%; width: 64%; background: #93c5fd; border-radius: 4px;"></div>
-                                </div>
-                            </div>
-                            <!-- Step 4 -->
-                            <div>
-                                <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2); font-size: 0.875rem;">
-                                    <span style="font-weight: 600; color: var(--text-secondary);">ปิดขายสำเร็จ</span>
-                                    <span style="font-weight: 600; color: var(--accent-success);">32 <span style="font-size: 0.65rem; color: var(--text-muted); font-style: italic;">(38%)</span></span>
-                                </div>
-                                <div style="width: 100%; height: 8px; background: var(--bg-surface); border-radius: 4px; overflow: hidden;">
-                                    <div style="height: 100%; width: 38%; background: var(--accent-success); border-radius: 4px;"></div>
-                                </div>
-                            </div>
+                        <div style="overflow-x: auto; margin-top: 16px;">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>พนักงาน</th>
+                                        <th>ตำแหน่ง</th>
+                                        <th>ยอดขายเดือนนี้</th>
+                                        <th>Conversion</th>
+                                        <th>สถานะทีม</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 12px;">
+                                                <div class="user-avatar" style="width: 32px; height: 32px;">วภ</div>
+                                                <span style="font-size: 0.875rem; font-weight: 600;">วิภา ศรีสุข</span>
+                                            </div>
+                                        </td>
+                                        <td style="font-size: 0.875rem;">Senior Agent</td>
+                                        <td style="font-size: 0.875rem; font-weight: 600; color: var(--brand-main);">580,000 ฿</td>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 8px;">
+                                                <div style="width: 60px; height: 6px; background: #eee; border-radius: 3px;"><div style="width: 43%; height: 100%; background: var(--accent-success); border-radius: 3px;"></div></div>
+                                                <span style="font-size: 0.75rem;">43%</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="status-pill" style="background: var(--accent-success-surface); color: var(--accent-success); border-color: transparent;">On Track</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 12px;">
+                                                <div class="user-avatar" style="width: 32px; height: 32px; background-color: #d1fae5; color: #059669;">ปส</div>
+                                                <span style="font-size: 0.875rem; font-weight: 600;">ประสิทธิ์ สุข</span>
+                                            </div>
+                                        </td>
+                                        <td style="font-size: 0.875rem;">Agent</td>
+                                        <td style="font-size: 0.875rem; font-weight: 600; color: var(--brand-main);">410,000 ฿</td>
+                                        <td>
+                                            <div style="display: flex; align-items: center; gap: 8px;">
+                                                <div style="width: 60px; height: 6px; background: #eee; border-radius: 3px;"><div style="width: 35%; height: 100%; background: var(--accent-warning); border-radius: 3px;"></div></div>
+                                                <span style="font-size: 0.75rem;">35%</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="status-pill status-warn">Improving</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-
-                    <!-- Agent Performance -->
-                    <div class="bento-item" style="padding: 0;">
-                        <div class="card-header" style="padding: var(--space-4) var(--space-4) var(--space-3); border-bottom: 1px solid var(--border-light); background-color: var(--bg-main);">
-                            <h3 class="card-title">Agent Performance</h3>
-                            <button class="btn-link" style="font-size: 0.65rem; text-transform: uppercase;">Ranking</button>
-                        </div>
-                        <div style="padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-4);">
-                            <!-- Agent 1 -->
-                            <div style="padding: var(--space-4); background: var(--bg-surface); border-radius: var(--radius-md); border: 1px solid var(--border-light);">
-                                <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
-                                    <div class="client-avatar avatar-blue">วภ</div>
-                                    <div>
-                                        <p style="font-weight: 600; font-size: 0.875rem;">วิภา ศรีสุข</p>
-                                        <p style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Senior Agent</p>
-                                    </div>
-                                    <div style="margin-left: auto; color: var(--accent-success); font-weight: 600; font-size: 0.75rem; font-style: italic;">43% Conv.</div>
-                                </div>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-2); text-align: center;">
-                                    <div style="background: white; padding: var(--space-2); border-radius: var(--radius-sm); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);">
-                                        <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">ปิดได้</div>
-                                        <div style="font-weight: 600; font-size: 0.875rem;">14</div>
-                                    </div>
-                                    <div style="background: white; padding: var(--space-2); border-radius: var(--radius-sm); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);">
-                                        <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">เป้า</div>
-                                        <div style="font-weight: 600; font-size: 0.875rem;">20</div>
-                                    </div>
-                                    <div style="background: white; padding: var(--space-2); border-radius: var(--radius-sm); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);">
-                                        <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">เบี้ย (฿)</div>
-                                        <div style="font-weight: 600; font-size: 0.875rem; color: var(--brand-main);">580K</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Agent 2 -->
-                            <div style="padding: var(--space-4); background: var(--bg-surface); border-radius: var(--radius-md); border: 1px solid var(--border-light);">
-                                <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
-                                    <div class="client-avatar" style="background-color: #d1fae5; color: #059669;">ปส</div>
-                                    <div>
-                                        <p style="font-weight: 600; font-size: 0.875rem;">ประสิทธิ์ สุข</p>
-                                        <p style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Agent</p>
-                                    </div>
-                                    <div style="margin-left: auto; color: var(--accent-warning); font-weight: 600; font-size: 0.75rem; font-style: italic;">35% Conv.</div>
-                                </div>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-2); text-align: center;">
-                                    <div style="background: white; padding: var(--space-2); border-radius: var(--radius-sm); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);">
-                                        <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">ปิดได้</div>
-                                        <div style="font-weight: 600; font-size: 0.875rem;">11</div>
-                                    </div>
-                                    <div style="background: white; padding: var(--space-2); border-radius: var(--radius-sm); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);">
-                                        <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">เป้า</div>
-                                        <div style="font-weight: 600; font-size: 0.875rem;">15</div>
-                                    </div>
-                                    <div style="background: white; padding: var(--space-2); border-radius: var(--radius-sm); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);">
-                                        <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">เบี้ย (฿)</div>
-                                        <div style="font-weight: 600; font-size: 0.875rem; color: var(--brand-main);">410K</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button style="width: 100%; padding: var(--space-3); border: none; border-top: 1px solid var(--border-light); background-color: var(--bg-main); color: var(--text-muted); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; border-bottom-left-radius: var(--radius-lg); border-bottom-right-radius: var(--radius-lg);">ดูรายชื่อ Agent ทั้งหมด</button>
-                    </div>
-
                 </div>
-
             </div>
 
         </div>
@@ -460,5 +421,30 @@
 </div>
 
 <script src="script.js"></script>
+<script>
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Reset all buttons
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active');
+                b.style.color = 'var(--text-muted)';
+                b.style.borderBottom = '2px solid transparent';
+                b.style.fontWeight = '500';
+            });
+            // Hide all panes
+            document.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
+
+            // Set active state
+            btn.classList.add('active');
+            btn.style.color = 'var(--brand-main)';
+            btn.style.borderBottom = '2px solid var(--brand-main)';
+            btn.style.fontWeight = '600';
+
+            // Show selected pane
+            const targetId = btn.getAttribute('data-target');
+            document.getElementById(targetId).style.display = 'block';
+        });
+    });
+</script>
 </body>
 </html>
