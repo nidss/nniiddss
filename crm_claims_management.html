@@ -399,6 +399,13 @@
             } catch (e) {
                 console.error("history.replaceState failed, likely due to file:// protocol:", e);
             }
+        } else if (urlParams.get('approve') === 'true') {
+            showToast('อนุมัติเคลมสำเร็จ');
+            try {
+                window.history.replaceState({}, document.title, window.location.pathname);
+            } catch (e) {
+                console.error("history.replaceState failed, likely due to file:// protocol:", e);
+            }
         }
     });
 
