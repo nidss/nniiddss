@@ -51,7 +51,7 @@
             background: var(--brand-main);
             color: white;
         }
-        .table-row { cursor: pointer; transition: background 0.2s; }
+        .table-row { transition: background 0.2s; }
         .table-row:hover { background: var(--bg-surface); }
         .table-row.active {
             background: var(--brand-surface);
@@ -297,10 +297,11 @@
                                     <th style="text-align: center;">ประเภท</th>
                                     <th>มูลค่าเคลม</th>
                                     <th>สถานะ</th>
+                                    <th style="width: 48px;"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="table-row active">
+                                <tr class="table-row">
                                     <td><span style="font-size: 0.75rem; font-weight: bold; color: var(--brand-main); font-family: monospace;">CLM-2803</span></td>
                                     <td>
                                         <p style="font-size: 0.875rem; font-weight: bold;">ประสิทธิ์ ดีมาก</p>
@@ -312,6 +313,11 @@
                                         <p style="font-size: 0.7rem; color: var(--text-muted); font-style: italic;">26 มี.ค. 2568</p>
                                     </td>
                                     <td><span class="status-pill status-info">กำลังสำรวจ</span></td>
+                                    <td>
+                                        <button class="btn-icon" style="color: var(--text-muted);" onclick="window.location.href='crm_claim_detail.html'">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                        </button>
+                                    </td>
                                 </tr>
                                 <tr class="table-row">
                                     <td><span style="font-size: 0.75rem; font-weight: bold; color: var(--text-muted); font-family: monospace;">CLM-2801</span></td>
@@ -322,6 +328,11 @@
                                     <td style="text-align: center;"><span class="badge" style="background: var(--border-light); color: var(--text-main);">น้ำท่วม</span></td>
                                     <td><p style="font-size: 0.875rem; font-weight: bold;">120,000 ฿</p></td>
                                     <td><span class="status-pill status-warn">รออนุมัติ</span></td>
+                                    <td>
+                                        <button class="btn-icon" style="color: var(--text-muted);" onclick="window.location.href='crm_claim_detail.html'">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                        </button>
+                                    </td>
                                 </tr>
                                 <tr class="table-row">
                                     <td><span style="font-size: 0.75rem; font-weight: bold; color: var(--text-muted); font-family: monospace;">CLM-2798</span></td>
@@ -332,6 +343,11 @@
                                     <td style="text-align: center;"><span class="badge" style="background: var(--border-light); color: var(--text-main);">ชนท้าย</span></td>
                                     <td><p style="font-size: 0.875rem; font-weight: bold;">28,500 ฿</p></td>
                                     <td><span class="status-pill status-success">อนุมัติแล้ว</span></td>
+                                    <td>
+                                        <button class="btn-icon" style="color: var(--text-muted);" onclick="window.location.href='crm_claim_detail.html'">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                        </button>
+                                    </td>
                                 </tr>
                                 <tr class="table-row">
                                     <td><span style="font-size: 0.75rem; font-weight: bold; color: var(--text-muted); font-family: monospace;">CLM-2791</span></td>
@@ -342,6 +358,11 @@
                                     <td style="text-align: center;"><span class="badge" style="background: var(--border-light); color: var(--text-main);">ไฟไหม้</span></td>
                                     <td><p style="font-size: 0.875rem; font-weight: bold;">180,000 ฿</p></td>
                                     <td><span class="status-pill" style="background: var(--border-light); color: var(--text-main);">จ่ายเงินแล้ว</span></td>
+                                    <td>
+                                        <button class="btn-icon" style="color: var(--text-muted);" onclick="window.location.href='crm_claim_detail.html'">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                        </button>
+                                    </td>
                                 </tr>
                                 <tr class="table-row">
                                     <td><span style="font-size: 0.75rem; font-weight: bold; color: var(--text-muted); font-family: monospace;">CLM-2785</span></td>
@@ -352,102 +373,14 @@
                                     <td style="text-align: center;"><span class="badge" style="background: var(--border-light); color: var(--text-main);">อุบัติเหตุ</span></td>
                                     <td><p style="font-size: 0.875rem; font-weight: bold; color: var(--text-muted);">12,000 ฿</p></td>
                                     <td><span class="status-pill status-danger">ปฏิเสธ</span></td>
+                                    <td>
+                                        <button class="btn-icon" style="color: var(--text-muted);" onclick="window.location.href='crm_claim_detail.html'">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                        </button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-
-                <div class="bento-item claims-detail-container" style="padding: 0;">
-                    <div class="detail-header">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-2);">
-                            <div>
-                                <p style="font-size: 0.7rem; font-weight: bold; color: #94a3b8; text-transform: uppercase; font-family: monospace;">CLM-2803</p>
-                                <h3 style="font-size: 1.25rem; font-weight: bold;">ประสิทธิ์ ดีมาก</h3>
-                            </div>
-                            <button style="padding: var(--space-2); background: rgba(255,255,255,0.1); border: none; border-radius: var(--radius-md); color: white; cursor: pointer;">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" /></svg>
-                            </button>
-                        </div>
-                        <p style="font-size: 0.875rem; color: #cbd5e1;">Isuzu D-Max 2020 · คง 9012 กรุงเทพฯ</p>
-                    </div>
-                    
-                    <div class="detail-body">
-                        <div class="amount-highlight">
-                            <div>
-                                <p style="font-size: 0.7rem; font-weight: bold; color: var(--brand-main); text-transform: uppercase;">มูลค่าเคลมโดยประมาณ</p>
-                                <p style="font-size: 1.5rem; font-weight: bold; font-style: italic;">55,000 ฿</p>
-                            </div>
-                            <span class="status-pill status-info" style="font-size: 0.7rem; text-transform: uppercase; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">กำลังสำรวจ</span>
-                        </div>
-
-                        <div>
-                            <h6 style="font-size: 0.7rem; font-weight: bold; color: var(--text-muted); text-transform: uppercase; margin-bottom: var(--space-3); display: flex; align-items: center; gap: var(--space-2);">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                ข้อมูลเบื้องต้น
-                            </h6>
-                            <div class="info-row"><span style="color: var(--text-muted);">วันแจ้งเคลม</span><strong style="text-transform: uppercase;">26 มี.ค. 2568</strong></div>
-                            <div class="info-row"><span style="color: var(--text-muted);">ประเภท</span><strong>อุบัติเหตุ — ชนท้าย</strong></div>
-                            <div class="info-row"><span style="color: var(--text-muted);">สถานที่</span><strong>ถ.พระราม 4 กรุงเทพฯ</strong></div>
-                            <div class="info-row"><span style="color: var(--text-muted);">ผู้สำรวจ</span><strong style="color: var(--brand-main); text-decoration: underline;">นายสมบัติ เจ้าหน้าที่</strong></div>
-                            <div class="info-row"><span style="color: var(--text-muted);">อู่ซ่อม</span><strong>สาขาพระราม 4</strong></div>
-                        </div>
-
-                        <div>
-                            <h6 style="font-size: 0.7rem; font-weight: bold; color: var(--text-muted); text-transform: uppercase; margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-2);">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                Timeline ความคืบหน้า
-                            </h6>
-                            <div class="timeline">
-                                <div class="tl-item">
-                                    <div class="tl-dot"></div>
-                                    <div class="tl-content">
-                                        <div style="display: flex; justify-content: space-between;">
-                                            <p style="font-size: 0.875rem; font-weight: bold;">แจ้งเคลมสำเร็จ</p>
-                                            <span style="font-size: 0.7rem; color: var(--text-muted);">26 มี.ค. 09:14</span>
-                                        </div>
-                                        <p style="font-size: 0.75rem; color: var(--text-muted);">รับเรื่องผ่าน LINE OA</p>
-                                    </div>
-                                </div>
-                                <div class="tl-item">
-                                    <div class="tl-dot"></div>
-                                    <div class="tl-content">
-                                        <div style="display: flex; justify-content: space-between;">
-                                            <p style="font-size: 0.875rem; font-weight: bold;">มอบหมายผู้สำรวจ</p>
-                                            <span style="font-size: 0.7rem; color: var(--text-muted);">26 มี.ค. 10:30</span>
-                                        </div>
-                                        <p style="font-size: 0.75rem; color: var(--text-muted);">นายสมบัติ รับงานในพื้นที่</p>
-                                    </div>
-                                </div>
-                                <div class="tl-item">
-                                    <div class="tl-dot current"></div>
-                                    <div class="tl-content">
-                                        <div style="display: flex; justify-content: space-between;">
-                                            <p style="font-size: 0.875rem; font-weight: bold; color: var(--brand-main); font-style: italic;">กำลังสำรวจความเสียหาย</p>
-                                            <span style="font-size: 0.7rem; font-weight: bold; color: var(--brand-main);">ปัจจุบัน</span>
-                                        </div>
-                                        <p style="font-size: 0.75rem; color: var(--text-muted); font-style: italic;">"นัดสำรวจหน้างาน 27 มี.ค. 13:00"</p>
-                                    </div>
-                                </div>
-                                <div class="tl-item" style="opacity: 0.5;">
-                                    <div class="tl-dot pending"></div>
-                                    <div class="tl-content">
-                                        <p style="font-size: 0.875rem; font-weight: bold; color: var(--text-muted);">รอการพิจารณาอนุมัติ</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div style="display: flex; gap: var(--space-3); border-top: 1px solid var(--border-light); padding-top: var(--space-4); margin-top: auto;">
-                            <button class="action-btn-custom">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" /></svg>
-                                ดูเอกสาร
-                            </button>
-                            <button class="action-btn-custom primary">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                อนุมัติเคลม
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claim Detail - TSI Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .claim-detail-layout {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .detail-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            padding: var(--space-8);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .header-section {
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: var(--space-6);
+        }
+
+        .header-section h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-main);
+            margin: 0 0 var(--space-1) 0;
+        }
+
+        .header-section p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+        
+        .claim-id {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-2);
+        }
+
+        .amount-highlight {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-6);
+            background: #f0f9ff; /* Light blue representing the highlighted box */
+            border: 1px solid #0284c7; /* Brand border */
+            border-radius: var(--radius-lg);
+        }
+
+        .amount-highlight .label {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #0284c7;
+            margin-bottom: var(--space-2);
+        }
+
+        .amount-highlight .value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--text-main);
+            font-style: italic;
+        }
+
+        .amount-highlight .status {
+            padding: var(--space-2) var(--space-4);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            background: rgba(2, 132, 199, 0.1);
+            color: #0284c7;
+            border: 1px solid rgba(2, 132, 199, 0.2);
+        }
+
+        .info-section h3 {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-bottom: var(--space-4);
+            text-transform: uppercase;
+        }
+
+        .info-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+        }
+
+        .info-row .label {
+            color: var(--text-muted);
+        }
+
+        .info-row .value {
+            font-weight: bold;
+            color: var(--text-main);
+            text-align: right;
+        }
+        
+        .info-row a.value {
+            color: var(--brand-main);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .timeline-section {
+            margin-top: var(--space-4);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: var(--space-6);
+            margin-top: var(--space-4);
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: var(--border-light);
+        }
+
+        .tl-item {
+            position: relative;
+            margin-bottom: var(--space-6);
+        }
+
+        .tl-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .tl-dot {
+            position: absolute;
+            left: -24px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent-success);
+            border: 2px solid white;
+            z-index: 2;
+        }
+
+        .tl-dot.current {
+            background: var(--brand-main);
+            box-shadow: 0 0 0 2px var(--brand-surface);
+        }
+
+        .tl-dot.pending {
+            background: var(--border-light);
+        }
+
+        .tl-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .tl-content .title {
+            font-size: 0.875rem;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+        
+        .tl-content .title.current {
+            color: var(--brand-main);
+            font-style: italic;
+        }
+
+        .tl-content .desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        
+        .tl-content .desc.current {
+            font-style: italic;
+        }
+
+        .tl-content .time {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .tl-content .time.current {
+            font-weight: bold;
+            color: var(--brand-main);
+        }
+
+        .tl-item.pending .title {
+            color: var(--text-muted);
+        }
+        
+        .document-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-4);
+            margin-top: var(--space-4);
+        }
+        
+        @media (max-width: 600px) {
+            .document-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .doc-card {
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .doc-preview {
+            height: 120px;
+            background: var(--bg-surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        /* Placeholder styling to look like actual images based on prompt */
+        .doc-preview.id-card {
+            background: linear-gradient(135deg, #e0e7ff 0%, #bae6fd 100%);
+        }
+        .doc-preview.receipt {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+        }
+        .doc-preview.police {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+        
+        .doc-icon {
+            font-size: 2rem;
+            opacity: 0.5;
+        }
+        
+        .doc-info {
+            padding: var(--space-3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .doc-name {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .action-footer {
+            display: flex;
+            gap: var(--space-4);
+            padding-top: var(--space-6);
+            border-top: 1px solid var(--border-light);
+            margin-top: var(--space-2);
+        }
+
+        .btn-outline, .btn-primary {
+            padding: var(--space-3) var(--space-6);
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.2s;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            background: var(--bg-surface);
+            border-color: var(--text-muted);
+        }
+
+        .btn-primary {
+            background: #0284c7;
+            border: none;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0369a1;
+        }
+
+        /* Image Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            background: white;
+            padding: var(--space-2);
+            border-radius: var(--radius-md);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-img {
+            max-width: 100%;
+            max-height: calc(90vh - 40px);
+            display: block;
+            border-radius: var(--radius-sm);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 30px;
+            height: 30px;
+            background: white;
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+        .modal-close:hover {
+            background: var(--bg-surface);
+            color: var(--accent-danger);
+        }
+    </style>
+</head>
+<body>
+<div class="app-container">
+
+    <!-- Sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="brand-logo.png" alt="TSI Care Logo" class="brand-logo" style="background: transparent; box-shadow: none; object-fit: contain; border-radius: 0;">
+            <div class="brand-text">
+                <h1>TSI Care</h1>
+                <p>ระบบจัดการประกันภัย</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <p class="nav-group-title">General</p>
+            <a href="index.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                Dashboard
+            </a>
+            <a href="crm_customer_list.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                ลูกค้าทั้งหมด
+            </a>
+            <a href="crm_policy_list.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                กรมธรรม์
+            </a>
+
+            <p class="nav-group-title">Sales & Pipeline</p>
+            <a href="crm_sales_leads.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                Leads ใหม่
+                <span class="badge danger">12</span>
+            </a>
+            <a href="crm_quote_builder.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                ใบเสนอราคา
+            </a>
+            <a href="crm_agent_management.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                Agent Performance
+            </a>
+
+            <p class="nav-group-title">Operations</p>
+            <a href="crm_renewal_pipeline.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+                ติดตามต่ออายุ
+                <span class="badge warning">8</span>
+            </a>
+            <a href="crm_claims_management.html" class="nav-item active">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10c.6 0 1.1-.2 1.4-.6.4.3.8.6 1.3.6z"></path><circle cx="7.5" cy="17.5" r="2.5"></circle><circle cx="15.5" cy="17.5" r="2.5"></circle></svg>
+                รายการเคลม
+                <span class="badge info">5</span>
+            </a>
+            <a href="crm_workshop_map.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                เครือข่ายอู่ซ่อม
+            </a>
+
+            <p class="nav-group-title">System</p>
+            <a href="crm_notifications_reminders.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                แจ้งเตือน & Log
+            </a>
+            <a href="crm_settings_permissions.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                ตั้งค่าสิทธิ์ผู้ใช้
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">สศ</div>
+                <div class="user-info">
+                    <p class="name">สมฉวี ศรีสยาม</p>
+                    <p class="role">Sales Manager</p>
+                </div>
+                <button class="btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <!-- Top Header -->
+        <header class="top-header">
+            <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <button class="btn-icon mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+                <button class="btn-icon" style="background: transparent; border: none;" onclick="window.location.href='crm_claims_management.html'">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <h2 class="header-title">งานเคลม > <span style="color: var(--text-main);">รายละเอียดการเคลม</span></h2>
+            </div>
+        </header>
+
+        <div class="dashboard-scroll" style="padding-bottom: 80px;">
+            <div class="claim-detail-layout">
+                
+                <div class="detail-card">
+                    <div class="header-section">
+                        <div class="claim-id">CLM-2803</div>
+                        <h1>ประสิทธิ์ ดีมาก</h1>
+                        <p>Isuzu D-Max 2020 · คง 9012 กรุงเทพฯ</p>
+                    </div>
+
+                    <div class="amount-highlight">
+                        <div>
+                            <div class="label">มูลค่าเคลมโดยประมาณ</div>
+                            <div class="value">55,000 ฿</div>
+                        </div>
+                        <div class="status">กำลังสำรวจ</div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                            ข้อมูลเบื้องต้น
+                        </h3>
+                        <div class="info-grid">
+                            <div class="info-row">
+                                <span class="label">วันแจ้งเคลม</span>
+                                <span class="value">26 มี.ค. 2568</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">ประเภท</span>
+                                <span class="value">อุบัติเหตุ — ชนท้าย</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">สถานที่</span>
+                                <span class="value">ถ.พระราม 4 กรุงเทพฯ</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">ผู้สำรวจ</span>
+                                <a class="value">นายสมบัติ เจ้าหน้าที่</a>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">อู่ซ่อม</span>
+                                <span class="value">สาขาพระราม 4</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-section timeline-section">
+                        <h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            TIMELINE ความคืบหน้า
+                        </h3>
+                        <div class="timeline">
+                            <div class="tl-item">
+                                <div class="tl-dot"></div>
+                                <div class="tl-content">
+                                    <div>
+                                        <div class="title">แจ้งเคลมสำเร็จ</div>
+                                        <div class="desc">รับเรื่องผ่าน LINE OA</div>
+                                    </div>
+                                    <div class="time">26 มี.ค. 09:14</div>
+                                </div>
+                            </div>
+                            <div class="tl-item">
+                                <div class="tl-dot"></div>
+                                <div class="tl-content">
+                                    <div>
+                                        <div class="title">มอบหมายผู้สำรวจ</div>
+                                        <div class="desc">นายสมบัติ รับงานในพื้นที่</div>
+                                    </div>
+                                    <div class="time">26 มี.ค. 10:30</div>
+                                </div>
+                            </div>
+                            <div class="tl-item">
+                                <div class="tl-dot current"></div>
+                                <div class="tl-content">
+                                    <div>
+                                        <div class="title current">กำลังสำรวจความเสียหาย</div>
+                                        <div class="desc current">"นัดสำรวจหน้างาน 27 มี.ค. 13:00"</div>
+                                    </div>
+                                    <div class="time current">ปัจจุบัน</div>
+                                </div>
+                            </div>
+                            <div class="tl-item pending">
+                                <div class="tl-dot pending"></div>
+                                <div class="tl-content">
+                                    <div>
+                                        <div class="title">รอการพิจารณาอนุมัติ</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section document-section">
+                        <h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                            เอกสารประกอบการเคลม
+                        </h3>
+                        <div class="document-grid">
+                            <div class="doc-card">
+                                <div class="doc-preview id-card">
+                                    <div class="doc-icon">🪪</div>
+                                </div>
+                                <div class="doc-info">
+                                    <span class="doc-name">บัตรประชาชน.jpg</span>
+                                    <button class="btn-icon" style="color: var(--brand-main);" onclick="openModal('idcard.png')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg></button>
+                                </div>
+                            </div>
+                            <div class="doc-card">
+                                <div class="doc-preview police">
+                                    <div class="doc-icon">📝</div>
+                                </div>
+                                <div class="doc-info">
+                                    <span class="doc-name">ใบแจ้งความ.pdf</span>
+                                    <button class="btn-icon" style="color: var(--brand-main);" onclick="openModal('police.jpg')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg></button>
+                                </div>
+                            </div>
+                            <div class="doc-card">
+                                <div class="doc-preview receipt">
+                                    <div class="doc-icon">🧾</div>
+                                </div>
+                                <div class="doc-info">
+                                    <span class="doc-name">ใบเสร็จค่าใช้จ่ายซ่อม.pdf</span>
+                                    <button class="btn-icon" style="color: var(--brand-main);" onclick="openModal('inv.jpg')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-footer">
+                        <button class="btn-outline">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+                            ดูเอกสาร
+                        </button>
+                        <button class="btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            อนุมัติเคลม
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Image Modal -->
+    <div class="modal-overlay" id="imageModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-close" onclick="closeModal(event)">✕</div>
+            <img src="" alt="Document Preview" class="modal-img" id="modalImage">
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+<script>
+    function openModal(imgSrc) {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        modalImg.src = imgSrc;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+
+    function closeModal(e) {
+        if (e) {
+            e.stopPropagation();
+        }
+        const modal = document.getElementById('imageModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+        // Delay clearing src to allow animation to finish smoothly
+        setTimeout(() => {
+            document.getElementById('modalImage').src = '';
+        }, 300);
+    }
+    
+    // Allow closing modal with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape") {
+            closeModal();
+        }
+    });
+</script>
+</body>
+</html>
