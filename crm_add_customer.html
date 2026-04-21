@@ -104,14 +104,15 @@
             </div>
             
             <div class="header-actions">
-                <button class="btn-link" onclick="history.back()" style="padding: var(--space-2) var(--space-4); background: var(--bg-subtle); color: var(--text-strong); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-weight: 600;">ยกเลิก</button>
-                <button class="btn-link" style="padding: var(--space-2) var(--space-6); background-color: var(--brand-main); color: white; border-radius: var(--radius-md); font-weight: 600;">บันทึกข้อมูล</button>
+                <button class="btn-link" onclick="history.back()" style="padding: var(--space-2) var(--space-4); background: var(--bg-subtle); color: var(--text-strong); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-weight: 600; cursor: pointer;">ยกเลิก</button>
+                <button class="btn-link" onclick="window.location.href='crm_customer_list.html?save_success=true'" style="padding: var(--space-2) var(--space-6); background-color: var(--brand-main); color: white; border: none; border-radius: var(--radius-md); font-weight: 600; cursor: pointer;">บันทึกข้อมูล</button>
             </div>
         </header>
 
         <!-- Dashboard Content -->
         <div class="dashboard-scroll">
             <form class="add-customer-form">
+                <!-- ... existing form content ... -->
                 <div class="bento-grid" style="grid-template-columns: repeat(2, 1fr);">
                     
                     <!-- Section: Personal Information -->
@@ -240,7 +241,7 @@
 
                 <div style="display: flex; justify-content: flex-end; gap: var(--space-4); margin-top: var(--space-6); margin-bottom: var(--space-8);">
                     <button type="button" onclick="history.back()" style="padding: var(--space-3) var(--space-8); background: var(--bg-subtle); color: var(--text-strong); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-weight: 600; cursor: pointer;">ยกเลิก</button>
-                    <button type="submit" style="padding: var(--space-3) var(--space-10); background-color: var(--brand-main); color: white; border: none; border-radius: var(--radius-md); font-weight: 600; cursor: pointer; box-shadow: var(--shadow-md);">บันทึกข้อมูลลูกค้า</button>
+                    <button type="button" onclick="window.location.href='crm_customer_list.html?save_success=true'" style="padding: var(--space-3) var(--space-6); background-color: var(--brand-main); color: white; border: none; border-radius: var(--radius-md); font-weight: 600; cursor: pointer; box-shadow: var(--shadow-md);">บันทึกข้อมูลลูกค้า</button>
                 </div>
             </form>
         </div>

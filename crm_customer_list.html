@@ -398,5 +398,92 @@
 </div>
 
 <script src="script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('save_success') === 'true') {
+            showToast('บันทึกข้อมูลลูกค้าสำเร็จ');
+            try {
+                window.history.replaceState({}, document.title, window.location.pathname);
+            } catch (e) {
+                console.error("history.replaceState failed:", e);
+            }
+        }
+    });
+
+    function showToast(message) {
+        if (!document.getElementById('toast-styles')) {
+            const style = document.createElement('style');
+            style.id = 'toast-styles';
+            style.textContent = `
+                .toast-container {
+                    position: fixed;
+                    top: 24px;
+                    right: 24px;
+                    z-index: 9999;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+                .toast {
+                    background: white;
+                    border-left: 4px solid var(--accent-success);
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    padding: 16px 24px;
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    transform: translateX(120%);
+                    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    font-family: 'Sarabun', sans-serif;
+                }
+                .toast.show {
+                    transform: translateX(0);
+                }
+                .toast-icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 24px;
+                    height: 24px;
+                    background: #dcfce7;
+                    color: #16a34a;
+                    border-radius: 50%;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        let container = document.querySelector('.toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.className = 'toast-container';
+            document.body.appendChild(container);
+        }
+
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `
+            <div class="toast-icon">✓</div>
+            <div style="font-weight: 600; font-size: 0.875rem; color: #1e293b;">${message}</div>
+        `;
+
+        container.appendChild(toast);
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                toast.classList.add('show');
+            });
+        });
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+</script>
 </body>
 </html>
