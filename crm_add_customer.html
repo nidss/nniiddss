@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Customer - TSI Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="brand-logo.png" alt="TSI Care Logo" class="brand-logo" style="background: transparent; box-shadow: none; object-fit: contain; border-radius: 0;">
+            <div class="brand-text">
+                <h1>TSI Care</h1>
+                <p>ระบบจัดการประกันภัย</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <p class="nav-group-title">General</p>
+            <a href="index.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                Dashboard
+            </a>
+            <a href="crm_customer_list.html" class="nav-item active">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                ลูกค้าทั้งหมด
+            </a>
+            <a href="crm_policy_list.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                กรมธรรม์
+            </a>
+
+            <p class="nav-group-title">Sales & Pipeline</p>
+            <a href="crm_sales_leads.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                Leads ใหม่
+                <span class="badge danger">12</span>
+            </a>
+            <a href="crm_quote_builder.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                ใบเสนอราคา
+            </a>
+            <a href="crm_agent_management.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                Agent Performance
+            </a>
+
+            <p class="nav-group-title">Operations</p>
+            <a href="crm_renewal_pipeline.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+                ติดตามต่ออายุ
+                <span class="badge warning">8</span>
+            </a>
+            <a href="crm_claims_management.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10c.6 0 1.1-.2 1.4-.6.4.3.8.6 1.3.6z"></path><circle cx="7.5" cy="17.5" r="2.5"></circle><circle cx="15.5" cy="17.5" r="2.5"></circle></svg>
+                รายการเคลม
+                <span class="badge info">5</span>
+            </a>
+            <a href="crm_workshop_map.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                เครือข่ายอู่ซ่อม
+            </a>
+
+            <p class="nav-group-title">System</p>
+            <a href="crm_notifications_reminders.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                แจ้งเตือน & Log
+            </a>
+            <a href="crm_settings_permissions.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                ตั้งค่าสิทธิ์ผู้ใช้
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">สศ</div>
+                <div class="user-info">
+                    <p class="name">สมฉวี ศรีสยาม</p>
+                    <p class="role">Sales Manager</p>
+                </div>
+                <button class="btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <a href="crm_customer_list.html" class="btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </a>
+                <h2 class="header-title">เพิ่มลูกค้าใหม่</h2>
+            </div>
+            
+            <div class="header-actions">
+                <button class="btn-link" onclick="history.back()" style="padding: var(--space-2) var(--space-4); background: var(--bg-subtle); color: var(--text-strong); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-weight: 600;">ยกเลิก</button>
+                <button class="btn-link" style="padding: var(--space-2) var(--space-6); background-color: var(--brand-main); color: white; border-radius: var(--radius-md); font-weight: 600;">บันทึกข้อมูล</button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-scroll">
+            <form class="add-customer-form">
+                <div class="bento-grid" style="grid-template-columns: repeat(2, 1fr);">
+                    
+                    <!-- Section: Personal Information -->
+                    <div class="bento-item form-section" style="grid-column: span 1;">
+                        <div class="section-header" style="margin-bottom: var(--space-4);">
+                            <h3 style="font-size: 1.125rem; font-weight: 600; color: var(--brand-main); display: flex; align-items: center; gap: var(--space-2);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                ข้อมูลส่วนตัว
+                            </h3>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4);">
+                            <div class="form-group" style="grid-column: span 1;">
+                                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--space-1);">คำนำหน้า</label>
+                                <select style="width: 100%; padding: var(--space-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: 'Sarabun';">
+                                    <option>นาย</option>
+                                    <option>นาง</option>
+                                    <option>นางสาว</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="grid-column: span 1;">
+                                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--space-1);">ชื่อ-นามสกุล</label>
+                                <input type="text" placeholder="ระบุชื่อ-นามสกุล" style="width: 100%; padding: var(--space-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: 'Sarabun';">
+                            </div>
+                            <div class="form-group" style="grid-column: span 2;">
+                                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--space-1);">เลขบัตรประชาชน</label>
+                                <input type="text" placeholder="X-XXXX-XXXXX-XX-X" style="width: 100%; padding: var(--space-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: 'Sarabun';">
+                            </div>
+                            <div class="form-group" style="grid-column: span 1;">
+                                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--space-1);">วันเกิด</label>
+                                <input type="date" style="width: 100%; padding: var(--space-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: 'Sarabun';">
+                            </div>
+                            <div class="form-group" style="grid-column: span 1;">
+                                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--space-1);">อาชีพ</label>
+                                <input type="text" placeholder="ระบุอาชีพ" style="width: 100%; padding: var(--space-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: 'Sarabun';">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section: Contact Information -->
+                    <div class="bento-item form-section" style="grid-column: span 1;">
+                        <div class="section-header" style="margin-bottom: var(--space-4);">
+                            <h3 style="font-size: 1.125rem; font-weight: 600; color: var(--brand-main); display: flex; align-items: center; gap: var(--space-2);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                ข้อมูลติดต่อ
+                            </h3>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4);">
+                            <div class="form-group" style="grid-column: span 1;">
+                                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--space-1);">เบอร์โทรศัพท์</label>
+                                <input type="tel" placeholder="0XX-XXX-XXXX" style="width: 100%; padding: var(--space-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: 'Sarabun';">
+                            </div>
+                            <div class="form-group" style="grid-column: span 1;">
+                                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--space-1);">อีเมล</label>
+                                <input type="email" placeholder="example@email.com" style="width: 100%; padding: var(--space-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: 'Sarabun';">
+                            </div>
+                            <div class="form-group" style="grid-column: span 2;">
+                                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--space-1);">Line ID</label>
+                                <input type="text" placeholder="@lineid" style="width: 100%; padding: var(--space-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: 'Sarabun';">
+                            </div>
+                            <div class="form-group" style="grid-column: span 2;">
+                                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--space-1);">ที่อยู่สำหรับส่งเอกสาร</label>
+                                <textarea placeholder="ระบุเลขที่บ้าน, หมู่บ้าน, ถนน..." style="width: 100%; padding: var(--space-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: 'Sarabun'; height: 80px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section: Vehicle Information -->
+                    <div class="bento-item form-section" style="grid-column: span 2;">
+                        <div class="section-header" style="margin-bottom: var(--space-4);">
+                            <h3 style="font-size: 1.125rem; font-weight: 600; color: var(--brand-main); display: flex; align-items: center; gap: var(--space-2);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10c.6 0 1.1-.2 1.4-.6.4.3.8.6 1.3.6z"></path><circle cx="7.5" cy="17.5" r="2.5"></circle><circle cx="15.5" cy="17.5" r="2.5"></circle></svg>
+                                ข้อมูลรถยนต์
+                            </h3>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4);">
+                            <div class="form-group" style="grid-column: span 1;">
+                                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--space-1);">ยี่ห้อรถ</label>
+                                <select style="width: 100%; padding: var(--space-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: 'Sarabun';">
+                                    <option>Toyota</option>
+                                    <option>Honda</option>
+                                    <option>Isuzu</option>
+                                    <option>Mazda</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="grid-column: span 1;">
+                                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--space-1);">รุ่นรถ</label>
+                                <input type="text" placeholder="ระบุรุ่นรถ" style="width: 100%; padding: var(--space-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: 'Sarabun';">
+                            </div>
+                            <div class="form-group" style="grid-column: span 1;">
+                                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--space-1);">ปีที่จดทะเบียน</label>
+                                <input type="number" placeholder="เช่น 2022" style="width: 100%; padding: var(--space-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: 'Sarabun';">
+                            </div>
+                            <div class="form-group" style="grid-column: span 1;">
+                                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--space-1);">ทะเบียนรถ</label>
+                                <input type="text" placeholder="กข 1234" style="width: 100%; padding: var(--space-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: 'Sarabun';">
+                            </div>
+                            <div class="form-group" style="grid-column: span 1;">
+                                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--space-1);">จังหวัด</label>
+                                <input type="text" placeholder="กรุงเทพฯ" style="width: 100%; padding: var(--space-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: 'Sarabun';">
+                            </div>
+                            <div class="form-group" style="grid-column: span 1.5;">
+                                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--space-1);">เลขตัวถัง</label>
+                                <input type="text" placeholder="ระบุเลขตัวถัง" style="width: 100%; padding: var(--space-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: 'Sarabun';">
+                            </div>
+                            <div class="form-group" style="grid-column: span 1.5;">
+                                <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--space-1);">เลขเครื่องยนต์</label>
+                                <input type="text" placeholder="ระบุเลขเครื่องยนต์" style="width: 100%; padding: var(--space-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: 'Sarabun';">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section: Additional Details -->
+                    <div class="bento-item form-section" style="grid-column: span 2;">
+                        <div class="section-header" style="margin-bottom: var(--space-4);">
+                            <h3 style="font-size: 1.125rem; font-weight: 600; color: var(--brand-main); display: flex; align-items: center; gap: var(--space-2);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                รายละเอียดเพิ่มเติม
+                            </h3>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: var(--space-1);">หมายเหตุ</label>
+                            <textarea placeholder="ระบุรายละเอียดอื่นๆ ที่สำคัญ..." style="width: 100%; padding: var(--space-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-family: 'Sarabun'; height: 100px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: var(--space-4); margin-top: var(--space-6); margin-bottom: var(--space-8);">
+                    <button type="button" onclick="history.back()" style="padding: var(--space-3) var(--space-8); background: var(--bg-subtle); color: var(--text-strong); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-weight: 600; cursor: pointer;">ยกเลิก</button>
+                    <button type="submit" style="padding: var(--space-3) var(--space-10); background-color: var(--brand-main); color: white; border: none; border-radius: var(--radius-md); font-weight: 600; cursor: pointer; box-shadow: var(--shadow-md);">บันทึกข้อมูลลูกค้า</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
