@@ -106,10 +106,13 @@
         <!-- Top Header -->
         <header class="top-header">
             <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <a href="crm_policy_list.html" class="btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </a>
                 <button class="btn-icon mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 </button>
-                <h2 class="header-title" style="font-size: 1rem; color: var(--text-muted); font-weight: 500;"><a href="#" style="color: inherit; text-decoration: none;">กรมธรรม์</a> <span style="margin: 0 8px;">/</span> <span style="color: var(--text-main); font-weight: 600; font-family: monospace; text-transform: uppercase;">POL-2567-084231</span></h2>
+                <h2 class="header-title" style="font-size: 1rem; color: var(--text-muted); font-weight: 500;"><a href="crm_policy_list.html" style="color: inherit; text-decoration: none;">กรมธรรม์</a> <span style="margin: 0 8px;">/</span> <span style="color: var(--text-main); font-weight: 600; font-family: monospace; text-transform: uppercase;">POL-2567-084231</span></h2>
             </div>
             
             <div class="header-actions">
@@ -131,10 +134,19 @@
                     <h2>กรมธรรม์ POL-2567-084231</h2>
                     <p>วิชัย สุขสม · Toyota Camry 2022 (กข 1234 กรุงเทพฯ)</p>
                 </div>
-                <div class="time-filters">
-                    <button class="time-filter-btn">พิมพ์</button>
-                    <button class="time-filter-btn">ส่งลูกค้า</button>
-                    <button class="time-filter-btn active" style="background-color: var(--brand-main); color: white;">ต่ออายุ</button>
+                <div style="display: flex; gap: var(--space-2);">
+                    <button class="btn-link" style="padding: var(--space-2) var(--space-4); background: white; color: var(--text-strong); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-weight: 600; display: flex; align-items: center; gap: var(--space-2);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                        พิมพ์
+                    </button>
+                    <button class="btn-link" style="padding: var(--space-2) var(--space-4); background: white; color: var(--text-strong); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-weight: 600; display: flex; align-items: center; gap: var(--space-2);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        ส่งลูกค้า
+                    </button>
+                    <button class="btn-link" style="padding: var(--space-2) var(--space-4); background-color: var(--brand-main); color: white; border-radius: var(--radius-md); font-weight: 600; display: flex; align-items: center; gap: var(--space-2);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 18 10"></polyline><polyline points="1 20 1 14 6 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                        ต่ออายุ
+                    </button>
                 </div>
             </div>
 
@@ -182,83 +194,231 @@
 
             <!-- Tabs -->
             <div style="display: flex; border-bottom: 1px solid var(--border-light); margin-bottom: var(--space-6); overflow-x: auto;">
-                <button style="padding: 16px 24px; border: none; background: transparent; font-weight: 600; font-size: 0.875rem; color: var(--brand-main); border-bottom: 2px solid var(--brand-main); cursor: pointer; white-space: nowrap;">ความคุ้มครอง</button>
-                <button style="padding: 16px 24px; border: none; background: transparent; font-weight: 500; font-size: 0.875rem; color: var(--text-muted); cursor: pointer; white-space: nowrap;">เอกสาร & ไฟล์</button>
-                <button style="padding: 16px 24px; border: none; background: transparent; font-weight: 500; font-size: 0.875rem; color: var(--text-muted); cursor: pointer; white-space: nowrap;">การชำระเงิน</button>
-                <button style="padding: 16px 24px; border: none; background: transparent; font-weight: 500; font-size: 0.875rem; color: var(--text-muted); cursor: pointer; white-space: nowrap;">ประวัติเคลม</button>
-                <button style="padding: 16px 24px; border: none; background: transparent; font-weight: 500; font-size: 0.875rem; color: var(--text-muted); cursor: pointer; white-space: nowrap;">บันทึกช่วยจำ</button>
+                <button class="tab-btn active" data-target="tab-coverage" style="padding: 16px 24px; border: none; background: transparent; font-weight: 600; font-size: 0.875rem; color: var(--brand-main); border-bottom: 2px solid var(--brand-main); cursor: pointer; white-space: nowrap;">ความคุ้มครอง</button>
+                <button class="tab-btn" data-target="tab-documents" style="padding: 16px 24px; border: none; background: transparent; font-weight: 500; font-size: 0.875rem; color: var(--text-muted); cursor: pointer; white-space: nowrap;">เอกสาร & ไฟล์</button>
+                <button class="tab-btn" data-target="tab-payments" style="padding: 16px 24px; border: none; background: transparent; font-weight: 500; font-size: 0.875rem; color: var(--text-muted); cursor: pointer; white-space: nowrap;">การชำระเงิน</button>
+                <button class="tab-btn" data-target="tab-claims" style="padding: 16px 24px; border: none; background: transparent; font-weight: 500; font-size: 0.875rem; color: var(--text-muted); cursor: pointer; white-space: nowrap;">ประวัติเคลม</button>
+                <button class="tab-btn" data-target="tab-notes" style="padding: 16px 24px; border: none; background: transparent; font-weight: 500; font-size: 0.875rem; color: var(--text-muted); cursor: pointer; white-space: nowrap;">บันทึกช่วยจำ</button>
             </div>
 
-            <div class="bottom-grid" style="grid-template-columns: 1fr 1fr;">
-                <!-- Left Column -->
-                <div style="display: flex; flex-direction: column; gap: var(--space-6);">
-                    <div class="bento-item">
-                        <div class="card-header">
-                            <h3 class="card-title">ข้อมูลกรมธรรม์</h3>
-                            <button class="btn-link">แก้ไข</button>
+            <div id="tab-coverage" class="tab-pane">
+                <div class="bottom-grid" style="grid-template-columns: 1fr 1fr;">
+                    <!-- Left Column -->
+                    <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+                        <div class="bento-item">
+                            <div class="card-header">
+                                <h3 class="card-title">ข้อมูลกรมธรรม์</h3>
+                                <button class="btn-link">แก้ไข</button>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-4);">
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">บริษัทประกัน</span><span style="font-weight: 600;">ไทยเศรษฐกิจประกันภัย จํากัด (มหาชน)</span></div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">ประเภท</span><span style="font-weight: 600;">ประกันรถยนต์ ชั้น 1</span></div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">เลขกรมธรรม์บริษัท</span><span style="font-weight: 600; font-family: monospace;">TH2567-084231-A</span></div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">จำนวนเงินเอาประกัน</span><span style="font-weight: 600; font-style: italic;">850,000 ฿</span></div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">ค่าเสียหายส่วนแรก (Excess)</span><span style="font-weight: 600; color: var(--brand-main); font-style: italic;">2,000 ฿</span></div>
+                            </div>
                         </div>
-                        <div style="display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-4);">
-                            <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">บริษัทประกัน</span><span style="font-weight: 600;">ประกันภัย ข จำกัด (มหาชน)</span></div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">ประเภท</span><span style="font-weight: 600;">ประกันรถยนต์ ชั้น 1</span></div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">เลขกรมธรรม์บริษัท</span><span style="font-weight: 600; font-family: monospace;">TH2567-084231-A</span></div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">จำนวนเงินเอาประกัน</span><span style="font-weight: 600; font-style: italic;">850,000 ฿</span></div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">ค่าเสียหายส่วนแรก (Excess)</span><span style="font-weight: 600; color: var(--brand-main); font-style: italic;">2,000 ฿</span></div>
+
+                        <div class="bento-item">
+                            <div class="card-header">
+                                <h3 class="card-title">ข้อมูลรถยนต์</h3>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-4);">
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">ยี่ห้อ / รุ่น</span><span style="font-weight: 600;">Toyota Camry 2.5 V</span></div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">เลขตัวถัง (VIN)</span><span style="font-weight: 600; font-family: monospace;">MNT25BEM4N0012345</span></div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">สีรถ</span><span style="font-weight: 600;">ขาวมุก (White Pearl)</span></div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="bento-item">
-                        <div class="card-header">
-                            <h3 class="card-title">ข้อมูลรถยนต์</h3>
+                    <!-- Right Column -->
+                    <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+                        <div>
+                            <h5 style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: var(--space-4); letter-spacing: 0.5px;">วงเงินความคุ้มครอง</h5>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                                <div class="bento-item" style="padding: var(--space-4);">
+                                    <p style="font-size: 0.625rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px;">ความเสียหายต่อรถ</p>
+                                    <p style="font-size: 1.125rem; font-weight: 700; font-style: italic;">850,000 ฿</p>
+                                    <p style="font-size: 0.625rem; color: var(--text-muted); margin-top: 8px;">คุ้มครองทุกกรณี รวมชนไม่มีคู่กรณี</p>
+                                </div>
+                                <div class="bento-item" style="padding: var(--space-4);">
+                                    <p style="font-size: 0.625rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px;">บุคคลภายนอก</p>
+                                    <p style="font-size: 1.125rem; font-weight: 700; font-style: italic;">ไม่จำกัด</p>
+                                    <p style="font-size: 0.625rem; color: var(--text-muted); margin-top: 8px;">ทรัพย์สินบุคคลอื่น 5,000,000 ฿</p>
+                                </div>
+                                <div class="bento-item" style="padding: var(--space-4);">
+                                    <p style="font-size: 0.625rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px;">ผู้ขับขี่ / โดยสาร</p>
+                                    <p style="font-size: 1.125rem; font-weight: 700; font-style: italic;">300,000 ฿</p>
+                                    <p style="font-size: 0.625rem; color: var(--text-muted); margin-top: 8px;">PA เพิ่มเติม พร้อมค่ารักษาพยาบาล</p>
+                                </div>
+                                <div class="bento-item" style="padding: var(--space-4); background: var(--brand-surface); border: 1px solid var(--brand-surface);">
+                                    <p style="font-size: 0.625rem; font-weight: 600; color: var(--brand-main); text-transform: uppercase; margin-bottom: 4px;">รถเช่าระหว่างซ่อม</p>
+                                    <p style="font-size: 1.125rem; font-weight: 700; color: var(--brand-main); font-style: italic;">10 วัน</p>
+                                    <p style="font-size: 0.625rem; color: var(--brand-main); margin-top: 8px; font-weight: 500;">สิทธิ์พิเศษ: วันละ 800 ฿</p>
+                                </div>
+                            </div>
                         </div>
-                        <div style="display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-4);">
-                            <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">ยี่ห้อ / รุ่น</span><span style="font-weight: 600;">Toyota Camry 2.5 V</span></div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">เลขตัวถัง (VIN)</span><span style="font-weight: 600; font-family: monospace;">MNT25BEM4N0012345</span></div>
-                            <div style="display: flex; justify-content: space-between; font-size: 0.875rem;"><span style="color: var(--text-muted);">สีรถ</span><span style="font-weight: 600;">ขาวมุก (White Pearl)</span></div>
+
+                        <div class="bento-item">
+                            <div class="card-header">
+                                <h3 class="card-title">อู่ซ่อมและบริการเสริม</h3>
+                            </div>
+                            <div style="display: flex; gap: 8px; margin-top: var(--space-4); margin-bottom: var(--space-6); flex-wrap: wrap;">
+                                <span style="font-size: 0.75rem; font-weight: 600; background: var(--bg-body); padding: 4px 12px; border-radius: var(--radius-sm); color: var(--text-main);">อู่ในเครือ 320+ แห่ง</span>
+                                <span style="font-size: 0.75rem; font-weight: 600; background: var(--bg-body); padding: 4px 12px; border-radius: var(--radius-sm); color: var(--text-main);">Toyota Dealer</span>
+                                <span style="font-size: 0.75rem; font-weight: 600; background: var(--bg-body); padding: 4px 12px; border-radius: var(--radius-sm); color: var(--text-main);">อู่ทั่วไป (ห้าง)</span>
+                            </div>
+                            <button style="width: 100%; padding: 12px; background: var(--brand-surface); color: var(--brand-main); border: none; border-radius: var(--radius-md); font-weight: 600; font-size: 0.75rem; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                                ค้นหาอู่ซ่อมใกล้ฉัน
+                            </button>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Right Column -->
-                <div style="display: flex; flex-direction: column; gap: var(--space-6);">
-                    <div>
-                        <h5 style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: var(--space-4); letter-spacing: 0.5px;">วงเงินความคุ้มครอง</h5>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
-                            <div class="bento-item" style="padding: var(--space-4);">
-                                <p style="font-size: 0.625rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px;">ความเสียหายต่อรถ</p>
-                                <p style="font-size: 1.125rem; font-weight: 700; font-style: italic;">850,000 ฿</p>
-                                <p style="font-size: 0.625rem; color: var(--text-muted); margin-top: 8px;">คุ้มครองทุกกรณี รวมชนไม่มีคู่กรณี</p>
+            <div id="tab-documents" class="tab-pane" style="display: none;">
+                <div class="bento-item">
+                    <div class="card-header">
+                        <h3 class="card-title">รายการเอกสาร</h3>
+                        <button class="btn-link" style="background-color: var(--brand-main); color: white; padding: 8px 16px; border-radius: 8px;">อัปโหลดไฟล์</button>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>ชื่อไฟล์</th>
+                                    <th>ขนาด</th>
+                                    <th>วันที่อัปโหลด</th>
+                                    <th style="text-align: right;">จัดการ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 12px;">
+                                            <div style="width: 32px; height: 32px; background: #fee2e2; color: #ef4444; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.625rem;">PDF</div>
+                                            <span style="font-size: 0.875rem; font-weight: 500;">กรมธรรม์ตัวจริง_POL-2567.pdf</span>
+                                        </div>
+                                    </td>
+                                    <td style="font-size: 0.875rem; color: var(--text-muted);">1.2 MB</td>
+                                    <td style="font-size: 0.875rem; color: var(--text-muted);">15 ม.ค. 2567</td>
+                                    <td style="text-align: right;">
+                                        <button class="action-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display: flex; align-items: center; gap: 12px;">
+                                            <div style="width: 32px; height: 32px; background: #e0f2fe; color: #0ea5e9; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.625rem;">JPG</div>
+                                            <span style="font-size: 0.875rem; font-weight: 500;">สำเนาบัตรประชาชน_วิชัย.jpg</span>
+                                        </div>
+                                    </td>
+                                    <td style="font-size: 0.875rem; color: var(--text-muted);">450 KB</td>
+                                    <td style="font-size: 0.875rem; color: var(--text-muted);">15 ม.ค. 2567</td>
+                                    <td style="text-align: right;">
+                                        <button class="action-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-payments" class="tab-pane" style="display: none;">
+                <div class="bento-item">
+                    <div class="card-header">
+                        <h3 class="card-title">ประวัติการชำระเงิน</h3>
+                        <div style="text-align: right;">
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">ยอดรวมทั้งหมด: </span>
+                            <span style="font-size: 1.125rem; font-weight: 700; color: var(--brand-main);">28,500 ฿</span>
+                        </div>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>งวดที่</th>
+                                    <th>วันที่กำหนดชำระ</th>
+                                    <th>วันที่ชำระจริง</th>
+                                    <th>จำนวนเงิน</th>
+                                    <th>สถานะ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-size: 0.875rem; font-weight: 600;">1/1</td>
+                                    <td style="font-size: 0.875rem;">15 ม.ค. 2567</td>
+                                    <td style="font-size: 0.875rem;">15 ม.ค. 2567</td>
+                                    <td style="font-size: 0.875rem; font-weight: 600;">28,500 ฿</td>
+                                    <td><span class="status-pill" style="background: var(--accent-success-surface); color: var(--accent-success); border-color: transparent;">ชำระแล้ว</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-claims" class="tab-pane" style="display: none;">
+                <div class="bento-item">
+                    <div class="card-header">
+                        <h3 class="card-title">ประวัติการเคลม</h3>
+                        <button class="btn-link">+ แจ้งเคลมใหม่</button>
+                    </div>
+                    <div class="timeline" style="margin-top: 20px; padding-left: 10px;">
+                        <div class="timeline-item">
+                            <div class="timeline-icon icon-red">🚗</div>
+                            <div class="timeline-content">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <p class="title">อุบัติเหตุชนกับรถยนต์ (มีคู่กรณี)</p>
+                                    <span style="font-weight: 700; color: var(--accent-danger);">15,000 ฿</span>
+                                </div>
+                                <p class="desc">สถานที่: แยกดินแดง, กรุงเทพฯ · เลขที่เคลม: CLM-670123</p>
+                                <span class="timeline-time">15 ก.พ. 2567</span>
                             </div>
-                            <div class="bento-item" style="padding: var(--space-4);">
-                                <p style="font-size: 0.625rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px;">บุคคลภายนอก</p>
-                                <p style="font-size: 1.125rem; font-weight: 700; font-style: italic;">ไม่จำกัด</p>
-                                <p style="font-size: 0.625rem; color: var(--text-muted); margin-top: 8px;">ทรัพย์สินบุคคลอื่น 5,000,000 ฿</p>
-                            </div>
-                            <div class="bento-item" style="padding: var(--space-4);">
-                                <p style="font-size: 0.625rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px;">ผู้ขับขี่ / โดยสาร</p>
-                                <p style="font-size: 1.125rem; font-weight: 700; font-style: italic;">300,000 ฿</p>
-                                <p style="font-size: 0.625rem; color: var(--text-muted); margin-top: 8px;">PA เพิ่มเติม พร้อมค่ารักษาพยาบาล</p>
-                            </div>
-                            <div class="bento-item" style="padding: var(--space-4); background: var(--brand-surface); border: 1px solid var(--brand-surface);">
-                                <p style="font-size: 0.625rem; font-weight: 600; color: var(--brand-main); text-transform: uppercase; margin-bottom: 4px;">รถเช่าระหว่างซ่อม</p>
-                                <p style="font-size: 1.125rem; font-weight: 700; color: var(--brand-main); font-style: italic;">10 วัน</p>
-                                <p style="font-size: 0.625rem; color: var(--brand-main); margin-top: 8px; font-weight: 500;">สิทธิ์พิเศษ: วันละ 800 ฿</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon" style="background: #e0f2fe; color: #0ea5e9;">💎</div>
+                            <div class="timeline-content">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <p class="title">เคลมกระจกหน้าแตก</p>
+                                    <span style="font-weight: 700; color: #0ea5e9;">4,500 ฿</span>
+                                </div>
+                                <p class="desc">สถานที่: ศูนย์บริการ Toyota · เลขที่เคลม: CLM-670542</p>
+                                <span class="timeline-time">20 มี.ค. 2567</span>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="bento-item">
-                        <div class="card-header">
-                            <h3 class="card-title">อู่ซ่อมและบริการเสริม</h3>
+            <div id="tab-notes" class="tab-pane" style="display: none;">
+                <div class="bento-item">
+                    <div class="card-header">
+                        <h3 class="card-title">บันทึกช่วยจำ</h3>
+                    </div>
+                    <div style="margin-bottom: 24px;">
+                        <textarea placeholder="เพิ่มบันทึกใหม่ที่นี่..." style="width: 100%; padding: 12px; border: 1px solid var(--border-light); border-radius: 8px; font-family: inherit; font-size: 0.875rem; height: 80px; resize: none; margin-bottom: 12px;"></textarea>
+                        <div style="display: flex; justify-content: flex-end;">
+                            <button style="background: var(--brand-main); color: white; padding: 8px 24px; border-radius: 8px; font-weight: 600; font-size: 0.875rem;">บันทึก</button>
                         </div>
-                        <div style="display: flex; gap: 8px; margin-top: var(--space-4); margin-bottom: var(--space-6); flex-wrap: wrap;">
-                            <span style="font-size: 0.75rem; font-weight: 600; background: var(--bg-body); padding: 4px 12px; border-radius: var(--radius-sm); color: var(--text-main);">อู่ในเครือ 320+ แห่ง</span>
-                            <span style="font-size: 0.75rem; font-weight: 600; background: var(--bg-body); padding: 4px 12px; border-radius: var(--radius-sm); color: var(--text-main);">Toyota Dealer</span>
-                            <span style="font-size: 0.75rem; font-weight: 600; background: var(--bg-body); padding: 4px 12px; border-radius: var(--radius-sm); color: var(--text-main);">อู่ทั่วไป (ห้าง)</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="padding: 16px; background: var(--bg-subtle); border-radius: 12px;">
+                            <p style="font-size: 0.875rem; color: var(--text-strong); margin-bottom: 8px;">ลูกค้าแจ้งเปลี่ยนที่อยู่จัดส่งเอกสาร เป็นสำนักงานที่สีลม</p>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted);">
+                                <span>โดย: สมฉวี ศรีสยาม</span>
+                                <span>21 เม.ย. 2568 · 10:30 น.</span>
+                            </div>
                         </div>
-                        <button style="width: 100%; padding: 12px; background: var(--brand-surface); color: var(--brand-main); border: none; border-radius: var(--radius-md); font-weight: 600; font-size: 0.75rem; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                            ค้นหาอู่ซ่อมใกล้ฉัน
-                        </button>
+                        <div style="padding: 16px; background: var(--bg-subtle); border-radius: 12px;">
+                            <p style="font-size: 0.875rem; color: var(--text-strong); margin-bottom: 8px;">ติดตามเรื่องเอกสารการโอนสิทธิ์ พรบ. เดิม</p>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted);">
+                                <span>โดย: สมฉวี ศรีสยาม</span>
+                                <span>10 มี.ค. 2568 · 14:15 น.</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -267,5 +427,30 @@
 </div>
 
 <script src="script.js"></script>
+<script>
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Reset all buttons
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active');
+                b.style.color = 'var(--text-muted)';
+                b.style.borderBottom = 'none';
+                b.style.fontWeight = '500';
+            });
+            // Hide all panes
+            document.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
+            
+            // Set active state
+            btn.classList.add('active');
+            btn.style.color = 'var(--brand-main)';
+            btn.style.borderBottom = '2px solid var(--brand-main)';
+            btn.style.fontWeight = '600';
+            
+            // Show selected pane
+            const target = btn.getAttribute('data-target');
+            document.getElementById(target).style.display = 'block';
+        });
+    });
+</script>
 </body>
 </html>
