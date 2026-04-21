@@ -336,216 +336,353 @@
             <div style="max-width: 900px; margin: 0 auto; padding-top: var(--space-6);">
                 
                 <div class="stepper-container">
-                    <div class="step-item step-done">
-                        <div class="step-circle">✓</div>
+                    <div class="step-item step-active" id="step1-indicator">
+                        <div class="step-circle">1</div>
                         <span class="step-label">ข้อมูลลูกค้า</span>
-                        <div class="step-line done"></div>
+                        <div class="step-line pending" id="line1"></div>
                     </div>
-                    <div class="step-item step-active">
+                    <div class="step-item step-pending" id="step2-indicator">
                         <div class="step-circle">2</div>
                         <span class="step-label">รายละเอียด</span>
-                        <div class="step-line pending"></div>
+                        <div class="step-line pending" id="line2"></div>
                     </div>
-                    <div class="step-item step-pending">
+                    <div class="step-item step-pending" id="step3-indicator">
                         <div class="step-circle">3</div>
                         <span class="step-label">แนบเอกสาร</span>
-                        <div class="step-line pending"></div>
+                        <div class="step-line pending" id="line3"></div>
                     </div>
-                    <div class="step-item step-pending">
+                    <div class="step-item step-pending" id="step4-indicator">
                         <div class="step-circle">4</div>
                         <span class="step-label">ยืนยัน</span>
                     </div>
                 </div>
 
-                <div class="bento-item form-section">
-                    <div class="form-header">
-                        <div class="form-icon" style="background: var(--brand-surface); color: var(--brand-main);">📋</div>
-                        <h3 class="card-title" style="margin: 0; text-transform: uppercase;">กรมธรรม์ที่ต้องการแจ้งเคลม</h3>
-                    </div>
-                    <div class="form-body" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
-                        <div class="policy-card active">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
-                                <span style="font-weight: bold; color: var(--brand-main);">ประกันภัย ชั้น 1</span>
-                                <div style="width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--brand-main); display: flex; align-items: center; justify-content: center;"><div style="width: 10px; height: 10px; border-radius: 50%; background: var(--brand-main);"></div></div>
+                <form id="claimForm">
+                    <!-- Step 1: Customer Info -->
+                    <div id="step1-content" class="step-content">
+                        <div class="bento-item form-section">
+                            <div class="form-header">
+                                <div class="form-icon" style="background: var(--brand-surface); color: var(--brand-main);">👤</div>
+                                <h3 class="card-title" style="margin: 0; text-transform: uppercase;">ค้นหาข้อมูลลูกค้าและกรมธรรม์</h3>
                             </div>
-                            <p style="font-size: 0.875rem; margin-bottom: var(--space-1);">Toyota Camry · กข 1234</p>
-                            <p style="font-size: 0.75rem; color: var(--text-muted);">หมดอายุ 1 เม.ย. 68 · ทุน 850,000 ฿</p>
-                            <span class="status-pill status-success" style="position: absolute; top: var(--space-4); right: 40px; font-size: 0.6rem;">มีผลคุ้มครอง</span>
-                        </div>
-                        <div class="policy-card">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
-                                <span style="font-weight: bold;">พ.ร.บ. รถยนต์</span>
-                                <div style="width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border-light);"></div>
-                            </div>
-                            <p style="font-size: 0.875rem; margin-bottom: var(--space-1);">Toyota Camry · กข 1234</p>
-                            <p style="font-size: 0.75rem; color: var(--text-muted);">หมดอายุ 1 เม.ย. 68 · ทุน 500,000 ฿</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bento-item form-section">
-                    <div class="form-header">
-                        <div class="form-icon" style="background: var(--accent-danger-surface); color: var(--accent-danger);">🚗</div>
-                        <h3 class="card-title" style="margin: 0; text-transform: uppercase;">ประเภทความเสียหาย <span style="color: var(--accent-danger);">*</span></h3>
-                    </div>
-                    <div class="form-body">
-                        <div class="type-grid">
-                            <div class="type-card active">
-                                <div style="font-size: 1.5rem; margin-bottom: var(--space-2);">💥</div>
-                                <span style="font-size: 0.75rem; font-weight: bold; color: var(--brand-main);">อุบัติเหตุ / ชน</span>
-                            </div>
-                            <div class="type-card">
-                                <div style="font-size: 1.5rem; margin-bottom: var(--space-2); filter: grayscale(1);">🌊</div>
-                                <span style="font-size: 0.75rem; font-weight: bold; color: var(--text-muted);">น้ำท่วม</span>
-                            </div>
-                            <div class="type-card">
-                                <div style="font-size: 1.5rem; margin-bottom: var(--space-2); filter: grayscale(1);">🔥</div>
-                                <span style="font-size: 0.75rem; font-weight: bold; color: var(--text-muted);">ไฟไหม้</span>
-                            </div>
-                            <div class="type-card">
-                                <div style="font-size: 1.5rem; margin-bottom: var(--space-2); filter: grayscale(1);">🔓</div>
-                                <span style="font-size: 0.75rem; font-weight: bold; color: var(--text-muted);">โจรกรรม</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bento-item form-section">
-                    <div class="form-header">
-                        <div class="form-icon" style="background: var(--accent-warning-surface); color: var(--accent-warning);">📍</div>
-                        <h3 class="card-title" style="margin: 0; text-transform: uppercase;">รายละเอียดเหตุการณ์</h3>
-                    </div>
-                    <div class="form-body" style="display: flex; flex-direction: column; gap: var(--space-4);">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label class="form-label">วันที่เกิดเหตุ <span style="color: var(--accent-danger);">*</span></label>
-                                <input type="date" class="form-input" value="2025-03-26">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">เวลาที่เกิดเหตุ <span style="color: var(--accent-danger);">*</span></label>
-                                <input type="time" class="form-input" value="08:45">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">จังหวัด <span style="color: var(--accent-danger);">*</span></label>
-                                <select class="form-select"><option>กรุงเทพมหานคร</option></select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">สถานที่เกิดเหตุ (โดยละเอียด) <span style="color: var(--accent-danger);">*</span></label>
-                            <input type="text" class="form-input" value="แยกอโศก ถ.สุขุมวิท เขตวัฒนา กรุงเทพฯ">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">คำอธิบายเหตุการณ์ <span style="color: var(--accent-danger);">*</span></label>
-                            <textarea class="form-textarea">ขับรถตรงมาตามถนนสุขุมวิท รถคันหน้าเบรกกะทันหัน ไม่สามารถหยุดได้ทัน เกิดการชนท้ายรถ Honda Civic สีขาว ทะเบียน ขก 5678 ไม่มีผู้บาดเจ็บ</textarea>
-                        </div>
-                        <div class="form-grid" style="grid-template-columns: 1fr 1fr;">
-                            <div class="form-group">
-                                <label class="form-label">มีคู่กรณีหรือไม่</label>
-                                <select class="form-select"><option>มีคู่กรณี</option><option>ไม่มีคู่กรณี</option></select>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">มีผู้บาดเจ็บหรือไม่</label>
-                                <select class="form-select"><option>ไม่มีผู้บาดเจ็บ</option><option>มีผู้บาดเจ็บ</option></select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bento-item form-section">
-                    <div class="form-header">
-                        <div class="form-icon" style="background: var(--accent-success-surface); color: var(--accent-success);">💰</div>
-                        <h3 class="card-title" style="margin: 0; text-transform: uppercase;">ความเสียหายและความรุนแรง</h3>
-                    </div>
-                    <div class="form-body" style="display: flex; flex-direction: column; gap: var(--space-6);">
-                        <div class="form-grid" style="grid-template-columns: 1fr 1fr;">
-                            <div class="form-group">
-                                <label class="form-label">มูลค่าความเสียหายประมาณการ (฿)</label>
-                                <input type="number" class="form-input" value="55000" style="font-weight: bold;">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">บริษัทประกันคู่กรณี (ถ้ามี)</label>
-                                <input type="text" class="form-input" placeholder="เช่น ประกันภัย ก">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" style="text-align: center;">ระดับความรุนแรง</label>
-                            <div class="severity-grid">
-                                <div class="severity-card active">
-                                    <div style="font-size: 1.5rem; margin-bottom: var(--space-1);">🟢</div>
-                                    <p style="font-weight: bold; font-size: 0.875rem; color: var(--accent-success);">น้อย</p>
-                                    <p style="font-size: 0.7rem; color: var(--accent-success);">≤ 20,000 ฿</p>
+                            <div class="form-body">
+                                <div class="form-group" style="margin-bottom: var(--space-4);">
+                                    <label class="form-label">ค้นหาจากชื่อ, ทะเบียนรถ หรือเลขกรมธรรม์</label>
+                                    <div style="position: relative;">
+                                        <input type="text" class="form-input" placeholder="พิมพ์เพื่อค้นหา..." style="padding-left: 36px; width: 100%;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                                    </div>
                                 </div>
-                                <div class="severity-card">
-                                    <div style="font-size: 1.5rem; margin-bottom: var(--space-1); filter: grayscale(1);">🟡</div>
-                                    <p style="font-weight: bold; font-size: 0.875rem; color: var(--text-muted);">ปานกลาง</p>
-                                    <p style="font-size: 0.7rem; color: var(--text-muted);">20K - 100K ฿</p>
-                                </div>
-                                <div class="severity-card">
-                                    <div style="font-size: 1.5rem; margin-bottom: var(--space-1); filter: grayscale(1);">🔴</div>
-                                    <p style="font-weight: bold; font-size: 0.875rem; color: var(--text-muted);">มาก</p>
-                                    <p style="font-size: 0.7rem; color: var(--text-muted);">> 100,000 ฿</p>
+
+                                <!-- Placeholder for search results -->
+                                <div style="border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: var(--space-4); background: var(--bg-surface); cursor: pointer;" onclick="selectCustomer(this)">
+                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-2);">
+                                        <div>
+                                            <p style="font-weight: 600; font-size: 1rem;">วิชัย สุขสม</p>
+                                            <p style="font-size: 0.875rem; color: var(--text-muted);">081-234-5678</p>
+                                        </div>
+                                        <span class="status-pill status-success">Active</span>
+                                    </div>
+                                    <div style="background: var(--bg-main); padding: var(--space-3); border-radius: var(--radius-sm); margin-top: var(--space-3);">
+                                        <p style="font-weight: 600; font-size: 0.875rem; color: var(--brand-main); margin-bottom: 4px;">กรมธรรม์ POL-2567-084231 (ประกันชั้น 1)</p>
+                                        <p style="font-size: 0.75rem; color: var(--text-muted);">Toyota Camry กข 1234 · หมดอายุ 1 เม.ย. 68</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="bento-item form-section">
-                    <div class="form-header">
-                        <div class="form-icon" style="background: #f3e8ff; color: #9333ea;">📎</div>
-                        <h3 class="card-title" style="margin: 0; text-transform: uppercase;">แนบรูปภาพและเอกสาร</h3>
-                    </div>
-                    <div class="form-body">
-                        <div class="upload-area">
-                            <div style="font-size: 2.5rem; margin-bottom: var(--space-2);">📸</div>
-                            <h4 style="font-weight: bold; margin-bottom: var(--space-1);">ลากไฟล์มาวาง หรือ คลิกเพื่อเลือกรูปภาพ</h4>
-                            <p style="font-size: 0.75rem; color: var(--text-muted); font-style: italic;">รูปถ่ายความเสียหาย, ใบแจ้งความ, ใบขับขี่ (PNG, JPG, PDF สูงสุด 10MB/ไฟล์)</p>
-                        </div>
-                        
-                        <div style="margin-top: var(--space-4);">
-                            <div class="file-item">
-                                <div style="width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--brand-surface); color: var(--brand-main); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🖼</div>
-                                <div style="flex: 1;">
-                                    <p style="font-size: 0.875rem; font-weight: bold;">damage_front.jpg</p>
-                                    <p style="font-size: 0.7rem; color: var(--text-muted);">2.4 MB · อัปโหลดสำเร็จ</p>
-                                </div>
-                                <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent-success);"></div>
-                                <button style="border: none; background: transparent; color: var(--text-muted); cursor: pointer;">✕</button>
+                    <!-- Step 2: Claim Details -->
+                    <div id="step2-content" class="step-content" style="display: none;">
+                        <div class="bento-item form-section">
+                            <div class="form-header">
+                                <div class="form-icon" style="background: var(--brand-surface); color: var(--brand-main);">📋</div>
+                                <h3 class="card-title" style="margin: 0; text-transform: uppercase;">กรมธรรม์ที่ต้องการแจ้งเคลม</h3>
                             </div>
-                            <div class="file-item">
-                                <div style="width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--accent-success-surface); color: var(--accent-success); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">📄</div>
-                                <div style="flex: 1;">
-                                    <p style="font-size: 0.875rem; font-weight: bold;">police_report.pdf</p>
-                                    <p style="font-size: 0.7rem; color: var(--text-muted);">540 KB · อัปโหลดสำเร็จ</p>
+                            <div class="form-body" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                                <div class="policy-card active">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                                        <span style="font-weight: bold; color: var(--brand-main);">ประกันภัย ชั้น 1</span>
+                                        <div style="width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--brand-main); display: flex; align-items: center; justify-content: center;"><div style="width: 10px; height: 10px; border-radius: 50%; background: var(--brand-main);"></div></div>
+                                    </div>
+                                    <p style="font-size: 0.875rem; margin-bottom: var(--space-1);">Toyota Camry · กข 1234</p>
+                                    <p style="font-size: 0.75rem; color: var(--text-muted);">หมดอายุ 1 เม.ย. 68 · ทุน 850,000 ฿</p>
+                                    <span class="status-pill status-success" style="position: absolute; top: var(--space-4); right: 40px; font-size: 0.6rem;">มีผลคุ้มครอง</span>
                                 </div>
-                                <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent-success);"></div>
-                                <button style="border: none; background: transparent; color: var(--text-muted); cursor: pointer;">✕</button>
+                                <div class="policy-card">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                                        <span style="font-weight: bold;">พ.ร.บ. รถยนต์</span>
+                                        <div style="width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border-light);"></div>
+                                    </div>
+                                    <p style="font-size: 0.875rem; margin-bottom: var(--space-1);">Toyota Camry · กข 1234</p>
+                                    <p style="font-size: 0.75rem; color: var(--text-muted);">หมดอายุ 1 เม.ย. 68 · ทุน 500,000 ฿</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
+                        <div class="bento-item form-section">
+                            <div class="form-header">
+                                <div class="form-icon" style="background: var(--accent-danger-surface); color: var(--accent-danger);">🚗</div>
+                                <h3 class="card-title" style="margin: 0; text-transform: uppercase;">ประเภทความเสียหาย <span style="color: var(--accent-danger);">*</span></h3>
+                            </div>
+                            <div class="form-body">
+                                <div class="type-grid">
+                                    <div class="type-card active">
+                                        <div style="font-size: 1.5rem; margin-bottom: var(--space-2);">💥</div>
+                                        <span style="font-size: 0.75rem; font-weight: bold; color: var(--brand-main);">อุบัติเหตุ / ชน</span>
+                                    </div>
+                                    <div class="type-card">
+                                        <div style="font-size: 1.5rem; margin-bottom: var(--space-2); filter: grayscale(1);">🌊</div>
+                                        <span style="font-size: 0.75rem; font-weight: bold; color: var(--text-muted);">น้ำท่วม</span>
+                                    </div>
+                                    <div class="type-card">
+                                        <div style="font-size: 1.5rem; margin-bottom: var(--space-2); filter: grayscale(1);">🔥</div>
+                                        <span style="font-size: 0.75rem; font-weight: bold; color: var(--text-muted);">ไฟไหม้</span>
+                                    </div>
+                                    <div class="type-card">
+                                        <div style="font-size: 1.5rem; margin-bottom: var(--space-2); filter: grayscale(1);">🔓</div>
+                                        <span style="font-size: 0.75rem; font-weight: bold; color: var(--text-muted);">โจรกรรม</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bento-item form-section">
+                            <div class="form-header">
+                                <div class="form-icon" style="background: var(--accent-warning-surface); color: var(--accent-warning);">📍</div>
+                                <h3 class="card-title" style="margin: 0; text-transform: uppercase;">รายละเอียดเหตุการณ์</h3>
+                            </div>
+                            <div class="form-body" style="display: flex; flex-direction: column; gap: var(--space-4);">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label">วันที่เกิดเหตุ <span style="color: var(--accent-danger);">*</span></label>
+                                        <input type="date" class="form-input" value="2025-03-26">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">เวลาที่เกิดเหตุ <span style="color: var(--accent-danger);">*</span></label>
+                                        <input type="time" class="form-input" value="08:45">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">จังหวัด <span style="color: var(--accent-danger);">*</span></label>
+                                        <select class="form-select"><option>กรุงเทพมหานคร</option></select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">สถานที่เกิดเหตุ (โดยละเอียด) <span style="color: var(--accent-danger);">*</span></label>
+                                    <input type="text" class="form-input" value="แยกอโศก ถ.สุขุมวิท เขตวัฒนา กรุงเทพฯ">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">คำอธิบายเหตุการณ์ <span style="color: var(--accent-danger);">*</span></label>
+                                    <textarea class="form-textarea">ขับรถตรงมาตามถนนสุขุมวิท รถคันหน้าเบรกกะทันหัน ไม่สามารถหยุดได้ทัน เกิดการชนท้ายรถ Honda Civic สีขาว ทะเบียน ขก 5678 ไม่มีผู้บาดเจ็บ</textarea>
+                                </div>
+                                <div class="form-grid" style="grid-template-columns: 1fr 1fr;">
+                                    <div class="form-group">
+                                        <label class="form-label">มีคู่กรณีหรือไม่</label>
+                                        <select class="form-select"><option>มีคู่กรณี</option><option>ไม่มีคู่กรณี</option></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">มีผู้บาดเจ็บหรือไม่</label>
+                                        <select class="form-select"><option>ไม่มีผู้บาดเจ็บ</option><option>มีผู้บาดเจ็บ</option></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bento-item form-section">
+                            <div class="form-header">
+                                <div class="form-icon" style="background: var(--accent-success-surface); color: var(--accent-success);">💰</div>
+                                <h3 class="card-title" style="margin: 0; text-transform: uppercase;">ความเสียหายและความรุนแรง</h3>
+                            </div>
+                            <div class="form-body" style="display: flex; flex-direction: column; gap: var(--space-6);">
+                                <div class="form-grid" style="grid-template-columns: 1fr 1fr;">
+                                    <div class="form-group">
+                                        <label class="form-label">มูลค่าความเสียหายประมาณการ (฿)</label>
+                                        <input type="number" class="form-input" value="55000" style="font-weight: bold;">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">บริษัทประกันคู่กรณี (ถ้ามี)</label>
+                                        <input type="text" class="form-input" placeholder="เช่น ประกันภัย ก">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" style="text-align: center;">ระดับความรุนแรง</label>
+                                    <div class="severity-grid">
+                                        <div class="severity-card active">
+                                            <div style="font-size: 1.5rem; margin-bottom: var(--space-1);">🟢</div>
+                                            <p style="font-weight: bold; font-size: 0.875rem; color: var(--accent-success);">น้อย</p>
+                                            <p style="font-size: 0.7rem; color: var(--accent-success);">≤ 20,000 ฿</p>
+                                        </div>
+                                        <div class="severity-card">
+                                            <div style="font-size: 1.5rem; margin-bottom: var(--space-1); filter: grayscale(1);">🟡</div>
+                                            <p style="font-weight: bold; font-size: 0.875rem; color: var(--text-muted);">ปานกลาง</p>
+                                            <p style="font-size: 0.7rem; color: var(--text-muted);">20K - 100K ฿</p>
+                                        </div>
+                                        <div class="severity-card">
+                                            <div style="font-size: 1.5rem; margin-bottom: var(--space-1); filter: grayscale(1);">🔴</div>
+                                            <p style="font-weight: bold; font-size: 0.875rem; color: var(--text-muted);">มาก</p>
+                                            <p style="font-size: 0.7rem; color: var(--text-muted);">> 100,000 ฿</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Uploads -->
+                    <div id="step3-content" class="step-content" style="display: none;">
+                        <div class="bento-item form-section">
+                            <div class="form-header">
+                                <div class="form-icon" style="background: #f3e8ff; color: #9333ea;">📎</div>
+                                <h3 class="card-title" style="margin: 0; text-transform: uppercase;">แนบรูปภาพและเอกสาร</h3>
+                            </div>
+                            <div class="form-body">
+                                <div class="upload-area">
+                                    <div style="font-size: 2.5rem; margin-bottom: var(--space-2);">📸</div>
+                                    <h4 style="font-weight: bold; margin-bottom: var(--space-1);">ลากไฟล์มาวาง หรือ คลิกเพื่อเลือกรูปภาพ</h4>
+                                    <p style="font-size: 0.75rem; color: var(--text-muted); font-style: italic;">รูปถ่ายความเสียหาย, ใบแจ้งความ, ใบขับขี่ (PNG, JPG, PDF สูงสุด 10MB/ไฟล์)</p>
+                                </div>
+                                
+                                <div style="margin-top: var(--space-4);">
+                                    <div class="file-item">
+                                        <div style="width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--brand-surface); color: var(--brand-main); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🖼</div>
+                                        <div style="flex: 1;">
+                                            <p style="font-size: 0.875rem; font-weight: bold;">damage_front.jpg</p>
+                                            <p style="font-size: 0.7rem; color: var(--text-muted);">2.4 MB · อัปโหลดสำเร็จ</p>
+                                        </div>
+                                        <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent-success);"></div>
+                                        <button type="button" style="border: none; background: transparent; color: var(--text-muted); cursor: pointer;">✕</button>
+                                    </div>
+                                    <div class="file-item">
+                                        <div style="width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--accent-success-surface); color: var(--accent-success); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">📄</div>
+                                        <div style="flex: 1;">
+                                            <p style="font-size: 0.875rem; font-weight: bold;">police_report.pdf</p>
+                                            <p style="font-size: 0.7rem; color: var(--text-muted);">540 KB · อัปโหลดสำเร็จ</p>
+                                        </div>
+                                        <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent-success);"></div>
+                                        <button type="button" style="border: none; background: transparent; color: var(--text-muted); cursor: pointer;">✕</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Confirm -->
+                    <div id="step4-content" class="step-content" style="display: none;">
+                        <div class="bento-item form-section">
+                            <div class="form-header">
+                                <div class="form-icon" style="background: var(--accent-success-surface); color: var(--accent-success);">✅</div>
+                                <h3 class="card-title" style="margin: 0; text-transform: uppercase;">สรุปและยืนยันการแจ้งเคลม</h3>
+                            </div>
+                            <div class="form-body">
+                                <div style="background: var(--bg-surface); padding: var(--space-4); border-radius: var(--radius-md); border: 1px solid var(--border-light); margin-bottom: var(--space-4);">
+                                    <h4 style="font-size: 1rem; font-weight: bold; margin-bottom: var(--space-4); color: var(--brand-main);">ข้อมูลผู้เอาประกันและกรมธรรม์</h4>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); font-size: 0.875rem;">
+                                        <div style="color: var(--text-muted);">ชื่อ-นามสกุล:</div><div style="font-weight: bold;">วิชัย สุขสม</div>
+                                        <div style="color: var(--text-muted);">กรมธรรม์:</div><div style="font-weight: bold;">POL-2567-084231 (ประกันชั้น 1)</div>
+                                        <div style="color: var(--text-muted);">รถยนต์:</div><div style="font-weight: bold;">Toyota Camry กข 1234</div>
+                                    </div>
+                                </div>
+                                <div style="background: var(--bg-surface); padding: var(--space-4); border-radius: var(--radius-md); border: 1px solid var(--border-light); margin-bottom: var(--space-4);">
+                                    <h4 style="font-size: 1rem; font-weight: bold; margin-bottom: var(--space-4); color: var(--brand-main);">รายละเอียดการเกิดเหตุ</h4>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); font-size: 0.875rem;">
+                                        <div style="color: var(--text-muted);">วันเวลาเกิดเหตุ:</div><div style="font-weight: bold;">26 มี.ค. 2568 เวลา 08:45 น.</div>
+                                        <div style="color: var(--text-muted);">สถานที่:</div><div style="font-weight: bold;">แยกอโศก ถ.สุขุมวิท เขตวัฒนา กรุงเทพฯ</div>
+                                        <div style="color: var(--text-muted);">ประเภท:</div><div style="font-weight: bold;">อุบัติเหตุ / ชน (มีคู่กรณี)</div>
+                                    </div>
+                                </div>
+                                <div style="background: var(--accent-warning-surface); padding: var(--space-4); border-radius: var(--radius-md); border: 1px solid var(--accent-warning);">
+                                    <p style="font-size: 0.875rem; color: var(--text-strong); font-weight: 500;">
+                                        ⚠️ ข้าพเจ้าขอรับรองว่าข้อความทั้งหมดที่แจ้งมานี้เป็นความจริงทุกประการ หากปรากฏว่าข้อความใดเป็นเท็จ ข้าพเจ้ายินยอมให้บริษัทฯ ปฏิเสธความรับผิดชอบได้
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
         
         <footer class="fixed-footer">
             <div style="display: flex; flex-direction: column;">
                 <span style="font-size: 0.7rem; font-weight: bold; color: var(--text-muted); text-transform: uppercase;">ความคืบหน้า</span>
-                <span style="font-size: 0.875rem; font-weight: bold;">ขั้นตอนที่ 2 จาก 4 · กรอกแล้ว 80%</span>
+                <span id="progress-text" style="font-size: 0.875rem; font-weight: bold;">ขั้นตอนที่ 1 จาก 4</span>
             </div>
             <div style="display: flex; gap: var(--space-3);">
-                <button class="action-btn-custom">
+                <button type="button" id="prevBtn" class="action-btn-custom" style="display: none;" onclick="nextStep(-1)">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
                     ย้อนกลับ
                 </button>
-                <button class="action-btn-custom primary">
-                    ถัดไป (แนบเอกสาร)
+                <button type="button" id="nextBtn" class="action-btn-custom primary" onclick="nextStep(1)">
+                    ถัดไป
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </button>
+                <button type="button" id="submitBtn" class="action-btn-custom primary" style="display: none;" onclick="window.location.href='crm_claims_management.html?success=true'">
+                    ยืนยันการแจ้งเคลม
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
                 </button>
             </div>
         </footer>
     </main>
 </div>
 <script src="script.js"></script>
+<script>
+    let currentStep = 1;
+    const totalSteps = 4;
+
+    function nextStep(n) {
+        // Hide current step
+        document.getElementById(`step${currentStep}-content`).style.display = 'none';
+        
+        // Update indicator for current step before moving
+        if (n > 0) {
+            let indicator = document.getElementById(`step${currentStep}-indicator`);
+            indicator.className = 'step-item step-done';
+            indicator.querySelector('.step-circle').innerHTML = '✓';
+            if (currentStep < totalSteps) {
+                document.getElementById(`line${currentStep}`).className = 'step-line done';
+            }
+        } else {
+            let indicator = document.getElementById(`step${currentStep}-indicator`);
+            indicator.className = 'step-item step-pending';
+            indicator.querySelector('.step-circle').innerHTML = currentStep;
+            if (currentStep > 1) {
+                document.getElementById(`line${currentStep-1}`).className = 'step-line pending';
+            }
+        }
+
+        currentStep += n;
+
+        // Show new step
+        document.getElementById(`step${currentStep}-content`).style.display = 'block';
+        
+        // Update new step indicator
+        let newIndicator = document.getElementById(`step${currentStep}-indicator`);
+        newIndicator.className = 'step-item step-active';
+        newIndicator.querySelector('.step-circle').innerHTML = currentStep;
+
+        // Update Buttons
+        document.getElementById('prevBtn').style.display = currentStep === 1 ? 'none' : 'flex';
+        if (currentStep === totalSteps) {
+            document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('submitBtn').style.display = 'flex';
+        } else {
+            document.getElementById('nextBtn').style.display = 'flex';
+            document.getElementById('submitBtn').style.display = 'none';
+            
+            // Set text for next button
+            const nextLabels = ["ถัดไป (รายละเอียด)", "ถัดไป (แนบเอกสาร)", "ถัดไป (ยืนยัน)"];
+            document.getElementById('nextBtn').innerHTML = `${nextLabels[currentStep-1]} <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>`;
+        }
+
+        // Update Progress Text
+        document.getElementById('progress-text').innerText = `ขั้นตอนที่ ${currentStep} จาก ${totalSteps}`;
+    }
+
+    function selectCustomer(el) {
+        document.querySelectorAll('.form-body > div[onclick]').forEach(d => d.style.borderColor = 'var(--border-light)');
+        el.style.borderColor = 'var(--brand-main)';
+        el.style.boxShadow = '0 0 0 2px var(--brand-surface)';
+    }
+</script>
 </body>
 </html>
