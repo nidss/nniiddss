@@ -448,6 +448,46 @@
             document.getElementById(targetId).style.display = 'block';
         });
     });
+
+    // Check for toast notification on load
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const toastMsg = urlParams.get('toast');
+        if (toastMsg) {
+            // Assuming there's a showToast function in script.js
+            if(typeof showToast === 'function') {
+                showToast(toastMsg, 'success');
+            } else {
+                // Fallback basic toast implementation if showToast is not defined in script.js
+                const toast = document.createElement('div');
+                toast.textContent = toastMsg;
+                toast.style.position = 'fixed';
+                toast.style.bottom = '20px';
+                toast.style.right = '20px';
+                toast.style.backgroundColor = 'var(--accent-success)';
+                toast.style.color = 'white';
+                toast.style.padding = '12px 24px';
+                toast.style.borderRadius = '8px';
+                toast.style.boxShadow = 'var(--shadow-lg)';
+                toast.style.zIndex = '9999';
+                toast.style.fontFamily = "'Kanit', sans-serif";
+                toast.style.fontWeight = '500';
+                toast.style.transition = 'opacity 0.3s ease-in-out';
+                
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    setTimeout(() => toast.remove(), 300);
+                }, 3000);
+            }
+            
+            // Clean up the URL
+            const newUrl = window.location.pathname;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+    });
 </script>
 </body>
 </html>
+
