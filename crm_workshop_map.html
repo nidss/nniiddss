@@ -229,7 +229,7 @@
                         <span style="font-weight: 500;"><strong style="color: var(--brand-main); font-weight: 600;">320</strong> อู่ทั่วประเทศ</span>
                     </div>
                     <button class="btn-link" style="color: var(--text-secondary); font-weight: 600;">จัดการอู่</button>
-                    <button style="background-color: var(--brand-main); color: white; border: none; border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); font-size: 0.875rem; font-weight: 600; display: flex; align-items: center; gap: var(--space-2); cursor: pointer; box-shadow: 0 4px 12px oklch(var(--brand-hue) 0.1 0.5 / 0.2);">
+                    <button onclick="window.location.href='crm_add_workshop.html'" style="background-color: var(--brand-main); color: white; border: none; border-radius: var(--radius-md); padding: var(--space-2) var(--space-4); font-size: 0.875rem; font-weight: 600; display: flex; align-items: center; gap: var(--space-2); cursor: pointer; box-shadow: 0 4px 12px oklch(var(--brand-hue) 0.1 0.5 / 0.2);">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="14" y2="12"></line></svg>
                         เพิ่มอู่ใหม่
                     </button>
@@ -437,5 +437,109 @@
 </div>
 
 <script src="script.js"></script>
+<script>
+    // Script for Workshop Map interaction (simulated)
+    document.querySelectorAll('.filter-chip').forEach(chip => {
+        chip.addEventListener('click', function() {
+            document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    document.querySelectorAll('.workshop-list-item').forEach((item, index) => {
+        item.addEventListener('click', function() {
+            document.querySelectorAll('.workshop-list-item').forEach(i => i.classList.remove('active'));
+            this.classList.add('active');
+            // Simulate map pin bouncing or popup change could go here
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const toastMsg = urlParams.get('toast');
+        if (toastMsg) {
+            showToast(toastMsg);
+            try {
+                window.history.replaceState({}, document.title, window.location.pathname);
+            } catch (e) {
+                console.error("history.replaceState failed:", e);
+            }
+        }
+    });
+
+    function showToast(message) {
+        if (!document.getElementById('toast-styles')) {
+            const style = document.createElement('style');
+            style.id = 'toast-styles';
+            style.textContent = `
+                .toast-container {
+                    position: fixed;
+                    top: 24px;
+                    right: 24px;
+                    z-index: 9999;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+                .toast {
+                    background: white;
+                    border-left: 4px solid var(--accent-success);
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    padding: 16px 24px;
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    transform: translateX(120%);
+                    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    font-family: 'Sarabun', sans-serif;
+                }
+                .toast.show {
+                    transform: translateX(0);
+                }
+                .toast-icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 24px;
+                    height: 24px;
+                    background: #dcfce7;
+                    color: #16a34a;
+                    border-radius: 50%;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        let container = document.querySelector('.toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.className = 'toast-container';
+            document.body.appendChild(container);
+        }
+
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `
+            <div class="toast-icon">✓</div>
+            <div style="font-weight: 600; font-size: 0.875rem; color: #1e293b;">${message}</div>
+        `;
+
+        container.appendChild(toast);
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                toast.classList.add('show');
+            });
+        });
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+</script>
 </body>
 </html>
