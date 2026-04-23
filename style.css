@@ -987,3 +987,106 @@ select {
 .toast-close:hover {
     color: var(--text-strong);
 }
+
+/* Notification Dropdown Style */
+.notification-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+.notification-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+    width: 360px;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-float);
+    border: 1px solid var(--border-light);
+    z-index: 1000;
+    display: none;
+    overflow: hidden;
+}
+.notification-dropdown.show {
+    display: block;
+}
+.dropdown-header {
+    padding: var(--space-4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-light);
+}
+.dropdown-header h3 {
+    font-size: 1.125rem;
+    margin: 0;
+    font-weight: 600;
+}
+.dropdown-header .mark-read {
+    font-size: 0.875rem;
+    color: var(--brand-main);
+    cursor: pointer;
+    font-weight: 500;
+}
+.dropdown-body {
+    max-height: 400px;
+    overflow-y: auto;
+}
+.dropdown-item {
+    padding: var(--space-4);
+    display: flex;
+    gap: var(--space-3);
+    border-bottom: 1px solid var(--border-light);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.dropdown-item:hover {
+    background-color: var(--bg-body);
+}
+.dropdown-item.unread {
+    background-color: oklch(0.96 0.03 var(--brand-hue));
+}
+.dropdown-item.unread:hover {
+    background-color: oklch(0.94 0.04 var(--brand-hue));
+}
+.dropdown-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.25rem;
+}
+.dropdown-content {
+    flex: 1;
+}
+.dropdown-text {
+    font-size: 0.875rem;
+    color: var(--text-main);
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+.dropdown-text strong {
+    color: var(--text-strong);
+    font-weight: 600;
+}
+.dropdown-time {
+    font-size: 0.75rem;
+    color: var(--brand-main);
+    font-weight: 500;
+}
+.dropdown-footer {
+    padding: var(--space-3);
+    text-align: center;
+    border-top: 1px solid var(--border-light);
+    font-size: 0.875rem;
+    color: var(--brand-main);
+    font-weight: 600;
+    cursor: pointer;
+}
+.dropdown-footer:hover {
+    background-color: var(--bg-body);
+}

@@ -16,6 +16,23 @@ document.addEventListener('DOMContentLoaded', () => {
         sidebarOverlay.addEventListener('click', toggleMenu);
     }
 
+    // --- Notification Dropdown Logic ---
+    const notificationBtn = document.querySelector('.notification-btn');
+    const notificationDropdown = document.querySelector('.notification-dropdown');
+
+    if (notificationBtn && notificationDropdown) {
+        notificationBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            notificationDropdown.classList.toggle('show');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!notificationDropdown.contains(e.target) && !notificationBtn.contains(e.target)) {
+                notificationDropdown.classList.remove('show');
+            }
+        });
+    }
+
     // --- Toast Notification Logic ---
     function createToastContainer() {
         let container = document.getElementById('toastContainer');
@@ -80,6 +97,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const toastData = JSON.parse(pendingToast);
         showToast(toastData.message, toastData.type);
         localStorage.removeItem('pendingToast');
+    }
+
+    // Check for toast in URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const toastMsg = urlParams.get('toast');
+    if (toastMsg) {
+        showToast(toastMsg, 'success');
+        // Clean up URL without reloading
+        const newUrl = window.location.pathname;
+        window.history.replaceState({}, document.title, newUrl);
     }
 
     // --- Add Policy Form Logic ---

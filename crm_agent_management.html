@@ -123,7 +123,7 @@
                 Leads ใหม่
                 <span class="badge danger">12</span>
             </a>
-            <a href="crm_quote_builder.html" class="nav-item">
+            <a href="crm_quote_list.html" class="nav-item">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                 ใบเสนอราคา
             </a>
@@ -193,6 +193,63 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path></svg>
                     เพิ่มตัวแทนใหม่
                 </button>
+                <div class="notification-wrapper">
+                    <button class="btn-icon notification-btn" id="notificationBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <!-- Dropdown Content -->
+                    <div class="notification-dropdown" id="notificationDropdown">
+                        <div class="dropdown-header">
+                            <h3>การแจ้งเตือน</h3>
+                            <span class="mark-read">ทำเครื่องหมายอ่านแล้วทั้งหมด</span>
+                        </div>
+                        <div class="dropdown-body">
+                            <div class="dropdown-item unread">
+                                <div class="dropdown-icon" style="background-color: var(--accent-danger-surface); color: var(--accent-danger);">
+                                    🚗
+                                </div>
+                                <div class="dropdown-content">
+                                    <p class="dropdown-text"><strong>กรมธรรม์หมดอายุใน 5 วัน — วิชัย สุขสม</strong><br>ยังไม่ได้ส่งใบเสนอราคา (ชั้น 1)</p>
+                                    <span class="dropdown-time">2 นาทีที่แล้ว</span>
+                                </div>
+                                <div style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--brand-main); margin-top: 6px;"></div>
+                            </div>
+                            <div class="dropdown-item unread">
+                                <div class="dropdown-icon" style="background-color: var(--brand-surface); color: var(--brand-main);">
+                                    🎯
+                                </div>
+                                <div class="dropdown-content">
+                                    <p class="dropdown-text"><strong>Lead ใหม่จาก LINE OA</strong><br>ปัญญา สว่างใจ — Lead score 92</p>
+                                    <span class="dropdown-time">18 นาทีที่แล้ว</span>
+                                </div>
+                                <div style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--brand-main); margin-top: 6px;"></div>
+                            </div>
+                            <div class="dropdown-item">
+                                <div class="dropdown-icon" style="background-color: var(--accent-success-surface); color: var(--accent-success);">
+                                    ✓
+                                </div>
+                                <div class="dropdown-content">
+                                    <p class="dropdown-text"><strong>อนุมัติเคลมสำเร็จ — CLM-2798</strong><br>อรนุช พิทักษ์ — ยอดจ่ายสินไหม 28,500 ฿</p>
+                                    <span class="dropdown-time">1 ชม.ที่แล้ว</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-item">
+                                <div class="dropdown-icon" style="background-color: var(--bg-body); color: var(--text-muted);">
+                                    📋
+                                </div>
+                                <div class="dropdown-content">
+                                    <p class="dropdown-text"><strong>ต่ออายุสำเร็จ — วิภา ศิริ</strong><br>ชำระเงินเรียบร้อย 19,400 ฿ ผ่าน PromptPay</p>
+                                    <span class="dropdown-time">เมื่อวาน</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-footer" onclick="window.location.href='crm_notifications_reminders.html'">
+                            ดูการแจ้งเตือนทั้งหมด
+                        </div>
+                    </div>
+                </div>
             </div>
         </header>
 
@@ -483,5 +540,4 @@
     });
 </script>
 </body>
-</html>
 </html>

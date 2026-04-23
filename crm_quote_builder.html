@@ -147,7 +147,7 @@
                 Leads ใหม่
                 <span class="badge danger">12</span>
             </a>
-            <a href="crm_quote_builder.html" class="nav-item active">
+            <a href="crm_quote_list.html" class="nav-item">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                 ใบเสนอราคา
             </a>
@@ -205,7 +205,10 @@
                 <button class="btn-icon mobile-menu-btn" id="mobileMenuBtn" style="display: none;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 </button>
-                <h2 class="header-title">ใบเสนอราคา <span style="color: var(--text-muted); font-size: 1rem; font-weight: normal; margin-left: var(--space-2);">/ QT-2025-0342</span></h2>
+                <a href="crm_quote_list.html" class="btn-icon" style="color: var(--text-main); text-decoration: none;" title="ย้อนกลับ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </a>
+            <h2 class="header-title">ใบเสนอราคา <span style="color: var(--text-muted); font-size: 1rem; font-weight: normal; margin-left: var(--space-2);">/ QT-2025-0342</span></h2>
             </div>
             
             <div class="header-actions">
@@ -214,10 +217,63 @@
                     <input type="text" placeholder="ค้นหาข้อมูลลูกค้า, ทะเบียนรถ...">
                 </div>
                 
-                <button class="btn-icon notification-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
-                    <span class="notification-dot"></span>
-                </button>
+                <div class="notification-wrapper">
+                    <button class="btn-icon notification-btn" id="notificationBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <!-- Dropdown Content -->
+                    <div class="notification-dropdown" id="notificationDropdown">
+                        <div class="dropdown-header">
+                            <h3>การแจ้งเตือน</h3>
+                            <span class="mark-read">ทำเครื่องหมายอ่านแล้วทั้งหมด</span>
+                        </div>
+                        <div class="dropdown-body">
+                            <div class="dropdown-item unread">
+                                <div class="dropdown-icon" style="background-color: var(--accent-danger-surface); color: var(--accent-danger);">
+                                    🚗
+                                </div>
+                                <div class="dropdown-content">
+                                    <p class="dropdown-text"><strong>กรมธรรม์หมดอายุใน 5 วัน — วิชัย สุขสม</strong><br>ยังไม่ได้ส่งใบเสนอราคา (ชั้น 1)</p>
+                                    <span class="dropdown-time">2 นาทีที่แล้ว</span>
+                                </div>
+                                <div style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--brand-main); margin-top: 6px;"></div>
+                            </div>
+                            <div class="dropdown-item unread">
+                                <div class="dropdown-icon" style="background-color: var(--brand-surface); color: var(--brand-main);">
+                                    🎯
+                                </div>
+                                <div class="dropdown-content">
+                                    <p class="dropdown-text"><strong>Lead ใหม่จาก LINE OA</strong><br>ปัญญา สว่างใจ — Lead score 92</p>
+                                    <span class="dropdown-time">18 นาทีที่แล้ว</span>
+                                </div>
+                                <div style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--brand-main); margin-top: 6px;"></div>
+                            </div>
+                            <div class="dropdown-item">
+                                <div class="dropdown-icon" style="background-color: var(--accent-success-surface); color: var(--accent-success);">
+                                    ✓
+                                </div>
+                                <div class="dropdown-content">
+                                    <p class="dropdown-text"><strong>อนุมัติเคลมสำเร็จ — CLM-2798</strong><br>อรนุช พิทักษ์ — ยอดจ่ายสินไหม 28,500 ฿</p>
+                                    <span class="dropdown-time">1 ชม.ที่แล้ว</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-item">
+                                <div class="dropdown-icon" style="background-color: var(--bg-body); color: var(--text-muted);">
+                                    📋
+                                </div>
+                                <div class="dropdown-content">
+                                    <p class="dropdown-text"><strong>ต่ออายุสำเร็จ — วิภา ศิริ</strong><br>ชำระเงินเรียบร้อย 19,400 ฿ ผ่าน PromptPay</p>
+                                    <span class="dropdown-time">เมื่อวาน</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-footer">
+                            ดูการแจ้งเตือนทั้งหมด
+                        </div>
+                    </div>
+                </div>
             </div>
         </header>
 
@@ -248,9 +304,9 @@
                         </div>
                         <div style="padding: var(--space-5);">
                             <div class="client-cell" style="margin-bottom: var(--space-5);">
-                                <div class="client-avatar avatar-blue" style="width: 48px; height: 48px; font-size: 1.125rem;">วช</div>
+                                <div class="client-avatar avatar-blue" style="width: 48px; height: 48px; font-size: 1.125rem;">ปส</div>
                                 <div class="client-info">
-                                    <p class="name" style="font-size: 1rem;">วิชัย สุขสม</p>
+                                    <p class="name" style="font-size: 1rem;">ปัญญา สว่างใจ</p>
                                     <p class="detail">081-234-5678 · ลูกค้าประจำ</p>
                                 </div>
                             </div>
@@ -467,6 +523,10 @@
                 </div>
             </div>
 
+            <div style="display: flex; justify-content: flex-end; gap: var(--space-4); margin-top: var(--space-6); margin-bottom: var(--space-8);">
+                <button type="button" onclick="window.location.href='crm_quote_list.html'" style="padding: var(--space-3) var(--space-8); background: var(--bg-subtle); color: var(--text-strong); border: 1px solid var(--border-light); border-radius: var(--radius-md); font-weight: 600; cursor: pointer;">ยกเลิก</button>
+                <button type="button" onclick="window.location.href='crm_quote_list.html?toast=ส่งใบเสนอราคาสำเร็จ'" style="padding: var(--space-3) var(--space-6); background-color: var(--brand-main); color: white; border: none; border-radius: var(--radius-md); font-weight: 600; cursor: pointer; box-shadow: var(--shadow-md);">ส่งใบเสนอราคา</button>
+            </div>
         </div>
     </main>
 </div>
